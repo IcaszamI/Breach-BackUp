@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: Email_1_Day1
+  m_EditorClassIdentifier: 
+  senderEmail: Maxwell@.breachnetworks.com.ph
+  subject: Congratulations!!
+  body: Hey there new hire! i just want to say thank you for going into our company
+    its been real bad recently with all the security breaches that happened but hey
+    that's in the past now and i know you'll be able to handle this, Good luck on
+    your first day!
+  attachmentName: 
+  hasAttachment: 0
+  isMalicious: 0
+  isBlacklistedApp: 0
+  isCorrectDomain: 1
+  isFriendlyEmail: 1
+  isFirstEmail: 1
+  dayAppears: 1
+  mistakeExplanation: Maxwell's email domain was correct, I would suggest re-reading
+    the criteria.
+  correctActionHint: Replying to this email was the correct decision
+  consequenceText: Maxwell got sad T-T

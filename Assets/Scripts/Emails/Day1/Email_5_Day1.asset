@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: Email_5_Day1
+  m_EditorClassIdentifier: 
+  senderEmail: Maria@breechnetworks.com.ph
+  subject: missing document
+  body: 'Hi,
+
+
+    I am Maria from the finance department can you send me the meeting
+    documents from last week? we seem to have misplaced it.
+
+
+    Thank you.'
+  attachmentName: 
+  hasAttachment: 0
+  isMalicious: 0
+  isBlacklistedApp: 0
+  isCorrectDomain: 0
+  isFriendlyEmail: 0
+  isFirstEmail: 0
+  dayAppears: 1
+  mistakeExplanation: '"Maria" had the wrong domain name breach is not spelt as breech
+    be sure to double check next time'
+  correctActionHint: Ignoring this would have been the right choice
+  consequenceText: Because you gave "Maria" the meeting document company secrets
+    were leaked and released into the public.

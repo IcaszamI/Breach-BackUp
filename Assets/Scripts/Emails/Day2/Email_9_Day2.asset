@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: Email_9_Day2
+  m_EditorClassIdentifier: 
+  senderEmail: Grace@breachnetworks.com.ph
+  subject: Quarterly Schedule
+  body: "Here\u2019s the updated work schedule. It should auto-adjust based on system
+    time."
+  attachmentName: updated_Schedule.docx
+  hasAttachment: 1
+  isMalicious: 1
+  isBlacklistedApp: 0
+  isCorrectDomain: 1
+  isFriendlyEmail: 0
+  isFirstEmail: 0
+  dayAppears: 2
+  mistakeExplanation: The attachment on the email was malicious
+  correctActionHint: This email should have been ignored
+  consequenceText: You opened a file containing a logic bomb which is code that silently
+    waits until a specific time before executing and it waited after hours to delete
+    key company files.

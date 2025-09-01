@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: Email_7_Day2
+  m_EditorClassIdentifier: 
+  senderEmail: Kevin@breachnetworks.com.ph
+  subject: Updated client list
+  body: "Sending over the new client data. Let me know if anything\u2019s missing."
+  attachmentName: September_Clients.docx
+  hasAttachment: 1
+  isMalicious: 0
+  isBlacklistedApp: 0
+  isCorrectDomain: 1
+  isFriendlyEmail: 1
+  isFirstEmail: 0
+  dayAppears: 2
+  mistakeExplanation: The attachment on the email was malicious
+  correctActionHint: This email should have been ignored
+  consequenceText: The attachment embedded spyware into your system.  It quietly
+    collected internal documents, emails, and screenshots transmitting them to an
+    outside server.

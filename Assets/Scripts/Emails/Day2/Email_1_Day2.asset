@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: Email_1_Day2
+  m_EditorClassIdentifier: 
+  senderEmail: Maxwell@breachnetworks.com.ph
+  subject: New Schedule
+  body: This will be our schedule for the next week be sure to familiarize yourself
+    with it
+  attachmentName: Schedule.txt
+  hasAttachment: 1
+  isMalicious: 0
+  isBlacklistedApp: 0
+  isCorrectDomain: 1
+  isFriendlyEmail: 1
+  isFirstEmail: 0
+  dayAppears: 2
+  mistakeExplanation: 'The domain was correct and the attachment was safe '
+  correctActionHint: this email should have been replied to
+  consequenceText: Because you ignored this email and didn't bothered to check the
+    attachment you were not aware of the schedule change and you went to work 3 hours
+    early.

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: Email_5_Day2
+  m_EditorClassIdentifier: 
+  senderEmail: Joseph@breachnetworks.com.ph
+  subject: Budget Review
+  body: Attached is the final budget file for review. Please send back with approvals.
+  attachmentName: Budget.xlsx
+  hasAttachment: 1
+  isMalicious: 1
+  isBlacklistedApp: 0
+  isCorrectDomain: 1
+  isFriendlyEmail: 0
+  isFirstEmail: 0
+  dayAppears: 2
+  mistakeExplanation: The attachment in the email was malicious
+  correctActionHint: This email should have been ignored
+  consequenceText: You downloaded a file that triggered a ransomware attack. It encrypted
+    all local files and displayed a message demanding cryptocurrency to unlock them.

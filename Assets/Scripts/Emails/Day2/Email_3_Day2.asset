@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: Email_3_Day2
+  m_EditorClassIdentifier: 
+  senderEmail: Mac@breachnetworks.com.ph
+  subject: Payroll Update
+  body: I've attached the payroll spreadsheet for Q3. make sure that your team's
+    numbersmatch
+  attachmentName: Q3_Payroll.xlsx
+  hasAttachment: 1
+  isMalicious: 1
+  isBlacklistedApp: 0
+  isCorrectDomain: 1
+  isFriendlyEmail: 0
+  isFirstEmail: 0
+  dayAppears: 2
+  mistakeExplanation: The attachment contained within the email was malicious and
+    you downloaded it without scanning.
+  correctActionHint: this email should hav been Ignored
+  consequenceText: You opened an infected file without verifying the sender or scanning
+    for threats. The file contained a Trojan horse that silently installed a backdoor,
+    allowing remote attackers persistent access to your system.
