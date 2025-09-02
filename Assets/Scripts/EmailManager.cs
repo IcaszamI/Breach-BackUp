@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Palmmedia.ReportGenerator.Core.Parser.Analysis;
-using Unity.PlasticSCM.Editor.WebApi;
-using System.Threading.Tasks;
-using Unity.VisualScripting.Antlr3.Runtime;
-using System.ComponentModel.Design;
 using UnityEngine.SceneManagement;
 
 public class EmailManager : MonoBehaviour

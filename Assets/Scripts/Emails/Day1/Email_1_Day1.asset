@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
   m_Name: Email_1_Day1
   m_EditorClassIdentifier: 
-  senderEmail: Maxwell@.breachnetworks.com.ph
+  senderEmail: Maxwell@breachnetworks.com.ph
   subject: Congratulations!!
   body: Hey there new hire! i just want to say thank you for going into our company
     its been real bad recently with all the security breaches that happened but hey
