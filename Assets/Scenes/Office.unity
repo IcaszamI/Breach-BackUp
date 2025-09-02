@@ -9826,7 +9826,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 401971288}
         m_TargetAssemblyTypeName: ScreensLogic, Assembly-CSharp
         m_MethodName: emailExitButton
         m_Mode: 1
