@@ -173,9 +173,10 @@ public class EmailManager : MonoBehaviour
         if (emailButtonContainer.childCount == 0)
         {
             Debug.Log("Day Complete, Transitioniung to report scene");
+            Debug.Log("Emailmanager is sending" + processedEmailsToday.Count + " processed and " + mistakesMade.Count + " mistakes");
             if (GameManager.Instance != null)
             {
-                GameManager.Instance.CompleteDay(processedEmailsToday, mistakesMade);
+                GameManager.Instance.CompleteDay(mistakesMade, processedEmailsToday);
             }
         }
         

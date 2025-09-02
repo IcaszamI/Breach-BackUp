@@ -17,10 +17,13 @@ public class ScreenCursor : MonoBehaviour
     public float cursorSpeed = 0.1f;
 
     void OnEnable()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        virtualCursor.gameObject.SetActive(true);
+    { if (virtualCursor != null)
+        {
+            Debug.Log("Vcursor enabled");
+            virtualCursor.gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     void OnDisable()

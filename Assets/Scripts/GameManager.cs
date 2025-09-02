@@ -26,7 +26,9 @@ public class GameManager : MonoBehaviour
 
     public void CompleteDay(List<EmailData> mistakes, List<EmailData> processedEmails)
     {
+        processedEmailsToday = new List<EmailData>(processedEmails);
         mistakesMadeToday = new List<EmailData>(mistakes);
+        Debug.Log("Game manager has stored " + processedEmailsToday.Count + " processed emails and " + mistakesMadeToday.Count + " mistakes.");
         SceneManager.LoadScene("NextDayScene");
     }
 

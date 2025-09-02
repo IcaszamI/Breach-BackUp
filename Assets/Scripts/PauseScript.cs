@@ -45,15 +45,16 @@ public class PauseScript : MonoBehaviour
         isPaused = false;
         if (screenCursor != null)
         {
-            screenCursor.enabled = false;
+            screenCursor.enabled = true;
         }
         pauseMenuUI?.SetActive(false);
         blurVolume?.SetActive(false);
         SettingsUI?.SetActive(false);
 
         if (playerController != null)
+        {
             playerController.enabled = true;
-
+        }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
