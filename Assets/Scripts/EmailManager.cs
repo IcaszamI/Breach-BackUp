@@ -154,10 +154,8 @@ public class EmailManager : MonoBehaviour
 
         if (mistakeTally >= maxTally)
         {
-            mistakesMade.Clear();
-            mistakeTally = 0;
-            tallyCounter.text = mistakeTally.ToString();
-            SceneManager.LoadScene("RepeatDayScene");
+            Debug.Log("Day Failed, Loading repeatdayscene");
+            GameManager.Instance.CompleteDay(mistakesMade, processedEmailsToday);
         }
     }
 

@@ -11,6 +11,12 @@ public class MainMenuLogic : MonoBehaviour
 
     public void startNewGame()
     {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.currentDay = 1;
+            GameManager.Instance.processedEmailsToday.Clear();
+            GameManager.Instance.mistakesMadeToday.Clear();
+        }
         SceneManager.LoadScene(loadOffice);
     }
     public void settings()
@@ -19,6 +25,7 @@ public class MainMenuLogic : MonoBehaviour
     }
     public void backToMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(loadMenu);
 
     }

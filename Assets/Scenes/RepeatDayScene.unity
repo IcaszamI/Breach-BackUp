@@ -408,8 +408,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -86.74, y: -8.824003}
-  m_SizeDelta: {x: 126.521, y: 0}
+  m_AnchoredPosition: {x: -85.1, y: 98.578}
+  m_SizeDelta: {x: 161, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &339681675
 MonoBehaviour:
@@ -1726,9 +1726,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 663299819}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RepeatDay
+      - m_Target: {fileID: 1802596152}
+        m_TargetAssemblyTypeName: SaveLogic, Assembly-CSharp
+        m_MethodName: OnClickRepeatDay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1940,6 +1940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 094e769e2e12644458758abec5357813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 663299819}
 --- !u!114 &1802596153
 MonoBehaviour:
   m_ObjectHideFlags: 0

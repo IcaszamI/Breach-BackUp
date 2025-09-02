@@ -29,7 +29,15 @@ public class GameManager : MonoBehaviour
         processedEmailsToday = new List<EmailData>(processedEmails);
         mistakesMadeToday = new List<EmailData>(mistakes);
         Debug.Log("Game manager has stored " + processedEmailsToday.Count + " processed emails and " + mistakesMadeToday.Count + " mistakes.");
-        SceneManager.LoadScene("NextDayScene");
+        if (mistakes.Count ==  3)
+        {
+            SceneManager.LoadScene("RepeatDayScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("NextDayScene");
+        }
+        
     }
 
     public void StartNextDay()

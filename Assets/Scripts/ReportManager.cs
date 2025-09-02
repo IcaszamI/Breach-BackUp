@@ -58,17 +58,18 @@ public class ReportManager : MonoBehaviour
     }
     void DisplayReportDetails(EmailData emailData)
     {
-        string details = $"<b>Email Subject: </b>\n{emailData.subject}\n\n" +
-        $"<b><color=red> Possible Consequence: </color></b>\n{emailData.consequenceText}";
-        reportDetailsText.text = details;
-    }
-
-    public void onClickNextDay()
-    {
-        if (GameManager.Instance != null)
+        string details;
+        if (GameManager.Instance.mistakesMadeToday.Contains(emailData))
         {
-            GameManager.Instance.StartNextDay();
+            details = $"<b>Email Subject: </b>\n{emailData.subject}\n\n" +
+        $"<b><color=red> Consequences: </color></b>\n{emailData.consequenceText}";
         }
+        else
+        {
+            details =  $"<b>Email Subject: </b>\n{emailData.subject}\n\n" +
+        $"<b><color=red> Possible Consequence: </color></b>\n{emailData.consequenceText}";
+        }
+        reportDetailsText.text = details;
     }
 
     public void onClickExit()
