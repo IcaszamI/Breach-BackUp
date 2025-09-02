@@ -8,6 +8,7 @@ using Unity.PlasticSCM.Editor.WebApi;
 using System.Threading.Tasks;
 using Unity.VisualScripting.Antlr3.Runtime;
 using System.ComponentModel.Design;
+using UnityEngine.SceneManagement;
 
 public class EmailManager : MonoBehaviour
 {
@@ -158,8 +159,10 @@ public class EmailManager : MonoBehaviour
 
         if (mistakeTally >= maxTally)
         {
-            Debug.Log("dont forget to add lose scene");
             mistakesMade.Clear();
+            mistakeTally = 0;
+            tallyCounter.text = mistakeTally.ToString();
+            SceneManager.LoadScene("RepeatDayScene");
         }
     }
 

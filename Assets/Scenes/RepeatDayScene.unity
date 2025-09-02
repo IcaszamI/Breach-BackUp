@@ -97,7 +97,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 337375550c590bd4db1d4badf4e5ba12, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 55d0d8813dead584bb74dd354eda9477, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1555603351}
+      - m_Target: {fileID: 1802596152}
         m_TargetAssemblyTypeName: SaveLogic, Assembly-CSharp
         m_MethodName: SaveAndExit
         m_Mode: 1
@@ -937,7 +937,7 @@ GameObject:
   - component: {fileID: 931490625}
   - component: {fileID: 931490624}
   m_Layer: 5
-  m_Name: Safe
+  m_Name: Breached
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -982,7 +982,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2afcfebf15d1c8646bf81d511e446f44, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 121e4312286a12e41b44db70c68c3406, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1387,7 +1387,7 @@ GameObject:
   - component: {fileID: 1228843545}
   - component: {fileID: 1228843544}
   m_Layer: 5
-  m_Name: SaveAndExit
+  m_Name: RepeatDaybtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1432,7 +1432,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Next Day
+  m_text: Repeat Day
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7a348f28c84fb4148a24489fd1e39feb, type: 2}
   m_sharedMaterial: {fileID: -758958295655141332, guid: 7a348f28c84fb4148a24489fd1e39feb, type: 2}
@@ -1656,7 +1656,7 @@ GameObject:
   - component: {fileID: 1430511018}
   - component: {fileID: 1430511017}
   m_Layer: 5
-  m_Name: NextDaybtn
+  m_Name: RepeatDaybtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1728,7 +1728,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 663299819}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: StartNextDay
+        m_MethodName: RepeatDay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1910,7 +1910,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457080089}
   m_CullTransparentMesh: 1
---- !u!1 &1555603350
+--- !u!1 &1802596151
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1918,9 +1918,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1555603353}
-  - component: {fileID: 1555603352}
-  - component: {fileID: 1555603351}
+  - component: {fileID: 1802596154}
+  - component: {fileID: 1802596153}
+  - component: {fileID: 1802596152}
   m_Layer: 0
   m_Name: ReportManager
   m_TagString: Untagged
@@ -1928,25 +1928,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1555603351
+--- !u!114 &1802596152
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555603350}
+  m_GameObject: {fileID: 1802596151}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 094e769e2e12644458758abec5357813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1555603352
+--- !u!114 &1802596153
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555603350}
+  m_GameObject: {fileID: 1802596151}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c999708c1804a144fb18a7675abd7cc2, type: 3}
@@ -1957,16 +1957,16 @@ MonoBehaviour:
   reportButtonPrefab: {fileID: 1383770130342242818, guid: 13d17a257b4fddb4da2f8bdc69c0c79f, type: 3}
   correctColor: {r: 0.7, g: 1, b: 0.7, a: 1}
   mistakeColor: {r: 1, g: 0.7, b: 0.7, a: 1}
---- !u!4 &1555603353
+--- !u!4 &1802596154
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555603350}
+  m_GameObject: {fileID: 1802596151}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -12.669161, y: 3.24191, z: 123.950165}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2270,4 +2270,4 @@ SceneRoots:
   - {fileID: 663299818}
   - {fileID: 2128092030}
   - {fileID: 10597527}
-  - {fileID: 1555603353}
+  - {fileID: 1802596154}

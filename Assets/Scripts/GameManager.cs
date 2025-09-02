@@ -45,7 +45,12 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Office");
         }
-            
-    
+    }
+
+    public void RepeatDay()
+    {
+        processedEmailsToday.Clear();
+        mistakesMadeToday.Clear();
+        SceneManager.LoadScene("Office");   
     }
 }

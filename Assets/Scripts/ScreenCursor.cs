@@ -25,7 +25,10 @@ public class ScreenCursor : MonoBehaviour
 
     void OnDisable()
     {
-        virtualCursor.gameObject.SetActive(false);
+        if (virtualCursor != null)
+        {
+            virtualCursor.gameObject.SetActive(false);
+        }
     }
 
     void Update()
