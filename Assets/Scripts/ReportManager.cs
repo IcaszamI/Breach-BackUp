@@ -40,6 +40,11 @@ public class ReportManager : MonoBehaviour
 
         foreach (var processedEmail in GameManager.Instance.processedEmailsToday)
         {
+            if (processedEmail == null)
+            {
+                Debug.Log("found a null email. skipping...");
+                continue;
+            }
             GameObject btnObj = Instantiate(reportButtonPrefab, reportButtonContainer);
             btnObj.transform.localScale = Vector3.one;
             btnObj.GetComponentInChildren<TextMeshProUGUI>().text = processedEmail.subject;

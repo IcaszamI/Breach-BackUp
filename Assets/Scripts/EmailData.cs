@@ -18,9 +18,11 @@ public class EmailData : ScriptableObject
     [Range(1, 4)]
     public int dayAppears;
     [TextArea(1, 5)]
-     public string mistakeExplanation; 
+    public string mistakeExplanation;
     [TextArea(1, 5)]
-     public string correctActionHint;  
+    public string correctActionHint;
     [TextArea(1, 5)]
-     public string consequenceText;
+    public string consequenceText;
+    [TextArea(1, 5)]
+    public string mistakeExplanationUnscanned;
 }
