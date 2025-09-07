@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public int mistakeTally = 0;
+    public int maxTally = 3;
     public int currentDay = 1;
     public List<EmailData> processedEmailsToday = new List<EmailData>();
     public List<EmailData> mistakesMadeToday = new List<EmailData>();
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
     public void StartNextDay()
     {
         currentDay++;
+        mistakeTally = 0;
         processedEmailsToday.Clear();
         mistakesMadeToday.Clear();
         if (currentDay > 4)
@@ -58,6 +61,7 @@ public class GameManager : MonoBehaviour
 
     public void RepeatDay()
     {
+        mistakeTally = 0;
         processedEmailsToday.Clear();
         mistakesMadeToday.Clear();
         SceneManager.LoadScene("Office");   

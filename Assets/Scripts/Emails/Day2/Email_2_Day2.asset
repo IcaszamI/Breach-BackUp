@@ -23,10 +23,11 @@ MonoBehaviour:
   isFriendlyEmail: 0
   isFirstEmail: 0
   dayAppears: 2
-  mistakeExplanation: It seems a coworkers account was taken over and sent you a
-    malicious file always make sure to always scan files sent over to you
+  mistakeExplanation: The file sent to you was malicious
   correctActionHint: This Email should have been ignored
-  consequenceText: 'file attached to an email without doing a scan. The file contained
-    a self-replicating malware called a "Worm". The worm has taken hold of your account
-    and has sent itself to other accounts within the company system disguised as
-    you putting internal documents and client data at risk. '
+  consequenceText: 'The file contained a self-replicating malware called a "Worm".
+    The worm has taken hold of your account and has sent itself to other accounts
+    within the company system disguised as you putting internal documents and client
+    data at risk. '
+  mistakeExplanationUnscanned: The file was malicious and you did not scan the file
+    beforehand.

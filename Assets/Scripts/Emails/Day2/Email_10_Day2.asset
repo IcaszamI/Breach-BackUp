@@ -27,3 +27,5 @@ MonoBehaviour:
   correctActionHint: This email should have been replied to
   consequenceText: Because you failed to hand in the report at the end of the day
     your team was punished and received a paycut.
+  mistakeExplanationUnscanned: The file was safe but you did not scan to check first
+    be sure to scan files first

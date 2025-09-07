@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: Email_17_Day 1
+  m_EditorClassIdentifier: 
+  senderEmail: Paul@br3achn3tworks.com
+  subject: WIn a new laptop
+  body: Reply to this email with "Yes" to enter our raffle for a brand new laptop.
+    No purchase necessary!
+  attachmentName: 
+  hasAttachment: 0
+  isMalicious: 0
+  isBlacklistedApp: 0
+  isCorrectDomain: 0
+  isFriendlyEmail: 0
+  isFirstEmail: 0
+  dayAppears: 1
+  mistakeExplanation: This is a spoofed domain
+  correctActionHint: This email should have been ignored
+  consequenceText: Your email was harvested and flagged as active, adding you to
+    multiple spam and scam mailing lists. Expect an influx of phishing attempts.
+  mistakeExplanationUnscanned: 

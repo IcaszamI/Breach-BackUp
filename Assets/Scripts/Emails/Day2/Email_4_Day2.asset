@@ -27,3 +27,5 @@ MonoBehaviour:
   correctActionHint: This email should have received a reply
   consequenceText: Because you ignored this email you were late to the meeting and
     missed the important parts of it
+  mistakeExplanationUnscanned: The file was safe but you did not scan to check first
+    be sure to scan files first

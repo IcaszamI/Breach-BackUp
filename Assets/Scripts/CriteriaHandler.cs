@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CriteriaHandler : MonoBehaviour
 {
-    public static GameManager Instance;
     public TextMeshProUGUI criteria;
     void Update()
     {

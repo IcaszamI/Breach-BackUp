@@ -2114,6 +2114,46 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d26f3578cf85c424b8858df3a0d01407, type: 2}
   - {fileID: 11400000, guid: 0467984a75683bf438d86ed98e5c2413, type: 2}
   - {fileID: 11400000, guid: fce765e48c8aef642aa0d6f55c8c6dc6, type: 2}
+  - {fileID: 11400000, guid: 491a240199e64424294c86aab0fca872, type: 2}
+  - {fileID: 11400000, guid: 25d28705a963fa04086854bb73f8c64a, type: 2}
+  - {fileID: 11400000, guid: 0fd46babb19f6e54ca7a3e634147fc68, type: 2}
+  - {fileID: 11400000, guid: 7f4bdd950e3432a46abc7a3b6eac90b9, type: 2}
+  - {fileID: 11400000, guid: 57efe58f9e2db124a9cd34de52a4d948, type: 2}
+  - {fileID: 11400000, guid: ecc363d1498cdfa4792dd25dd1576a1c, type: 2}
+  - {fileID: 11400000, guid: 64383d0fc5f87ba4ca551a84443ae8eb, type: 2}
+  - {fileID: 11400000, guid: ac5c33d92bcb66646a97bbdf61f8b110, type: 2}
+  - {fileID: 11400000, guid: fc10ee0c4907d944c9c5c05ea0f8f584, type: 2}
+  - {fileID: 11400000, guid: afda86d92903f7746aa625ad04566254, type: 2}
+  - {fileID: 11400000, guid: aa359dfff1f5cda4e91a7031077e4d18, type: 2}
+  - {fileID: 11400000, guid: dd1b1e6a570bc724694365f051d3c2fd, type: 2}
+  - {fileID: 11400000, guid: df115a1df8d280140a3dae752ea4da06, type: 2}
+  - {fileID: 11400000, guid: e7aa061a0c6b324449d43045863fb7d4, type: 2}
+  - {fileID: 11400000, guid: 9c43e2eaa00594648ae64899b3812278, type: 2}
+  - {fileID: 11400000, guid: 7e3ebe6feac5e4b408dd427b70033d5a, type: 2}
+  - {fileID: 11400000, guid: 666daba0a95487940afe7769b3ca8f67, type: 2}
+  - {fileID: 11400000, guid: 21d5f5377782b2d4a8525725278d8b6f, type: 2}
+  - {fileID: 11400000, guid: 3bbeb7d4f838b0f43a19fd2536dd7ad9, type: 2}
+  - {fileID: 11400000, guid: 5803233ff32be614ab8d6bd391e876a1, type: 2}
+  - {fileID: 11400000, guid: 5d30bfe0dc722a04094c6709198169f3, type: 2}
+  - {fileID: 11400000, guid: 853ec340dee9dd34cb59ec991bd85dc6, type: 2}
+  - {fileID: 11400000, guid: 0a9e9d0bd81da3a4db498825020cc625, type: 2}
+  - {fileID: 11400000, guid: 99ef632490166be41bede01f77bec844, type: 2}
+  - {fileID: 11400000, guid: 84a3dbeec6304364d8e6a69f5ac33452, type: 2}
+  - {fileID: 11400000, guid: 41b469c9a83aa1444a81d726c03b4e8e, type: 2}
+  - {fileID: 11400000, guid: 996556476d8a52744bf8752d33102f0f, type: 2}
+  - {fileID: 11400000, guid: 36dd8e09e2542854a9708cea32d89c7b, type: 2}
+  - {fileID: 11400000, guid: 28449a8868211cc4886cb659e33024d2, type: 2}
+  - {fileID: 11400000, guid: 82565b7ac4094444691805244e889062, type: 2}
+  - {fileID: 11400000, guid: e9786b3c794dcd34da99a7be3091f354, type: 2}
+  - {fileID: 11400000, guid: 8d83806012e37f34e9e1f4c8a3724406, type: 2}
+  - {fileID: 11400000, guid: 5685fdd3458e93240a03853444987c4d, type: 2}
+  - {fileID: 11400000, guid: 8f5c831321763904cbd35d12f15acb8e, type: 2}
+  - {fileID: 11400000, guid: 442fdd9fe3ce29241b4319f418622d1c, type: 2}
+  - {fileID: 11400000, guid: 1095279024f1bd542b8df409a0070c52, type: 2}
+  - {fileID: 11400000, guid: 9a5212a10b00a66479c50b5757944bbf, type: 2}
+  - {fileID: 11400000, guid: 1c03c4d28b5a0314db85f87492932eb0, type: 2}
+  - {fileID: 11400000, guid: 725004166d55db04fb65e6d6a1a4b573, type: 2}
+  - {fileID: 11400000, guid: 85ea6145b4badc64ea61bd6524100ff0, type: 2}
   emailButtonContainer: {fileID: 2100823198}
   emailButtonPrefab: {fileID: 393831644127771590, guid: 761d9e8a0884a7048841ca7fd44242f3, type: 3}
   attachmentButtonImage: {fileID: 2013415086}
@@ -4159,6 +4199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de22c634de5f4b41ab76e3c2d001aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mistakeTally: 0
+  maxTally: 3
   currentDay: 1
   processedEmailsToday: []
   mistakesMadeToday: []

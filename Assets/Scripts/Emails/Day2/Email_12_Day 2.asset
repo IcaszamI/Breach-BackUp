@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: Email_12_Day 2
+  m_EditorClassIdentifier: 
+  senderEmail: Mark@breachnetworks.com.ph
+  subject: Poster Draft
+  body: "Here\u2019s the draft poster for the upcoming company fair. Let us know
+    if changes are needed."
+  attachmentName: EventPoster_v2.pdf
+  hasAttachment: 1
+  isMalicious: 0
+  isBlacklistedApp: 0
+  isCorrectDomain: 1
+  isFriendlyEmail: 1
+  isFirstEmail: 0
+  dayAppears: 2
+  mistakeExplanation: The file sent to you was safe
+  correctActionHint: this email should have received a reply
+  consequenceText: Nothing major occured when you ignored this email. Just that the
+    company fair poster you wanted to have changed
+  mistakeExplanationUnscanned: The file was safe but you did not scan to check first
+    be sure to scan files first

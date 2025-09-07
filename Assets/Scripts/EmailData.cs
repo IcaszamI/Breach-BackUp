@@ -15,6 +15,7 @@ public class EmailData : ScriptableObject
     public bool isCorrectDomain;
     public bool isFriendlyEmail;
     public bool isFirstEmail;
+    public bool hasBeenScanned;
     [Range(1, 4)]
     public int dayAppears;
     [TextArea(1, 5)]

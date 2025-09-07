@@ -18,6 +18,7 @@ public class SaveLogic : MonoBehaviour
     {
         if (GameManager.Instance != null)
         {
+            
             GameManager.Instance.StartNextDay();
         }
     }

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: Email_18_Day 3
+  m_EditorClassIdentifier: 
+  senderEmail: Caroline@breachnetworks.com.ph
+  subject: QuickConverter
+  body: Found <u>QuickConverter</u> online. It can convert files between formats.
+    Can I install it?
+  attachmentName: 
+  hasAttachment: 0
+  isMalicious: 0
+  isBlacklistedApp: 1
+  isCorrectDomain: 1
+  isFriendlyEmail: 0
+  isFirstEmail: 0
+  dayAppears: 3
+  mistakeExplanation: The app requested is blacklisted
+  correctActionHint: This email should have been ignored
+  consequenceText: QuickConverter hides a trojan that gives attackers remote access
+    to the machine.
+  mistakeExplanationUnscanned: 

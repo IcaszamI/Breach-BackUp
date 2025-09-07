@@ -26,3 +26,5 @@ MonoBehaviour:
   mistakeExplanation: The attachment in the email was safe
   correctActionHint: This email should have been replied to
   consequenceText: because this email was ignored client data was not synced properly.
+  mistakeExplanationUnscanned: The file was safe but you did not scan to check first
+    be sure to scan files first

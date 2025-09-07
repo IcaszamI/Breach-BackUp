@@ -29,3 +29,5 @@ MonoBehaviour:
   consequenceText: The file contained a rootkit, a type of malware that embeds itself
     at the system level and hides its presence from security tools that could lead
     to full administrative access for the attacker.
+  mistakeExplanationUnscanned: The file was malicious and you did not scan the file
+    beforehand.

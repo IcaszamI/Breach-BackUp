@@ -29,3 +29,5 @@ MonoBehaviour:
   consequenceText: You opened a file containing a logic bomb which is code that silently
     waits until a specific time before executing and it waited after hours to delete
     key company files.
+  mistakeExplanationUnscanned: The file was malicious and you did not scan the file
+    beforehand.

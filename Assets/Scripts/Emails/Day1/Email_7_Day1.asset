@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
   m_Name: Email_7_Day1
   m_EditorClassIdentifier: 
-  senderEmail: Krup@vreachnetworks.com.ph
-  subject: NONE
-  body: Hi
+  senderEmail: Krup@18Entertainments.com
+  subject: Product Sample
+  body: Hi, yu ar slected to reciv prize plz rply to claim prze
   attachmentName: 
   hasAttachment: 0
   isMalicious: 0
@@ -29,3 +29,4 @@ MonoBehaviour:
   consequenceText: Nothing malicious seems to be embedded into the email but it is
     still best in practice to ignore none official email when using company domain
     emails
+  mistakeExplanationUnscanned: 

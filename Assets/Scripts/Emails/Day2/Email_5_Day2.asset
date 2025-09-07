@@ -27,3 +27,5 @@ MonoBehaviour:
   correctActionHint: This email should have been ignored
   consequenceText: You downloaded a file that triggered a ransomware attack. It encrypted
     all local files and displayed a message demanding cryptocurrency to unlock them.
+  mistakeExplanationUnscanned: The file was malicious and you did not scan the file
+    beforehand.

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: Email_16_Day 1
+  m_EditorClassIdentifier: 
+  senderEmail: offers@beachnetworks.com.ph
+  subject: Gift Card
+  body: Congratulations you have been selected from a company wide raffle to win
+    and all expense paid trip to Japan. Please reply with your Fullname and contact
+    details so we can handle the reservations.
+  attachmentName: 
+  hasAttachment: 0
+  isMalicious: 0
+  isBlacklistedApp: 0
+  isCorrectDomain: 0
+  isFriendlyEmail: 0
+  isFirstEmail: 0
+  dayAppears: 1
+  mistakeExplanation: 'This is a spoofed domain '
+  correctActionHint: This email should have been ignored
+  consequenceText: You handed over personal identifiable information to a spammer.
+    This can lead to identity theft, phishing attempts, and misuse of your contact
+    info.
+  mistakeExplanationUnscanned: 

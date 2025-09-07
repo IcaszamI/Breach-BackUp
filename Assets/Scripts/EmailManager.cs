@@ -44,7 +44,6 @@ public class EmailManager : MonoBehaviour
     public GameObject resultPanel;
     public TextMeshProUGUI resultText;
 
-    private bool hasScannedCurrentFile;
 
     void Start()
     {
@@ -124,7 +123,7 @@ public class EmailManager : MonoBehaviour
         fromText.text = "From: " + email.senderEmail;
         subjectText.text = "Subject: " + email.subject;
         bodyText.text = email.body;
-        hasScannedCurrentFile = false;
+        currentEmail.hasBeenScanned = false;
         attachmentOptionsPanel.SetActive(false);
         emailPanel.SetActive(true);
         if (email.hasAttachment)
@@ -149,7 +148,7 @@ public class EmailManager : MonoBehaviour
         EmailData emailToScan = currentEmail;
         StartCoroutine(ShowProgressBar("Scanning...", 2f, () =>
         {
-            hasScannedCurrentFile = true;
+            emailToScan.hasBeenScanned = true;
             if (emailToScan.isMalicious)
             {
                 showResult("MALICIOUS FILE DETECTED!");
@@ -164,7 +163,7 @@ public class EmailManager : MonoBehaviour
     public void OnDownloadFile()
     {
         attachmentOptionsPanel.SetActive(false);
-        if (!hasScannedCurrentFile)
+        if (!currentEmail.hasBeenScanned)
         {
             if (!currentEmail.isMalicious)
             {
@@ -188,6 +187,16 @@ public class EmailManager : MonoBehaviour
         {
             Mistake(currentEmail.mistakeExplanation, currentEmail);
         }
+        else if (currentEmail.hasAttachment && !currentEmail.hasBeenScanned)
+        {
+            Mistake(currentEmail.mistakeExplanationUnscanned, currentEmail);
+        }
+
+        else
+        {
+            Debug.Log(" Correct Choice! ");
+        }
+        
 
         Destroy(currentEmailButton);
         clearContents();
@@ -197,6 +206,7 @@ public class EmailManager : MonoBehaviour
     public void OnReport()
     {
         processedEmailsToday.Add(currentEmail);
+
         if (currentEmail.isFriendlyEmail)
         {
             Mistake(currentEmail.mistakeExplanation, currentEmail);

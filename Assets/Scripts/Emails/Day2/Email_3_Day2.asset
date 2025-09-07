@@ -24,9 +24,10 @@ MonoBehaviour:
   isFriendlyEmail: 0
   isFirstEmail: 0
   dayAppears: 2
-  mistakeExplanation: The attachment contained within the email was malicious and
-    you downloaded it without scanning.
+  mistakeExplanation: The file sent to you was malicious
   correctActionHint: this email should hav been Ignored
   consequenceText: You opened an infected file without verifying the sender or scanning
     for threats. The file contained a Trojan horse that silently installed a backdoor,
     allowing remote attackers persistent access to your system.
+  mistakeExplanationUnscanned: The file was malicious and you did not scan the file
+    beforehand.
