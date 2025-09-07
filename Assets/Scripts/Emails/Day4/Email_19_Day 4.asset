@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: Email_19_Day 4
+  m_EditorClassIdentifier: 
+  senderEmail: Paul@breachnetworks.com.ph
+  subject: Tool Request
+  body: I found <u>TaskManager+</u> online, and it looks like it could improve our
+    workflow. Can you approve it for me?
+  attachmentName: 
+  hasAttachment: 0
+  isMalicious: 0
+  isBlacklistedApp: 1
+  isCorrectDomain: 1
+  isFriendlyEmail: 0
+  isFirstEmail: 0
+  hasBeenScanned: 0
+  dayAppears: 4
+  mistakeExplanation: The domain is correct but the software requested is blacklisted
+  correctActionHint: 'This email should have been ignored '
+  consequenceText: "TaskManager+ installed a keylogger, capturing and exfiltrating
+    your team\u2019s login information."
+  mistakeExplanationUnscanned: 

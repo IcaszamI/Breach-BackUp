@@ -21,6 +21,8 @@ public class EmailManager : MonoBehaviour
     public TextMeshProUGUI attachmentName;
     public TextMeshProUGUI tallyCounter;
     public GameObject emailPanel;
+    public Button replyButton;
+    public Button ignoreButton;
     [Header("Mistake UI")]
     public Transform mistakeButtonContainer;
     public GameObject mistakeButtonPrefab;
@@ -35,6 +37,9 @@ public class EmailManager : MonoBehaviour
     private GameObject currentEmailButton;
     public int mistakeTally = 0;
     private int dailyEmails;
+    private bool currentAttachmentHasBeenScanned = false;
+    private Coroutine activeProgressBarCoroutine;
+
 
     [Header("Day 2 attachment UI")]
     public GameObject attachmentOptionsPanel;
@@ -123,7 +128,7 @@ public class EmailManager : MonoBehaviour
         fromText.text = "From: " + email.senderEmail;
         subjectText.text = "Subject: " + email.subject;
         bodyText.text = email.body;
-        currentEmail.hasBeenScanned = false;
+        currentAttachmentHasBeenScanned = false;
         attachmentOptionsPanel.SetActive(false);
         emailPanel.SetActive(true);
         if (email.hasAttachment)
@@ -135,6 +140,16 @@ public class EmailManager : MonoBehaviour
         {
             attachmentButtonImage.SetActive(false);
         }
+    }
+    private void FinalizeEmailAction()
+    {
+        if (currentEmailButton != null)
+        {
+            Destroy(currentEmailButton);
+        }
+
+        clearContents();
+        CheckDayCompletion();
     }
 
     public void OnClickAttachment()
@@ -148,7 +163,7 @@ public class EmailManager : MonoBehaviour
         EmailData emailToScan = currentEmail;
         StartCoroutine(ShowProgressBar("Scanning...", 2f, () =>
         {
-            emailToScan.hasBeenScanned = true;
+            currentAttachmentHasBeenScanned = true;
             if (emailToScan.isMalicious)
             {
                 showResult("MALICIOUS FILE DETECTED!");
@@ -163,7 +178,8 @@ public class EmailManager : MonoBehaviour
     public void OnDownloadFile()
     {
         attachmentOptionsPanel.SetActive(false);
-        if (!currentEmail.hasBeenScanned)
+        processedEmailsToday.Add(currentEmail);
+        if (!currentAttachmentHasBeenScanned)
         {
             if (!currentEmail.isMalicious)
             {
@@ -174,9 +190,9 @@ public class EmailManager : MonoBehaviour
                 Mistake(currentEmail.mistakeExplanation, currentEmail);
             }
         }
-        StartCoroutine(ShowProgressBar("Downloading...", 1.5f, () =>
+        activeProgressBarCoroutine = StartCoroutine(ShowProgressBar("Downloading...", 1.5f, () =>
         {
-            showResult("File Downloaded.");
+            showResult("File Downloaded.", true);
         }));
     }
 
@@ -185,10 +201,12 @@ public class EmailManager : MonoBehaviour
         processedEmailsToday.Add(currentEmail);
         if (!currentEmail.isFriendlyEmail)
         {
+            Debug.Log("mistakeExplanation was triggered");
             Mistake(currentEmail.mistakeExplanation, currentEmail);
         }
-        else if (currentEmail.hasAttachment && !currentEmail.hasBeenScanned)
+        else if (currentEmail.hasAttachment && !currentAttachmentHasBeenScanned)
         {
+            Debug.Log("mistakeExplanationUnscanned was triggered");
             Mistake(currentEmail.mistakeExplanationUnscanned, currentEmail);
         }
 
@@ -196,11 +214,7 @@ public class EmailManager : MonoBehaviour
         {
             Debug.Log(" Correct Choice! ");
         }
-        
-
-        Destroy(currentEmailButton);
-        clearContents();
-        CheckDayCompletion();
+        FinalizeEmailAction();
     }
 
     public void OnReport()
@@ -211,11 +225,15 @@ public class EmailManager : MonoBehaviour
         {
             Mistake(currentEmail.mistakeExplanation, currentEmail);
         }
-
-        Destroy(currentEmailButton);
-        clearContents();
-        CheckDayCompletion();
-
+        else if (!currentEmail.isFriendlyEmail && currentEmail.hasAttachment && !currentAttachmentHasBeenScanned)
+        {
+            Mistake(currentEmail.mistakeExplanationUnscanned, currentEmail);
+        }
+        else
+        {
+            Debug.Log("correct choice");
+        }
+        FinalizeEmailAction();
     }
 
     void Mistake(string reason, EmailData email)
@@ -234,7 +252,7 @@ public class EmailManager : MonoBehaviour
             {
                 GameManager.Instance.CompleteDay(mistakesMade, processedEmailsToday);
             }
-            
+
         }
     }
 
@@ -245,6 +263,8 @@ public class EmailManager : MonoBehaviour
 
     IEnumerator ShowProgressBar(string text, float duration, System.Action onComplete)
     {
+        if (ignoreButton != null) ignoreButton.interactable = false;
+        if (replyButton != null) replyButton.interactable = false;
         Debug.Log("trying to activate progress bar");
         progressBarPanel.SetActive(true);
         Debug.Log("setting progress text");
@@ -268,18 +288,26 @@ public class EmailManager : MonoBehaviour
         Debug.Log("closing progress bar");
         progressBarPanel.SetActive(false);
         onComplete?.Invoke();
+        if (ignoreButton != null) ignoreButton.interactable = true;
+        if (replyButton != null) replyButton.interactable = true;
     }
-    void showResult(string text)
+    void showResult(string text, bool finalizeAfter = false)
     {
         resultPanel.SetActive(true);
         resultText.text = text;
-        StartCoroutine(CloseResultAfterDelay(2f));
+        activeProgressBarCoroutine = StartCoroutine(CloseResultAfterDelay(0.5f,finalizeAfter));
     }
 
-    IEnumerator CloseResultAfterDelay(float delay)
+    IEnumerator CloseResultAfterDelay(float delay, bool finalizeAfter)
     {
         yield return new WaitForSeconds(delay);
+
+        if (finalizeAfter)
+        {
+            FinalizeEmailAction();
+        }
         resultPanel.SetActive(false);
+        activeProgressBarCoroutine = null;
     }
 
     IEnumerator CheckAfterFrame()
@@ -295,7 +323,7 @@ public class EmailManager : MonoBehaviour
                 GameManager.Instance.CompleteDay(mistakesMade, processedEmailsToday);
             }
         }
-        
+
     }
 
     public void buildMistakePanel()
@@ -335,5 +363,12 @@ public class EmailManager : MonoBehaviour
         subjectText.text = "";
         bodyText.text = "";
         attachmentButton.gameObject.SetActive(false);
+    }
+    public void CloseAttachmentOptionPanel()
+    {
+        if (attachmentOptionsPanel.activeInHierarchy)
+        {
+            attachmentOptionsPanel.SetActive(false);
+        }
     }
 }

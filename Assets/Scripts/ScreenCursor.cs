@@ -14,10 +14,13 @@ public class ScreenCursor : MonoBehaviour
     public EventSystem eventSystem;
     private DraggingLogic drag;
     private PointerEventData pointerEventData;
-    public float cursorSpeed = 0.1f;
+    public float cursorSpeed;
 
     void OnEnable()
-    { if (virtualCursor != null)
+    {
+        SettingsLogic.OnSensitivityChanged += HandleSensitivityChanged;
+        UpdateCursorSpeed(PlayerPrefs.GetFloat("MouseSensitivity", 0.2f));
+        if (virtualCursor != null)
         {
             Debug.Log("Vcursor enabled");
             virtualCursor.gameObject.SetActive(true);
@@ -28,11 +31,26 @@ public class ScreenCursor : MonoBehaviour
 
     void OnDisable()
     {
+        SettingsLogic.OnSensitivityChanged -= HandleSensitivityChanged;
         if (virtualCursor != null)
         {
             virtualCursor.gameObject.SetActive(false);
         }
     }
+
+    private void HandleSensitivityChanged(float newSensitivity)
+    {
+        Debug.Log("Sensitivity changed to: " + newSensitivity);
+        UpdateCursorSpeed(newSensitivity);
+    }
+
+    private void UpdateCursorSpeed(float sensitivityValue)
+    {
+        Debug.Log("Updating cursor speed");
+        cursorSpeed = sensitivityValue;
+    }
+
+
 
     void Update()
     {
@@ -70,7 +88,7 @@ public class ScreenCursor : MonoBehaviour
                     break;
                 }
                 Button button = result.gameObject.GetComponent<Button>();
-                if (button != null)
+                if (button != null && button.interactable)
                 {
                     button.onClick.Invoke();
                     break;

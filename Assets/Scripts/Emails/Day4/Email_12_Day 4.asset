@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: Email_12_Day 4
+  m_EditorClassIdentifier: 
+  senderEmail: sarah@breachneetw0rks.com.ph
+  subject: anti-virus
+  body: HI the IT department developped a new antivirus that can be used exclusively
+    by our company be sure to install it by the end of the day
+  attachmentName: BREACHER.exe
+  hasAttachment: 1
+  isMalicious: 1
+  isBlacklistedApp: 0
+  isCorrectDomain: 0
+  isFriendlyEmail: 0
+  isFirstEmail: 0
+  hasBeenScanned: 0
+  dayAppears: 4
+  mistakeExplanation: The email's doamain is incorrect and the file attached is malicious
+  correctActionHint: This email should have been ignored
+  consequenceText: the "anti-virus" you installed had a rootkit that  hides inside
+    your system, giving attackers long-term access and disabling security tools.
+  mistakeExplanationUnscanned: The file attached was malicious and you did not scan
+    it beforehand

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: Email_7_Day 4
+  m_EditorClassIdentifier: 
+  senderEmail: Carlos@breachnetworks.com.ph
+  subject: Tool request
+  body: Can I please have approval for <u>LogiScan</u>? It will help digitize stacks
+    of paper records that HR needs archived quickly.
+  attachmentName: 
+  hasAttachment: 0
+  isMalicious: 0
+  isBlacklistedApp: 0
+  isCorrectDomain: 1
+  isFriendlyEmail: 1
+  isFirstEmail: 0
+  hasBeenScanned: 0
+  dayAppears: 4
+  mistakeExplanation: The email's domain is correct and the requested software is
+    not blacklisted
+  correctActionHint: 
+  consequenceText: HR continues storing physical records, risking compliance issues
+    and loss of critical information.
+  mistakeExplanationUnscanned: 

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: Email_17_Day  4
+  m_EditorClassIdentifier: 
+  senderEmail: Grian@breach-networks.com.ph
+  subject: Tool Approval
+  body: Can you approve <u>MeetingNotes Express</u>? It would really help me automate
+    writing notes for our upcoming meeting.
+  attachmentName: 
+  hasAttachment: 0
+  isMalicious: 0
+  isBlacklistedApp: 0
+  isCorrectDomain: 0
+  isFriendlyEmail: 0
+  isFirstEmail: 0
+  hasBeenScanned: 0
+  dayAppears: 4
+  mistakeExplanation: the email's domain is incorrect but the software requested
+    is not blacklisted
+  correctActionHint: This email should have been ignored
+  consequenceText: ' Replying to the email your account was flagged as active and
+    you were added on a list of emails to receive more spam emails'
+  mistakeExplanationUnscanned: 

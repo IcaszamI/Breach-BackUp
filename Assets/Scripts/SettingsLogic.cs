@@ -9,6 +9,7 @@ using Unity.VisualScripting;
 
 public class SettingsLogic : MonoBehaviour
 {
+    public static event System.Action<float> OnSensitivityChanged;
     [Header("References")]
     public FirstPersonController playerController;
     [Header("Mouse Sensitivity")]
@@ -20,11 +21,19 @@ public class SettingsLogic : MonoBehaviour
 
     private bool isUpdatingFromCode = false;
 
-    void Start()
+    void OnEnable()
     {
         LoadSettings();
         ApplySettings();
         SetupListeners();
+    }
+
+    void OnDisable()
+    {
+        sensitivitySlider.onValueChanged.RemoveAllListeners();
+        volumeSlider.onValueChanged.RemoveAllListeners();
+        sensitivityInput.onEndEdit.RemoveAllListeners();
+        volumeInput.onEndEdit.RemoveAllListeners();
     }
 
     void LoadSettings()
@@ -32,14 +41,10 @@ public class SettingsLogic : MonoBehaviour
         float sensitivity = PlayerPrefs.GetFloat("MouseSensitivity", 0.20f);
         sensitivitySlider.value = sensitivity;
         UpdateInputField(sensitivityInput, sensitivity);
-
-        float volume = PlayerPrefs.GetFloat("Volume", 50.0f);
-        volumeSlider.value = volume;
-        UpdateInputField(volumeInput, volume);
-
-
+        float volume = PlayerPrefs.GetFloat("MasterVolume", 1.0f);
+        volumeSlider.value = volume * 100f;
+        UpdateInputField(volumeInput, volumeSlider.value);
     }
-
     void ApplySettings()
     {
         if (playerController != null)
@@ -48,14 +53,13 @@ public class SettingsLogic : MonoBehaviour
         }
 
         AudioListener.volume = volumeSlider.value;
-        if (AudioMonitor.Instance != null) AudioMonitor.Instance.ReportLegitimateVolumeChange(volumeSlider.value);
     }
 
     void SetupListeners()
     {
+        OnDisable();
         sensitivitySlider.onValueChanged.AddListener(OnSensitivitySliderChanged);
         volumeSlider.onValueChanged.AddListener(OnVolumeSliderChanged);
-
         sensitivityInput.onEndEdit.AddListener(OnSensitivityInputChanged);
         volumeInput.onEndEdit.AddListener(OnVolumeInputChanged);
     }
@@ -72,6 +76,7 @@ public class SettingsLogic : MonoBehaviour
         PlayerPrefs.SetFloat("MouseSensitivity", value);
         PlayerPrefs.Save();
         UpdateInputField(sensitivityInput, value);
+        OnSensitivityChanged.Invoke(value);
 
     }
 
@@ -89,12 +94,12 @@ public class SettingsLogic : MonoBehaviour
     private void OnVolumeSliderChanged(float value)
     {
         if (isUpdatingFromCode) return;
+        float normalizedVolume = value / 100f;
 
-        AudioListener.volume = value;
-        PlayerPrefs.SetFloat("GameVolume", value);
+        AudioListener.volume = normalizedVolume;
+        PlayerPrefs.SetFloat("MasterVolume", normalizedVolume);
         PlayerPrefs.Save();
         UpdateInputField(volumeInput, value);
-        if (AudioMonitor.Instance != null) AudioMonitor.Instance.ReportLegitimateVolumeChange(value);
     }
 
     private void OnVolumeInputChanged(string text)
@@ -110,6 +115,13 @@ public class SettingsLogic : MonoBehaviour
 
     private void UpdateInputField(TMP_InputField inputField, float value)
     {
-        inputField.text = value.ToString("F2");
+        if (inputField == sensitivityInput)
+        {
+            inputField.text = value.ToString("F2");
+        }
+        else if (inputField == volumeInput)
+        {
+            inputField.text = value.ToString("F0");
+        }
     }
 }
