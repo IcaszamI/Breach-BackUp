@@ -8,6 +8,7 @@ public class PauseScript : MonoBehaviour
 {
     public ScreenCursor screenCursor;
     public CursorManager cursor;
+    public GameObject hudPanel;
     public FirstPersonController playerController;
     [Header("Pause UI")]
     public GameObject pauseMenuUI;
@@ -50,7 +51,7 @@ public class PauseScript : MonoBehaviour
         pauseMenuUI?.SetActive(false);
         blurVolume?.SetActive(false);
         SettingsUI?.SetActive(false);
-
+        hudPanel?.SetActive(true);
         if (playerController != null)
         {
             playerController.enabled = true;
@@ -67,6 +68,7 @@ public class PauseScript : MonoBehaviour
         pauseMenuUI?.SetActive(true);
         blurVolume?.SetActive(true);
         SettingsUI?.SetActive(false);
+        hudPanel?.SetActive(false);
         if (screenCursor != null)
         {
             screenCursor.enabled = false;

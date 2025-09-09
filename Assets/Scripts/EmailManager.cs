@@ -11,6 +11,7 @@ public class EmailManager : MonoBehaviour
     [Header("Email Data")]
     public List<EmailData> allEmails;
     [Header("UI reference")]
+    public HUDManager hudManager;
     public Transform emailButtonContainer;
     public GameObject emailButtonPrefab;
     public GameObject attachmentButtonImage;
@@ -50,6 +51,16 @@ public class EmailManager : MonoBehaviour
     public TextMeshProUGUI resultText;
 
 
+
+    public List<EmailData> GetProcessedEmails()
+    {
+        return processedEmailsToday;
+    }
+
+    public List<EmailData> GetMistakes()
+    {
+        return mistakesMade;
+    }
     void Start()
     {
         if (GameManager.Instance != null)
@@ -95,6 +106,7 @@ public class EmailManager : MonoBehaviour
             }
         }
 
+
         for (int i = 0; i < emailCandidates.Count; i++)
         {
             EmailData temp = emailCandidates[i];
@@ -118,6 +130,11 @@ public class EmailManager : MonoBehaviour
             GameObject btnObj = Instantiate(emailButtonPrefab, emailButtonContainer);
             btnObj.GetComponentInChildren<TextMeshProUGUI>().text = email.subject;
             btnObj.GetComponent<Button>().onClick.AddListener(() => ShowEmail(email, btnObj));
+        }
+
+        if (hudManager != null)
+        {
+            hudManager.SetEmailQuestGoal(todaysEmails.Count);
         }
     }
 
@@ -147,7 +164,10 @@ public class EmailManager : MonoBehaviour
         {
             Destroy(currentEmailButton);
         }
-
+        if (hudManager != null)
+        {
+            hudManager.UpdateEmailQuestProgress();
+        }
         clearContents();
         CheckDayCompletion();
     }
@@ -250,7 +270,7 @@ public class EmailManager : MonoBehaviour
         {
             if (GameManager.Instance != null)
             {
-                GameManager.Instance.CompleteDay(mistakesMade, processedEmailsToday);
+                GameManager.Instance.CompleteDay(processedEmailsToday, mistakesMade);
             }
 
         }
@@ -320,7 +340,8 @@ public class EmailManager : MonoBehaviour
             Debug.Log("Emailmanager is sending" + processedEmailsToday.Count + " processed and " + mistakesMade.Count + " mistakes");
             if (GameManager.Instance != null)
             {
-                GameManager.Instance.CompleteDay(mistakesMade, processedEmailsToday);
+                GameManager.Instance.StopTimer();
+                GameManager.Instance.CompleteDay(processedEmailsToday, mistakesMade);
             }
         }
 

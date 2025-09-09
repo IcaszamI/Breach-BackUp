@@ -25,6 +25,10 @@ public class ReportManager : MonoBehaviour
     void PopulateReport()
     {
         Debug.Log("Report manager sees " + GameManager.Instance.processedEmailsToday.Count + " processed and" + GameManager.Instance.mistakesMadeToday.Count + " mistakes.");
+        if (reportButtonPrefab == null)
+        {
+            Debug.Log("reportButtonPrefab is null");
+        }
         foreach (Transform child in reportButtonContainer)
         {
             Destroy(child.gameObject);

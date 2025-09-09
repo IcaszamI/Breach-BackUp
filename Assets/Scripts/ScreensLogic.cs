@@ -13,12 +13,14 @@ public class ScreensLogic : MonoBehaviour
     public GameObject emailUI;
     [Header("Criteria")]
     public GameObject criteriaUI;
+    public HUDManager hudManager;
     [Header("Mistakes")]
     public GameObject mistakesUI;
     [Header("Icons")]
     public GameObject criteriaIcon;
     public GameObject powerIcon;
     public GameObject emailIcon;
+
 
     public void openEmail()
     {
@@ -39,6 +41,7 @@ public class ScreensLogic : MonoBehaviour
             criteriaIcon.SetActive(false);
             powerIcon.SetActive(false);
             emailIcon.SetActive(false);
+            hudManager.CompleteCriteriaQuest();
         }
     }
 

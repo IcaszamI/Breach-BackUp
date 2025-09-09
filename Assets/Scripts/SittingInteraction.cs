@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class SittingInteraction : MonoBehaviour
 {
+    public HUDManager hudManager;
     [Header("player controller")]
     public FirstPersonController playerController;
     [Header("player")]
@@ -12,7 +13,7 @@ public class SittingInteraction : MonoBehaviour
     [Header("sitting position")]
     public Transform sitPos;
     [Header("sit prompt")]
-    public GameObject sitPromt;
+    public GameObject sitPrompt;
     [Header("game camera")]
     public GameObject gameCam;
     [Header("player camera")]
@@ -39,9 +40,9 @@ public class SittingInteraction : MonoBehaviour
 
         if (distance <= interactionDistance && !isSiting)
         {
-            if (sitPromt != null)
+            if (sitPrompt != null)
             {
-                sitPromt.SetActive(true);
+                sitPrompt.SetActive(true);
             }
             if (Input.GetKeyDown(sit))
             {
@@ -51,7 +52,7 @@ public class SittingInteraction : MonoBehaviour
 
         else
         {
-            sitPromt.SetActive(false);
+            sitPrompt.SetActive(false);
         }
 
     }
@@ -81,6 +82,7 @@ public class SittingInteraction : MonoBehaviour
             screenCursor.enabled = true;
             Debug.Log("tried to enabled");
         }
+        hudManager.CompleteSitQuest();
     }
 
     public void standUp()
