@@ -30,7 +30,8 @@ public class EmailManager : MonoBehaviour
     public TextMeshProUGUI mistakeDetails;
     [Header("GameState")]
     public int maxTally = 3;
-    private List<EmailData> todaysEmails = new();
+    private List<EmailData> activeEmails = new List<EmailData>();
+    private List<EmailData> emailQueue = new List<EmailData>();
     private List<EmailData> mistakesMade = new List<EmailData>();
     private List<EmailData> processedEmailsToday = new List<EmailData>();
 
@@ -82,13 +83,18 @@ public class EmailManager : MonoBehaviour
     public void LoadEmailsForDay(int day)
     {
         dailyEmails = day == 1 ? 4 : 5;
-        todaysEmails.Clear();
+        emailQueue.Clear();
+        activeEmails.Clear();
+        mistakesMade.Clear();
+        processedEmailsToday.Clear();
+        mistakeTally = 0;
+        tallyCounter.text = mistakeTally.ToString();
         foreach (Transform child in emailButtonContainer)
         {
             Destroy(child.gameObject);
         }
 
-        List<EmailData> emailCandidates = new();
+        List<EmailData> emailCandidates = new List<EmailData>();
         EmailData firstEmail = null;
 
         foreach (var email in allEmails)
@@ -117,27 +123,48 @@ public class EmailManager : MonoBehaviour
 
         for (int i = 0; i < Mathf.Min(dailyEmails, emailCandidates.Count); i++)
         {
-            todaysEmails.Add(emailCandidates[i]);
+            emailQueue.Add(emailCandidates[i]);
         }
+        HUDManager hudManager = FindObjectOfType<HUDManager>();
+        if (hudManager != null) hudManager.SetEmailQuestGoal(emailQueue.Count);
 
         if (day == 1 && firstEmail != null)
         {
-            todaysEmails.Insert(0, firstEmail);
+            emailQueue.Insert(0, firstEmail);
         }
 
-        foreach (var email in todaysEmails)
+        int initialEmailCount = 2;
+        for (int i = 0; i < initialEmailCount && emailQueue.Count > 0; i++)
         {
-            GameObject btnObj = Instantiate(emailButtonPrefab, emailButtonContainer);
-            btnObj.GetComponentInChildren<TextMeshProUGUI>().text = email.subject;
-            btnObj.GetComponent<Button>().onClick.AddListener(() => ShowEmail(email, btnObj));
+            AddNewEmail(emailQueue[0]);
+            emailQueue.RemoveAt(0);
         }
 
-        if (hudManager != null)
-        {
-            hudManager.SetEmailQuestGoal(todaysEmails.Count);
-        }
+        StartCoroutine(EmailDeliveryCoroutine());
     }
 
+    private IEnumerator EmailDeliveryCoroutine()
+    {
+        while (emailQueue.Count > 0)
+        {
+            float delay = Random.Range(5f, 15f);
+            yield return new WaitForSeconds(delay);
+            AddNewEmail(emailQueue[0]);
+            emailQueue.RemoveAt(0);
+        }
+        Debug.Log("All emails have been delivered");
+    }
+
+    private void AddNewEmail(EmailData email)
+    {
+        if (email == null) return;
+        activeEmails.Add(email);
+        GameObject btnObj = Instantiate(emailButtonPrefab, emailButtonContainer);
+        btnObj.transform.localScale = Vector3.one;
+        btnObj.GetComponentInChildren<TextMeshProUGUI>().text = email.subject;
+        btnObj.GetComponent<Button>().onClick.AddListener(() => ShowEmail(email, btnObj));
+    }
+      
     public void ShowEmail(EmailData email, GameObject buttonObj)
     {
         currentEmail = email;
@@ -334,7 +361,7 @@ public class EmailManager : MonoBehaviour
     {
         yield return null;
 
-        if (emailButtonContainer.childCount == 0)
+        if (emailButtonContainer.childCount == 0 && emailQueue.Count == 0)
         {
             Debug.Log("Day Complete, Transitioniung to report scene");
             Debug.Log("Emailmanager is sending" + processedEmailsToday.Count + " processed and " + mistakesMade.Count + " mistakes");

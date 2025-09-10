@@ -22,7 +22,6 @@ public class DoorInteractionHandler : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(player.position, transform.position);
-        Debug.Log("Player's distance away the object is " + distance);
 
         if (distance <= interactionDistance)
         {
