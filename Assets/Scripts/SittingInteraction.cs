@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using StarterAssets;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SittingInteraction : MonoBehaviour
@@ -13,7 +15,7 @@ public class SittingInteraction : MonoBehaviour
     [Header("sitting position")]
     public Transform sitPos;
     [Header("sit prompt")]
-    public GameObject sitPrompt;
+    public GameObject prompt;
     [Header("game camera")]
     public GameObject gameCam;
     [Header("player camera")]
@@ -35,14 +37,14 @@ public class SittingInteraction : MonoBehaviour
 
     void Update()
     {
-
         float distance = Vector3.Distance(player.position, transform.position);
 
         if (distance <= interactionDistance && !isSiting)
         {
-            if (sitPrompt != null)
+            if (prompt != null)
             {
-                sitPrompt.SetActive(true);
+                Debug.Log("showing prompt");
+                prompt.SetActive(true);
             }
             if (Input.GetKeyDown(sit))
             {
@@ -52,7 +54,7 @@ public class SittingInteraction : MonoBehaviour
 
         else
         {
-            sitPrompt.SetActive(false);
+            prompt?.SetActive(false);
         }
 
     }
@@ -68,10 +70,10 @@ public class SittingInteraction : MonoBehaviour
 
         if (screenUI != null)
         {
-            screenUI.SetActive(true);
-            CriteriaUI.SetActive(false);
-            EmailUI.SetActive(false);
-            power.SetActive(false);
+            screenUI?.SetActive(true);
+            CriteriaUI?.SetActive(false);
+            EmailUI?.SetActive(false);
+            power?.SetActive(false);
         }
 
         if (playerController != null)
@@ -91,17 +93,17 @@ public class SittingInteraction : MonoBehaviour
         
         if (playerCam != null)
         {
-            playerCam.SetActive(true);
-            gameCam.SetActive(false);
+            playerCam?.SetActive(true);
+            gameCam?.SetActive(false);
         }
 
         if (screenUI != null)
         {
-            screenUI.SetActive(false);
+            screenUI?.SetActive(false);
         }
         if (power != null)
         {
-            power.SetActive(false);
+            power?.SetActive(false);
         }
 
         if (playerController != null)

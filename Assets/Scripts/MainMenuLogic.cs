@@ -8,6 +8,7 @@ public class MainMenuLogic : MonoBehaviour
     public string loadOffice = "Office";
     public string loadSettings = "Settings";
     public string loadMenu = "MainMenu";
+    public string loadHome = "Home";
 
     public void startNewGame()
     {
@@ -17,7 +18,7 @@ public class MainMenuLogic : MonoBehaviour
             GameManager.Instance.processedEmailsToday.Clear();
             GameManager.Instance.mistakesMadeToday.Clear();
         }
-        SceneManager.LoadScene(loadOffice);
+        SceneManager.LoadScene(loadHome);
     }
     public void settings()
     {

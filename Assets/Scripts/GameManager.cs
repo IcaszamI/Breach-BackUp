@@ -17,10 +17,11 @@ public class GameManager : MonoBehaviour
     public int currentDay = 1;
     public List<EmailData> processedEmailsToday = new List<EmailData>();
     public List<EmailData> mistakesMadeToday = new List<EmailData>();
+    private bool AfterHours = false;
 
 
-    private void OnEnable(){ SceneManager.sceneLoaded += OnSceneLoaded; }
-    private void OnDisable(){ SceneManager.sceneLoaded -= OnSceneLoaded;}
+    private void OnEnable() { SceneManager.sceneLoaded += OnSceneLoaded; }
+    private void OnDisable() { SceneManager.sceneLoaded -= OnSceneLoaded; }
     void Awake()
     {
         if (Instance == null)
@@ -41,11 +42,44 @@ public class GameManager : MonoBehaviour
         {
             StartDay();
         }
+        if (scene.name == "Home" && !AfterHours)
+        {
+            StartPreDay();
+        }
+        if (scene.name == "Home" && AfterHours)
+        {
+            StartPostDay();
+        }
+    }
+
+    public void StartPreDay()
+    {
+        AfterHours = false;
+        currentHour = 7;
+        currentMinute = 0;
+
+        if (dayTimerCoroutine != null)
+        {
+            StopCoroutine(dayTimerCoroutine);
+        }
+        dayTimerCoroutine = StartCoroutine(DayTimerCoroutine());
     }
 
     public void StartDay()
     {
         currentHour = 9;
+        currentMinute = 0;
+
+        if (dayTimerCoroutine != null)
+        {
+            StopCoroutine(dayTimerCoroutine);
+        }
+        dayTimerCoroutine = StartCoroutine(DayTimerCoroutine());
+    }
+
+    public void StartPostDay()
+    {
+        currentHour = 17;
         currentMinute = 0;
 
         if (dayTimerCoroutine != null)
@@ -112,6 +146,11 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void GoHome()
+    {
+        AfterHours = true;
+    }
+
     public void StartNextDay()
     {
         currentDay++;
@@ -134,6 +173,17 @@ public class GameManager : MonoBehaviour
         mistakeTally = 0;
         processedEmailsToday.Clear();
         mistakesMadeToday.Clear();
-        SceneManager.LoadScene("Office");   
+        SceneManager.LoadScene("Office");
+    }
+
+    void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "Home")
+        {
+            if (currentHour == 9)
+            {
+                StopTimer();
+            }
+        }
     }
 }
