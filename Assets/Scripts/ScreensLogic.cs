@@ -14,6 +14,8 @@ public class ScreensLogic : MonoBehaviour
     public GameObject emailUI;
     [Header("Criteria")]
     public GameObject criteriaUI;
+    [Header("BlackListed Apps")]
+    public GameObject blackListedAppsUI;
     public HUDManager hudManager;
     [Header("Mistakes")]
     public GameObject mistakesUI;
@@ -21,6 +23,8 @@ public class ScreensLogic : MonoBehaviour
     public GameObject criteriaIcon;
     public GameObject powerIcon;
     public GameObject emailIcon;
+    public GameObject blackListedAppsIcon;
+
 
     void Update()
     {
@@ -33,6 +37,18 @@ public class ScreensLogic : MonoBehaviour
             else
             {
                 emailIcon.GetComponent<Button>().interactable = true;
+            }
+        }
+
+        if (GameManager.Instance != null)
+        {
+            if (GameManager.Instance.currentDay >= 3)
+            {
+                blackListedAppsIcon.SetActive(true);
+            }
+            else
+            {
+                blackListedAppsIcon.SetActive(false);
             }
         }
     }
@@ -59,6 +75,16 @@ public class ScreensLogic : MonoBehaviour
         }
     }
 
+    public void openBlackListedApps()
+    {
+        if (blackListedAppsUI != null && !blackListedAppsUI.activeInHierarchy)
+        {
+            blackListedAppsUI.SetActive(true);
+        }
+    }
+    
+
+
     public void openMistakes()
     {
         if (mistakesUI != null && !mistakesUI.activeInHierarchy)
@@ -67,7 +93,7 @@ public class ScreensLogic : MonoBehaviour
         }
         else
         {
-            mistakesUI.SetActive(false); 
+            mistakesUI.SetActive(false);
         }
     }
     public void powerOff()
@@ -101,6 +127,14 @@ public class ScreensLogic : MonoBehaviour
             criteriaIcon.SetActive(true);
             powerIcon.SetActive(true);
             emailIcon.SetActive(true);
+        }
+    }
+
+    public void blackListedAppsExitButton()
+    {
+        if (blackListedAppsUI != null && blackListedAppsUI.activeInHierarchy)
+        { 
+            blackListedAppsUI.SetActive(false);
         }
     }
 
