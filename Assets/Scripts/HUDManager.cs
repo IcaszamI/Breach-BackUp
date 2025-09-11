@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HUDManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class HUDManager : MonoBehaviour
     public TextMeshProUGUI sitQuestText;
     public TextMeshProUGUI emailQuestText;
     public TextMeshProUGUI criteriaQuestText;
+    public TextMeshProUGUI HomeQuests;
     public GameObject helper;
     private int emailsProcessed = 0;
     private int totalEmailsToday = 0;
@@ -34,9 +36,36 @@ public class HUDManager : MonoBehaviour
             dayText.text = $"Day {GameManager.Instance.currentDay}";
             UpdateTimeText(GameManager.Instance.currentHour, GameManager.Instance.currentMinute);
         }
-        InitializeSitQuest();
-        criteriaQuestText?.gameObject.SetActive(false);
-        emailQuestText?.gameObject.SetActive(false);
+
+        if (SceneManager.GetActiveScene().name == "Office")
+        {
+            HomeQuests?.gameObject.SetActive(false);
+            InitializeSitQuest();
+            criteriaQuestText?.gameObject.SetActive(false);
+            emailQuestText?.gameObject.SetActive(false);
+        }
+
+        if (SceneManager.GetActiveScene().name == "Home")
+        {
+            sitQuestText?.gameObject.SetActive(false);
+            criteriaQuestText?.gameObject.SetActive(false);
+            emailQuestText?.gameObject.SetActive(false);
+            HomeQuests?.gameObject.SetActive(true);
+            SetHomeQuestsText();
+        }
+        
+    }
+
+    public void SetHomeQuestsText()
+    {
+        if (HomeQuests != null || !GameManager.Instance.AfterHours)
+        {
+            HomeQuests.text = "- (Optional)Check personal emails.\n- Go to work.";
+        }
+        else
+        {
+            HomeQuests.text = "- OptionalCheck personal emails.\n- Go to bed";
+        }
     }
 
     void UpdateTimeText(int hour, int minute)

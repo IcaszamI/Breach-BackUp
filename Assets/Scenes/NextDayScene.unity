@@ -1336,7 +1336,7 @@ GameObject:
   - component: {fileID: 1228843545}
   - component: {fileID: 1228843544}
   m_Layer: 5
-  m_Name: SaveAndExit
+  m_Name: GoHome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1381,7 +1381,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Next Day
+  m_text: Go Home
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7a348f28c84fb4148a24489fd1e39feb, type: 2}
   m_sharedMaterial: {fileID: -758958295655141332, guid: 7a348f28c84fb4148a24489fd1e39feb, type: 2}
@@ -1605,7 +1605,7 @@ GameObject:
   - component: {fileID: 1430511018}
   - component: {fileID: 1430511017}
   m_Layer: 5
-  m_Name: NextDaybtn
+  m_Name: GoHomeBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1677,7 +1677,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1555603351}
         m_TargetAssemblyTypeName: SaveLogic, Assembly-CSharp
-        m_MethodName: OnClickNextDay
+        m_MethodName: OnClickGoHome
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

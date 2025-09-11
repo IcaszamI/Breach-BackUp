@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    [Header("TransitionSettings")]
+    public CanvasGroup fadeCanvasGroup;
+    public float fadeDuration = 0.5f;
+    private bool isTransitioning = false;
 
     public int currentHour { get; private set; }
     public int currentMinute { get; private set; }
@@ -17,7 +21,7 @@ public class GameManager : MonoBehaviour
     public int currentDay = 1;
     public List<EmailData> processedEmailsToday = new List<EmailData>();
     public List<EmailData> mistakesMadeToday = new List<EmailData>();
-    private bool AfterHours = false;
+    public bool AfterHours = false;
 
 
     private void OnEnable() { SceneManager.sceneLoaded += OnSceneLoaded; }
@@ -28,12 +32,55 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+
+            if (fadeCanvasGroup != null)
+            {
+                DontDestroyOnLoad(fadeCanvasGroup.transform.parent.gameObject);
+            }
         }
         else
         {
             Destroy(gameObject);
         }
 
+    }
+
+    public void LoadSceneWithTransition(string sceneName)
+    {
+        if (!isTransitioning)
+        {
+            StartCoroutine(TransitionCoroutine(sceneName));
+        }
+    }
+
+    private IEnumerator TransitionCoroutine(string sceneName)
+    {
+        isTransitioning = true;
+        float timer = 0;
+        while (timer < fadeDuration)
+        {
+            timer += Time.unscaledDeltaTime;
+            fadeCanvasGroup.alpha = timer / fadeDuration;
+            yield return null;
+        }
+        fadeCanvasGroup.alpha = 1;
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        asyncLoad.allowSceneActivation = false;
+        while (asyncLoad.progress < 0.9f)
+        {
+            yield return null;
+        }
+        asyncLoad.allowSceneActivation = true;
+        yield return new WaitForSeconds(0.1f);
+        timer = 0;
+        while (timer < fadeDuration)
+        { 
+            timer += Time.unscaledDeltaTime;
+            fadeCanvasGroup.alpha = 1f - (timer / fadeDuration);
+            yield return null;
+        }
+        fadeCanvasGroup.alpha = 0;
+        isTransitioning = false;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -137,18 +184,20 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game manager has stored " + processedEmailsToday.Count + " processed emails and " + mistakesMadeToday.Count + " mistakes.");
         if (mistakes.Count == 3)
         {
-            SceneManager.LoadScene("RepeatDayScene");
+            LoadSceneWithTransition("RepeatDayScene");
         }
-        else
+        if (mistakes.Count < 3)
         {
-            SceneManager.LoadScene("NextDayScene");
+            LoadSceneWithTransition("NextDayScene");
         }
+
 
     }
 
-    public void GoHome()
+    public void GoHomeForNextDay()
     {
         AfterHours = true;
+        LoadSceneWithTransition("Home");
     }
 
     public void StartNextDay()
@@ -159,12 +208,12 @@ public class GameManager : MonoBehaviour
         mistakesMadeToday.Clear();
         if (currentDay > 4)
         {
-            Debug.Log("tandaan mo lagyan congrats scene");
+            LoadSceneWithTransition("WinScene");
         }
 
         else
         {
-            SceneManager.LoadScene("Office");
+            LoadSceneWithTransition("Office");
         }
     }
 
@@ -181,10 +230,11 @@ public class GameManager : MonoBehaviour
 
     public void RepeatDay()
     {
+        AfterHours = false;
         mistakeTally = 0;
         processedEmailsToday.Clear();
         mistakesMadeToday.Clear();
-        SceneManager.LoadScene("Office");
+        LoadSceneWithTransition("Home");
     }
 
     void Update()

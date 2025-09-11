@@ -4,6 +4,7 @@ using StarterAssets;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SittingInteraction : MonoBehaviour
 {
@@ -69,7 +70,10 @@ public class SittingInteraction : MonoBehaviour
 
         if (screenUI != null)
         {
-            screenUI?.SetActive(true);
+            if (SceneManager.GetActiveScene().name == "Office")
+            {
+                screenUI?.SetActive(true);
+            }
             CriteriaUI?.SetActive(false);
             EmailUI?.SetActive(false);
             power?.SetActive(false);
@@ -98,7 +102,11 @@ public class SittingInteraction : MonoBehaviour
 
         if (screenUI != null)
         {
-            screenUI?.SetActive(false);
+            if (SceneManager.GetActiveScene().name == "Office")
+            {
+                screenUI?.SetActive(false);
+            }
+            
         }
         if (power != null)
         {

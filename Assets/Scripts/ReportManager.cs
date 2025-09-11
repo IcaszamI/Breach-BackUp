@@ -83,6 +83,6 @@ public class ReportManager : MonoBehaviour
 
     public void onClickExit()
     {
-        SceneManager.LoadScene("MainMenu");
+        GameManager.Instance.LoadSceneWithTransition("MainMenu");
     }
 }

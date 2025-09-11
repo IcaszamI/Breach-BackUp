@@ -11,20 +11,22 @@ public class SaveLogic : MonoBehaviour
 
     public void SaveAndExit()
     {
-        SceneManager.LoadScene(loadMenu);
+        GameManager.Instance.LoadSceneWithTransition("MainMenu");
     }
 
-    public void OnClickNextDay()
+    public void OnClickGoHome()
     {
         if (GameManager.Instance != null)
         {
-            
             GameManager.Instance.StartNextDay();
         }
     }
 
     public void OnClickRepeatDay()
     {
-        GameManager.Instance.RepeatDay();
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.RepeatDay();
+        }
     }
 }

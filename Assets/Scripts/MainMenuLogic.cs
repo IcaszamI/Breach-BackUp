@@ -10,6 +10,11 @@ public class MainMenuLogic : MonoBehaviour
     public string loadMenu = "MainMenu";
     public string loadHome = "Home";
 
+
+    public void ContinueGame()
+    {
+        
+    }
     public void startNewGame()
     {
         if (GameManager.Instance != null)
@@ -18,7 +23,7 @@ public class MainMenuLogic : MonoBehaviour
             GameManager.Instance.processedEmailsToday.Clear();
             GameManager.Instance.mistakesMadeToday.Clear();
         }
-        SceneManager.LoadScene(loadHome);
+        GameManager.Instance.LoadSceneWithTransition(loadHome);
     }
     public void settings()
     {
@@ -27,7 +32,7 @@ public class MainMenuLogic : MonoBehaviour
     public void backToMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(loadMenu);
+        GameManager.Instance.LoadSceneWithTransition(loadMenu);
 
     }
     public void quitGame()

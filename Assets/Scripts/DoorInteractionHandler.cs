@@ -31,7 +31,7 @@ public class DoorInteractionHandler : MonoBehaviour
             }
             if (Input.GetKeyDown(interact))
             {
-                SceneManager.LoadScene("Office");
+                GameManager.Instance.LoadSceneWithTransition("Office");
             }
         }
         else

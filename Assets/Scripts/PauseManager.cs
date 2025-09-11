@@ -9,6 +9,6 @@ public class PauseManager : MonoBehaviour
     // Start is called before the first frame update
     public void goToMainMenu()
     {
-        SceneManager.LoadScene(loadMainMenu); 
+        GameManager.Instance.LoadSceneWithTransition(loadMainMenu); 
     }
 }
