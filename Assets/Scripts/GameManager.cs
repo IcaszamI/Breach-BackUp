@@ -168,6 +168,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void AdvanceTime(int minutesToAdd)
+    {
+        currentMinute += minutesToAdd;
+        while (currentMinute >= 60)
+        {
+            currentMinute -= 60;
+            currentHour++;
+        }
+        OnTimeChanged?.Invoke(currentHour, currentMinute);
+    }
+
     public void RepeatDay()
     {
         mistakeTally = 0;

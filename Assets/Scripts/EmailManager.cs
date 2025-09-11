@@ -126,7 +126,7 @@ public class EmailManager : MonoBehaviour
             emailQueue.Add(emailCandidates[i]);
         }
         HUDManager hudManager = FindObjectOfType<HUDManager>();
-        if (hudManager != null) hudManager.SetEmailQuestGoal(emailQueue.Count);
+        if (hudManager != null) hudManager.SetEmailQuestGoal(5);
 
         if (day == 1 && firstEmail != null)
         {
@@ -167,8 +167,17 @@ public class EmailManager : MonoBehaviour
       
     public void ShowEmail(EmailData email, GameObject buttonObj)
     {
+        
         currentEmail = email;
         currentEmailButton = buttonObj;
+        if (email.dayAppears == 2)
+        {
+            replyButton?.gameObject.SetActive(false);
+        }
+        else
+        {
+            replyButton?.gameObject.SetActive(true);
+        }
         fromText.text = "From: " + email.senderEmail;
         subjectText.text = "Subject: " + email.subject;
         bodyText.text = email.body;
@@ -194,6 +203,11 @@ public class EmailManager : MonoBehaviour
         if (hudManager != null)
         {
             hudManager.UpdateEmailQuestProgress();
+        }
+        if (GameManager.Instance != null)
+        {
+            int timeToAdvance = Random.Range(30, 61);
+            GameManager.Instance.AdvanceTime(timeToAdvance);
         }
         clearContents();
         CheckDayCompletion();

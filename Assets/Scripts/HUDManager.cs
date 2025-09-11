@@ -14,9 +14,9 @@ public class HUDManager : MonoBehaviour
     public GameObject helper;
     private int emailsProcessed = 0;
     private int totalEmailsToday = 0;
-    private bool sitQuestCompleted;
-    private bool emailQuestCompleted;
-    private bool criteriaQuestCompleted;
+    public bool sitQuestCompleted;
+    public bool emailQuestCompleted;
+    public bool criteriaQuestCompleted;
 
     void OnEnable()
     {

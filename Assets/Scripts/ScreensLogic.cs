@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Properties;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScreensLogic : MonoBehaviour
 {
@@ -21,7 +22,20 @@ public class ScreensLogic : MonoBehaviour
     public GameObject powerIcon;
     public GameObject emailIcon;
 
-
+    void Update()
+    {
+        if (hudManager != null)
+        {
+            if (!hudManager.criteriaQuestCompleted)
+            {
+                emailIcon.GetComponent<Button>().interactable = false;
+            }
+            else
+            {
+                emailIcon.GetComponent<Button>().interactable = true;
+            }
+        }
+    }
     public void openEmail()
     {
         if (emailUI != null && !emailUI.activeInHierarchy)
