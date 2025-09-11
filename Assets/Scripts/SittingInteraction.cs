@@ -43,7 +43,6 @@ public class SittingInteraction : MonoBehaviour
         {
             if (prompt != null)
             {
-                Debug.Log("showing prompt");
                 prompt.SetActive(true);
             }
             if (Input.GetKeyDown(sit))

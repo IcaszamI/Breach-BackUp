@@ -2174,7 +2174,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 87272c8d33246c54eb8b26c100e595b4, type: 2}
   - {fileID: 11400000, guid: 9ef7724b5102d614a9cb3d3d5e3913c6, type: 2}
   - {fileID: 11400000, guid: 7e7cb8324e403354da0e0b88d80662c6, type: 2}
-  hudManager: {fileID: 0}
+  hudManager: {fileID: 661721908}
   emailButtonContainer: {fileID: 2100823198}
   emailButtonPrefab: {fileID: 393831644127771590, guid: 761d9e8a0884a7048841ca7fd44242f3, type: 3}
   attachmentButtonImage: {fileID: 2013415086}
@@ -2813,7 +2813,7 @@ MonoBehaviour:
   powerUI: {fileID: 278473092}
   emailUI: {fileID: 1697647499}
   criteriaUI: {fileID: 290334883}
-  hudManager: {fileID: 0}
+  hudManager: {fileID: 661721908}
   mistakesUI: {fileID: 1750078341}
   criteriaIcon: {fileID: 779221527}
   powerIcon: {fileID: 1449593140}
@@ -22789,7 +22789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d49995e88ce914b919f62792a5364d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hudManager: {fileID: 0}
+  hudManager: {fileID: 661721908}
   playerController: {fileID: 744785328}
   player: {fileID: 744785326}
   sitPos: {fileID: 1334405001}
