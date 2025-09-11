@@ -163,13 +163,21 @@ public class GameManager : MonoBehaviour
 
             if (currentHour >= 17)
             {
-                Debug.Log("Time's up day failed");
-                EmailManager emailManager = FindObjectOfType<EmailManager>();
-                if (emailManager != null)
+                if (SceneManager.GetActiveScene().name == "Office")
                 {
-                    CompleteDay(emailManager.GetMistakes(), emailManager.GetProcessedEmails());
+                    Debug.Log("Time's up day failed");
+                    EmailManager emailManager = FindObjectOfType<EmailManager>();
+                    if (emailManager != null)
+                    {
+                        CompleteDay(emailManager.GetMistakes(), emailManager.GetProcessedEmails());
+                    }
+                    yield break;
                 }
-                yield break;
+                else
+                {
+                    continue;
+                }
+                
             }
 
         }
@@ -202,6 +210,7 @@ public class GameManager : MonoBehaviour
 
     public void StartNextDay()
     {
+        AfterHours = false;
         currentDay++;
         mistakeTally = 0;
         processedEmailsToday.Clear();
@@ -213,7 +222,7 @@ public class GameManager : MonoBehaviour
 
         else
         {
-            LoadSceneWithTransition("Office");
+            LoadSceneWithTransition("Home");
         }
     }
 

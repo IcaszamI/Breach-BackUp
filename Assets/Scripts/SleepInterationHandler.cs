@@ -1,29 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
 using StarterAssets;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class DoorInteractionHandler : MonoBehaviour
+public class SleepInterationHandler : MonoBehaviour
 {
-    [Header("Player Controller")]
     public FirstPersonController playerController;
-    [Header("Player")]
     public Transform player;
-    [Header("Door")]
-    public Transform door;
-    [Header("Others")]
+    public Transform bed;
     public GameObject prompt;
-    public float interactionDistance = 1f;
+    public GameObject daylights;
+    public float interactionDistance = 4f;
     public KeyCode interact = KeyCode.F;
 
-    // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.AfterHours)
+        {
+            daylights?.SetActive(false);
+        }
+        else
+        {
+            daylights?.SetActive(true);
+        }
         float distance = Vector3.Distance(player.position, transform.position);
 
-        if (distance <= interactionDistance && !GameManager.Instance.AfterHours)
+        if (distance <= interactionDistance && GameManager.Instance.AfterHours)
         {
             if (prompt != null)
             {
@@ -31,7 +34,7 @@ public class DoorInteractionHandler : MonoBehaviour
             }
             if (Input.GetKeyDown(interact))
             {
-                GameManager.Instance.LoadSceneWithTransition("Office");
+                GameManager.Instance.StartNextDay();
             }
         }
         else

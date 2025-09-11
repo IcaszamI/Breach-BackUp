@@ -58,7 +58,7 @@ public class HUDManager : MonoBehaviour
 
     public void SetHomeQuestsText()
     {
-        if (HomeQuests != null || !GameManager.Instance.AfterHours)
+        if (HomeQuests != null && !GameManager.Instance.AfterHours)
         {
             HomeQuests.text = "- (Optional)Check personal emails.\n- Go to work.";
         }
