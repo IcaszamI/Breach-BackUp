@@ -8481,7 +8481,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Emails :'
+  m_text: 'Inbox :'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -10409,7 +10409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1522282985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10493,8 +10493,8 @@ RectTransform:
   - {fileID: 1697647500}
   - {fileID: 278473093}
   - {fileID: 290334884}
-  - {fileID: 1857460092}
   - {fileID: 240134538}
+  - {fileID: 1857460092}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
