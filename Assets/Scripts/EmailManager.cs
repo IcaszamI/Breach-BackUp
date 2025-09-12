@@ -50,9 +50,14 @@ public class EmailManager : MonoBehaviour
     public TextMeshProUGUI progressText;
     public GameObject resultPanel;
     public TextMeshProUGUI resultText;
+    public HelperManager helperManager;
+    public AudioClip newEmailSound;
+    private AudioSource audioSource;
 
-
-
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     public List<EmailData> GetProcessedEmails()
     {
         return processedEmailsToday;
@@ -157,6 +162,14 @@ public class EmailManager : MonoBehaviour
 
     private void AddNewEmail(EmailData email)
     {
+        if (activeEmails.Count >= 2)
+        {
+            if (audioSource != null && newEmailSound != null)
+            {
+                audioSource.PlayOneShot(newEmailSound);
+            }
+        }
+        
         if (email == null) return;
         activeEmails.Add(email);
         GameObject btnObj = Instantiate(emailButtonPrefab, emailButtonContainer);
@@ -240,16 +253,9 @@ public class EmailManager : MonoBehaviour
     {
         attachmentOptionsPanel.SetActive(false);
         processedEmailsToday.Add(currentEmail);
-        if (!currentAttachmentHasBeenScanned)
+        if (currentEmail.isMalicious)
         {
-            if (!currentEmail.isMalicious)
-            {
-                Mistake(currentEmail.mistakeExplanationUnscanned, currentEmail);
-            }
-            else
-            {
-                Mistake(currentEmail.mistakeExplanation, currentEmail);
-            }
+            Mistake(currentEmail.mistakeExplanation, currentEmail);
         }
         activeProgressBarCoroutine = StartCoroutine(ShowProgressBar("Downloading...", 1.5f, () =>
         {
@@ -300,6 +306,10 @@ public class EmailManager : MonoBehaviour
     void Mistake(string reason, EmailData email)
     {
         Debug.Log("Mistake Made: " + reason);
+        if (helperManager != null)
+        {
+            helperManager.ShowRandomMistakeMessage();
+        }
         mistakeTally++;
         tallyCounter.text = mistakeTally.ToString();
         if (!mistakesMade.Contains(email))

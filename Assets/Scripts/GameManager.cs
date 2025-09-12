@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     public List<EmailData> processedEmailsToday = new List<EmailData>();
     public List<EmailData> mistakesMadeToday = new List<EmailData>();
     public bool AfterHours = false;
+    public bool hasSeenIntroDialogue;
+    public bool hasSeenCriteria;
+    public bool hasSeenEmail;
 
 
     private void OnEnable() { SceneManager.sceneLoaded += OnSceneLoaded; }

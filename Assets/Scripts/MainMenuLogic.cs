@@ -20,6 +20,9 @@ public class MainMenuLogic : MonoBehaviour
         if (GameManager.Instance != null)
         {
             GameManager.Instance.currentDay = 1;
+            GameManager.Instance.hasSeenIntroDialogue = false;
+            GameManager.Instance.hasSeenCriteria = false;
+            GameManager.Instance.hasSeenEmail = false;
             GameManager.Instance.processedEmailsToday.Clear();
             GameManager.Instance.mistakesMadeToday.Clear();
         }

@@ -24,6 +24,7 @@ public class ScreensLogic : MonoBehaviour
     public GameObject powerIcon;
     public GameObject emailIcon;
     public GameObject blackListedAppsIcon;
+    public HelperManager helperManager;
 
 
     void Update()
@@ -60,6 +61,12 @@ public class ScreensLogic : MonoBehaviour
             criteriaIcon.SetActive(false);
             powerIcon.SetActive(false);
             emailIcon.SetActive(false);
+
+            if (!GameManager.Instance.hasSeenEmail)
+            {
+                helperManager.showDialogue("This is the email App. Youll get emails throughout the day. Some might arrive later!", 2f);
+                GameManager.Instance.hasSeenEmail = true;
+            }
         }
     }
 
@@ -72,6 +79,12 @@ public class ScreensLogic : MonoBehaviour
             powerIcon.SetActive(false);
             emailIcon.SetActive(false);
             hudManager.CompleteCriteriaQuest();
+
+            if (!GameManager.Instance.hasSeenCriteria)
+            {
+                helperManager.showDialogue("This is the Criteria App. It shows the rules you need to follow for the day.", 2f);
+                GameManager.Instance.hasSeenCriteria = true;
+            }
         }
     }
 
