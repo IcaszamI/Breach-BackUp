@@ -18,10 +18,11 @@ MonoBehaviour:
   attachmentName: 
   hasAttachment: 0
   isMalicious: 0
-  isBlacklistedApp: 1
+  isBlacklistedApp: 0
   isCorrectDomain: 1
-  isFriendlyEmail: 0
+  isFriendlyEmail: 1
   isFirstEmail: 0
+  hasBeenScanned: 0
   dayAppears: 3
   mistakeExplanation: The app requested is blacklisted
   correctActionHint: This email should have been ignored
