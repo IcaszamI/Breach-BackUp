@@ -13,7 +13,7 @@ public class MainMenuLogic : MonoBehaviour
 
     public void ContinueGame()
     {
-        
+
     }
     public void startNewGame()
     {

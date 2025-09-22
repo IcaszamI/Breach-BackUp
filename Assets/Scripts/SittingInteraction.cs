@@ -35,7 +35,13 @@ public class SittingInteraction : MonoBehaviour
     public KeyCode sit = KeyCode.F;
 
     public bool isSiting = false;
+    public bool hasSat = false;
 
+
+    void Awake()
+    {
+        hasSat = false;
+    }
     void Update()
     {
         float distance = Vector3.Distance(player.position, transform.position);
@@ -61,6 +67,10 @@ public class SittingInteraction : MonoBehaviour
 
     void sitDown()
     {
+        if (!hasSat)
+        {
+            hasSat = true;
+        }
         isSiting = true;
         if (playerCam != null)
         {

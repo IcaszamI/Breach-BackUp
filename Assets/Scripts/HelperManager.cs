@@ -51,10 +51,11 @@ public class HelperManager : MonoBehaviour
             audioSource.PlayOneShot(dialoguePopUpSound);
         }
         dialoguePanel.SetActive(true);
-        yield return new WaitForSeconds(duration);
-        dialoguePanel.SetActive(false);
         helperMouthClosed.SetActive(true);
         helperMouthOpen.SetActive(false);
+        yield return new WaitForSeconds(duration);
+        dialoguePanel.SetActive(false);
+        
         dialogueCoroutine = null;
     }
 

@@ -13418,6 +13418,7 @@ MonoBehaviour:
   interactionDistance: 4
   sit: 102
   isSiting: 0
+  hasSat: 0
 --- !u!64 &4374253984391795897
 MeshCollider:
   m_ObjectHideFlags: 0
