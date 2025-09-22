@@ -13,7 +13,7 @@ public class NPCcontroller : MonoBehaviour
     private Animator animator;
     public SittingInteraction sit;
     private bool hasMoved = false;
-    float interactionDistance = 2f;
+    float interactionDistance = 1f;
     public KeyCode interact = KeyCode.F;
     public GameObject prompt;
 
@@ -27,7 +27,7 @@ public class NPCcontroller : MonoBehaviour
         }
         float distance = Vector3.Distance(player.position, transform.position);
 
-        if (distance <= interactionDistance)
+        if (distance <= interactionDistance && hasMoved)
         {
             if (prompt != null)
             {

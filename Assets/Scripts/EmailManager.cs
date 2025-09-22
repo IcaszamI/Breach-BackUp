@@ -152,7 +152,7 @@ public class EmailManager : MonoBehaviour
     {
         while (emailQueue.Count > 0)
         {
-            float delay = Random.Range(5f, 15f);
+            float delay = Random.Range(10f, 50f);
             yield return new WaitForSeconds(delay);
             AddNewEmail(emailQueue[0]);
             emailQueue.RemoveAt(0);
