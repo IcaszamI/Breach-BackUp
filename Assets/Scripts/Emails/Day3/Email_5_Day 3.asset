@@ -23,6 +23,7 @@ MonoBehaviour:
   isCorrectDomain: 1
   isFriendlyEmail: 1
   isFirstEmail: 0
+  hasBeenScanned: 0
   dayAppears: 3
   mistakeExplanation: The app requested was not blacklisted
   correctActionHint: this email should have received a reply

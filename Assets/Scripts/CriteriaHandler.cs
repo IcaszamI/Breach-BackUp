@@ -16,7 +16,7 @@ public class CriteriaHandler : MonoBehaviour
                 criteria.text = "--Make sure to only reply to proper domain emails ( breachnetworks.com.ph )";
                 break;
             case 2:
-                criteria.text = "--Make sure files received are safe by right-clicking and scanning them";
+                criteria.text = "--Make sure files received are safe by left-clicking and scanning them";
                 break;
             case 3:
                 criteria.text = "--See if applications requested by colleagues are not blacklisted";

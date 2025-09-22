@@ -15,7 +15,7 @@ public class DoorInteractionHandler : MonoBehaviour
     public Transform door;
     [Header("Others")]
     public GameObject prompt;
-    public float interactionDistance = 1f;
+    public float interactionDistance = 6f;
     public KeyCode interact = KeyCode.F;
 
     // Update is called once per frame

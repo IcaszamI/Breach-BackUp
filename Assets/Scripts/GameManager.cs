@@ -74,7 +74,11 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
         asyncLoad.allowSceneActivation = true;
-        yield return new WaitForSeconds(0.1f);
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
         timer = 0;
         while (timer < fadeDuration)
         { 
