@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class SittingInteraction : MonoBehaviour
 {
+    public  NPCmanager npc;
     public HUDManager hudManager;
     [Header("player controller")]
     public FirstPersonController playerController;
@@ -31,17 +32,11 @@ public class SittingInteraction : MonoBehaviour
     public GameObject power;
     [Header("Screen Cursor Script")]
     public ScreenCursor screenCursor;
+    public NPCcontroller[] npcs;
     public float interactionDistance = 1f;
     public KeyCode sit = KeyCode.F;
-
     public bool isSiting = false;
-    public bool hasSat = false;
 
-
-    void Awake()
-    {
-        hasSat = false;
-    }
     void Update()
     {
         float distance = Vector3.Distance(player.position, transform.position);
@@ -67,9 +62,13 @@ public class SittingInteraction : MonoBehaviour
 
     void sitDown()
     {
-        if (!hasSat)
+        npc?.MoveNPCToWorkstations();
+        foreach (NPCcontroller npc in npcs)
         {
-            hasSat = true;
+            if (npc != null)
+            {
+                npc.hasSat = true;
+            }
         }
         isSiting = true;
         if (playerCam != null)

@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using StarterAssets;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class NPCcontroller : MonoBehaviour
 {
     public FirstPersonController playerController;
-    public Transform NPCtransform;
+    public TurnScript turnScript;
     public Transform player;
     public Transform workStationTarget;
     private Animator animator;
-    public SittingInteraction sit;
-    private bool hasMoved = false;
+    public bool hasMoved = false;
+    public bool hasSat;
     float interactionDistance = 1f;
     public KeyCode interact = KeyCode.F;
     public GameObject prompt;
@@ -20,44 +21,33 @@ public class NPCcontroller : MonoBehaviour
 
     void Update()
     {
-        if (sit.hasSat && !hasMoved)
+        if (hasMoved)
         {
-            MoveToWorkStation();
-            hasMoved = true;
+            float distance = Vector3.Distance(player.position, transform.position);
+            if (distance <= interactionDistance)
+            {
+                if (prompt != null)
+                {
+                    prompt.SetActive(true);
+                }
+                if (Input.GetKeyDown(interact))
+                {
+                    OnPlayerInteraction();
+                }
+            }
+            else
+            {
+                prompt?.gameObject.SetActive(false);
+            }
         }
-        float distance = Vector3.Distance(player.position, transform.position);
 
-        if (distance <= interactionDistance && hasMoved)
-        {
-            if (prompt != null)
-            {
-                prompt.SetActive(true);
-            }
-            if (Input.GetKeyDown(interact))
-            {
-               Debug.Log("spin NPC");
-            }
-        }
-        else
-        {
-            prompt?.gameObject.SetActive(false);
-        }
     }
 
     void Awake()
     {
         animator = GetComponent<Animator>();
+    }
 
-    }
-    private void MoveToWorkStation()
-    {
-        if (workStationTarget != null)
-        {
-            transform.position = workStationTarget.position;
-            transform.rotation = workStationTarget.rotation;
-            TriggerStartTyping();
-        }
-    }
     public void TriggerStartTyping()
     {
         animator.SetTrigger("StartTyping");
@@ -80,10 +70,13 @@ public class NPCcontroller : MonoBehaviour
 
     private IEnumerator InteractionSequence()
     {
+        turnScript.SaveOriginalRotationPosition();
         TriggerStartSitting();
+        yield return StartCoroutine(turnScript.TurnToPlayer());
         Debug.Log("NPC is interacting with player");
         yield return new WaitForSeconds(5f);
         Debug.Log("NPC has finished interacting with player");
+        yield return StartCoroutine(turnScript.ReturnToOriginalRotation());
         TriggerStopSitting();
     }
 }
