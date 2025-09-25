@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using StarterAssets;
+using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -12,6 +13,14 @@ public class NPCcontroller : MonoBehaviour
     public Transform player;
     public Transform workStationTarget;
     private Animator animator;
+    public GameObject NPCdialoguebox;
+    public GameObject NPCdialogue;
+    public GameObject NpcNamebox;
+    public TextMeshProUGUI dialogue;
+    public TextMeshProUGUI NPCname;
+    public GameObject choice1;
+    public GameObject choice2;
+    public GameObject choice3;
     public bool hasMoved = false;
     public bool hasSat;
     float interactionDistance = 1f;
