@@ -10,34 +10,36 @@ public class TurnScript : MonoBehaviour
 
     public void SaveOriginalRotationPosition()
     {
-        originalRotation = transform.rotation;
-        origianlPosition = transform.position;  
+        originalRotation = base.transform.rotation;
+        origianlPosition = base.transform.position;
+
     }
 
     public void LoadOriginalRotationPositon()
     {
-        transform.rotation = originalRotation;
-        transform.position = origianlPosition;
+        base.transform.rotation = originalRotation;
+        base.transform.position = origianlPosition;
     }
+
 
     public IEnumerator TurnToPlayer()
     {
         float duration = 1.0f;
         float elapsedTime = 0f;
 
-        Vector3 directionToPlayer = player.position - transform.position;
+        Vector3 directionToPlayer = player.position - base.transform.position;
         Quaternion targetRotation = Quaternion.LookRotation(new Vector3(directionToPlayer.x, 0, directionToPlayer.z));
         targetRotation *= Quaternion.Euler(0, 180, 0);
 
-        Quaternion startRotation = transform.rotation;
+        Quaternion startRotation = base.transform.rotation;
 
         while (elapsedTime < duration)
         {
-            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, elapsedTime / duration);
+            base.transform.rotation = Quaternion.Slerp(startRotation, targetRotation, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        transform.rotation = targetRotation;
+        base.transform.rotation = targetRotation;
     }
 
     public IEnumerator ReturnToOriginalRotation()
@@ -45,20 +47,21 @@ public class TurnScript : MonoBehaviour
         float duration = 1.0f;
         float elapsedTime = 0f;
 
-        Quaternion startRotation = transform.rotation;
-        Vector3 startPosition = transform.position;
+        Quaternion startRotation = base.transform.rotation;
+        Vector3 startPosition = base.transform.position;
 
         while (elapsedTime < duration)
         {
-            transform.rotation = Quaternion.Slerp(startRotation, originalRotation, elapsedTime / duration);
-            transform.position = Vector3.Lerp(startPosition, origianlPosition, elapsedTime / duration);
+            base.transform.rotation = Quaternion.Slerp(startRotation, originalRotation, elapsedTime / duration);
+            base.transform.position = Vector3.Lerp(startPosition, origianlPosition, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        
-        transform.rotation = originalRotation;
-        transform.position = origianlPosition;
+
+        base.transform.rotation = originalRotation;
+        base.transform.position = origianlPosition;
     }
+
 }
 
 

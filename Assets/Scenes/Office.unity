@@ -1117,10 +1117,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1335676063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000026226, y: -1.0175}
-  m_SizeDelta: {x: 107.4845, y: 20.5755}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -4.3766937, y: -0.05249977}
+  m_SizeDelta: {x: -85.7974, y: -8.7497}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &69236542
 MonoBehaviour:
@@ -1169,8 +1169,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2123,6 +2123,7 @@ MonoBehaviour:
   - {fileID: 1786589453}
   - {fileID: 30943865}
   - {fileID: 1573625105}
+  turnScriptPrefab: {fileID: 0}
 --- !u!1 &192014969
 GameObject:
   m_ObjectHideFlags: 0
@@ -4130,6 +4131,7 @@ MonoBehaviour:
   screenCursor: {fileID: 1683387329}
   cursor: {fileID: 1683387327}
   hudPanel: {fileID: 1773559602}
+  dialoguePanel: {fileID: 1504657150}
   playerController: {fileID: 744785328}
   pauseMenuUI: {fileID: 143735429}
   SettingsUI: {fileID: 192205237}
@@ -11227,7 +11229,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1335676063
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11237,17 +11239,17 @@ RectTransform:
   m_GameObject: {fileID: 1335676062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.98755, y: 2.1492, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 69236541}
-  m_Father: {fileID: 1504657151}
+  m_Father: {fileID: 1588669316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -288.55566, y: -121.12046}
-  m_SizeDelta: {x: 151.6131, y: 18.5405}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -362, y: 6.4477}
+  m_SizeDelta: {x: -786.9377, y: 18.6289}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1335676064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12227,7 +12229,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1588669316}
-  - {fileID: 1335676063}
   - {fileID: 447164688}
   m_Father: {fileID: 1995702828}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15325,7 +15326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1588669316
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15339,12 +15340,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2109559411}
+  - {fileID: 1335676063}
   m_Father: {fileID: 1504657151}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 18}
-  m_SizeDelta: {x: 0, y: 100}
+  m_SizeDelta: {x: 0, y: 66.0272}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1588669317
 MonoBehaviour:
@@ -20442,6 +20444,7 @@ RectTransform:
   - {fileID: 1504657151}
   - {fileID: 1773559603}
   - {fileID: 885702642}
+  - {fileID: 2036236802}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -20978,6 +20981,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2017365699}
   m_CullTransparentMesh: 1
+--- !u!1 &2036236801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2036236802}
+  - component: {fileID: 2036236803}
+  m_Layer: 5
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2036236802
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036236801}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1995702828}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2036236803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036236801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a2580e386b11a4eb7095651e8a3bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueCanvas: {fileID: 1504657150}
+  npcNameText: {fileID: 69236542}
+  dialogueText: {fileID: 2109559412}
 --- !u!1 &2043440742
 GameObject:
   m_ObjectHideFlags: 0
@@ -21508,10 +21562,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1588669316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -92, y: 0}
-  m_SizeDelta: {x: 517.4595, y: 71.1864}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 42.340496, y: -1.2223}
+  m_SizeDelta: {x: -84.681, y: -21.9177}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2109559412
 MonoBehaviour:
@@ -21560,8 +21614,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -22344,20 +22398,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 744785328}
   turnScript: {fileID: 1987735592}
+  npcManager: {fileID: 0}
   player: {fileID: 744785326}
   workStationTarget: {fileID: 30943865}
-  NPCdialoguebox: {fileID: 0}
-  NPCdialogue: {fileID: 0}
-  NpcNamebox: {fileID: 0}
-  dialogue: {fileID: 0}
-  NPCname: {fileID: 0}
-  choice1: {fileID: 0}
-  choice2: {fileID: 0}
-  choice3: {fileID: 0}
   hasMoved: 0
+  hasTeleported: 0
+  hasTalkedOnce: 0
+  isInteracting: 0
   hasSat: 0
   interact: 102
   prompt: {fileID: 1121545824}
+  assignedDialogueText: 
 --- !u!1 &220391039824473041
 GameObject:
   m_ObjectHideFlags: 0
@@ -22926,20 +22977,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 744785328}
   turnScript: {fileID: 11084186}
+  npcManager: {fileID: 0}
   player: {fileID: 744785326}
   workStationTarget: {fileID: 1573625105}
-  NPCdialoguebox: {fileID: 0}
-  NPCdialogue: {fileID: 0}
-  NpcNamebox: {fileID: 0}
-  dialogue: {fileID: 0}
-  NPCname: {fileID: 0}
-  choice1: {fileID: 0}
-  choice2: {fileID: 0}
-  choice3: {fileID: 0}
   hasMoved: 0
+  hasTeleported: 0
+  hasTalkedOnce: 0
+  isInteracting: 0
   hasSat: 0
   interact: 102
   prompt: {fileID: 2120868453}
+  assignedDialogueText: 
 --- !u!33 &780290574001600630
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -30676,20 +30724,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 744785328}
   turnScript: {fileID: 426631823}
+  npcManager: {fileID: 0}
   player: {fileID: 744785326}
   workStationTarget: {fileID: 1786589453}
-  NPCdialoguebox: {fileID: 0}
-  NPCdialogue: {fileID: 0}
-  NpcNamebox: {fileID: 0}
-  dialogue: {fileID: 0}
-  NPCname: {fileID: 0}
-  choice1: {fileID: 0}
-  choice2: {fileID: 0}
-  choice3: {fileID: 0}
   hasMoved: 0
+  hasTeleported: 0
+  hasTalkedOnce: 0
+  isInteracting: 0
   hasSat: 0
   interact: 102
   prompt: {fileID: 1838309609}
+  assignedDialogueText: 
 --- !u!54 &7822207134519116370
 Rigidbody:
   m_ObjectHideFlags: 0
