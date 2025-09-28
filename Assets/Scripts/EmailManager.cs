@@ -152,7 +152,7 @@ public class EmailManager : MonoBehaviour
     {
         while (emailQueue.Count > 0)
         {
-            float delay = Random.Range(10f, 50f);
+            float delay = Random.Range(10f, 30f);
             yield return new WaitForSeconds(delay);
             AddNewEmail(emailQueue[0]);
             emailQueue.RemoveAt(0);
@@ -265,42 +265,58 @@ public class EmailManager : MonoBehaviour
 
     public void OnReply()
     {
-        processedEmailsToday.Add(currentEmail);
-        if (!currentEmail.isFriendlyEmail)
+        if (fromText.text == "")
         {
-            Debug.Log("mistakeExplanation was triggered");
-            Mistake(currentEmail.mistakeExplanation, currentEmail);
+            return;
         }
-        else if (currentEmail.hasAttachment && !currentAttachmentHasBeenScanned)
-        {
-            Debug.Log("mistakeExplanationUnscanned was triggered");
-            Mistake(currentEmail.mistakeExplanationUnscanned, currentEmail);
-        }
-
         else
         {
-            Debug.Log(" Correct Choice! ");
+            processedEmailsToday.Add(currentEmail);
+            if (!currentEmail.isFriendlyEmail)
+            {
+                Debug.Log("mistakeExplanation was triggered");
+                Mistake(currentEmail.mistakeExplanation, currentEmail);
+            }
+            else if (currentEmail.hasAttachment && !currentAttachmentHasBeenScanned)
+            {
+                Debug.Log("mistakeExplanationUnscanned was triggered");
+                Mistake(currentEmail.mistakeExplanationUnscanned, currentEmail);
+            }
+
+            else
+            {
+                Debug.Log(" Correct Choice! ");
+            }
+            FinalizeEmailAction();
         }
-        FinalizeEmailAction();
+        
     }
 
     public void OnReport()
     {
-        processedEmailsToday.Add(currentEmail);
-
-        if (currentEmail.isFriendlyEmail)
+        if (fromText.text == "")
         {
-            Mistake(currentEmail.mistakeExplanation, currentEmail);
-        }
-        else if (!currentEmail.isFriendlyEmail && currentEmail.hasAttachment && !currentAttachmentHasBeenScanned)
-        {
-            Mistake(currentEmail.mistakeExplanationUnscanned, currentEmail);
+            return;
         }
         else
         {
-            Debug.Log("correct choice");
+            processedEmailsToday.Add(currentEmail);
+
+            if (currentEmail.isFriendlyEmail)
+            {
+                Mistake(currentEmail.mistakeExplanation, currentEmail);
+            }
+            else if (!currentEmail.isFriendlyEmail && currentEmail.hasAttachment && !currentAttachmentHasBeenScanned)
+            {
+                Mistake(currentEmail.mistakeExplanationUnscanned, currentEmail);
+            }
+            else
+            {
+                Debug.Log("correct choice");
+            }
+            FinalizeEmailAction();
         }
-        FinalizeEmailAction();
+        
     }
 
     void Mistake(string reason, EmailData email)

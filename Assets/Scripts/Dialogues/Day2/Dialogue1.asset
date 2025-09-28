@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306ae693f2d60f44db05a329a6812c80, type: 3}
+  m_Name: Dialogue1
+  m_EditorClassIdentifier: 
+  dialogue: "Someone sent me an invoice as a .docm file. Don\u2019t those usually
+    have macros?"
+  firstChoice: "It\u2019s probably fine, just open it."
+  secondChoice: Those are risky scan it first.
+  firstChoiceResponse: "I don\u2019t know\u2026 something feels off about it."
+  secondChoiceResponse: "Yeah, I\u2019d rather not be the reason IT gets called in."
+  dayAppears: 2

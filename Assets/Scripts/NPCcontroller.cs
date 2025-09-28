@@ -8,6 +8,14 @@ using UnityEngine;
 
 public class NPCcontroller : MonoBehaviour
 {
+    [HideInInspector]
+    public string idleDialogueText;
+    [HideInInspector]
+    public string workDialogueText;
+    [HideInInspector]
+    public string[] playerChoices;
+    [HideInInspector]
+    public string[] npcReplies;
     public FirstPersonController playerController;
     public TurnScript turnScript;
     public NPCmanager npcManager;
@@ -19,30 +27,32 @@ public class NPCcontroller : MonoBehaviour
     public bool hasTalkedOnce = false;
     public bool isInteracting = false;
     public bool hasSat;
-    float interactionDistance = 1f;
+    private int SelectedChoiceIndex = 1;
+    float interactionDistance = 1.5f;
     public KeyCode interact = KeyCode.F;
     public GameObject prompt;
     [HideInInspector]
-    public string assignedDialogueText;
+
 
     void Update()
     {
-            float distance = Vector3.Distance(player.position, transform.position);
-            if (distance <= interactionDistance && !isInteracting)
+        if (isInteracting) return;
+        float distance = Vector3.Distance(player.position, transform.position);
+        if (distance <= interactionDistance)
+        {
+            if (prompt != null)
             {
-                if (prompt != null)
-                {
-                    prompt.SetActive(true);
-                }
-                if (Input.GetKeyDown(interact))
-                {
-                    OnPlayerInteraction();
-                }
+                prompt.SetActive(true);
             }
-            else
+            if (Input.GetKeyDown(interact))
             {
-                prompt?.gameObject.SetActive(false);
+                OnPlayerInteraction();
             }
+        }
+        else
+        {
+            prompt?.gameObject.SetActive(false);
+        }
 
     }
 
@@ -76,7 +86,7 @@ public class NPCcontroller : MonoBehaviour
         {
             StartCoroutine(StandinInteractionSequence());
         }
-        
+
     }
 
     private IEnumerator StandinInteractionSequence()
@@ -90,14 +100,14 @@ public class NPCcontroller : MonoBehaviour
         {
             prompt.SetActive(false);
         }
-        if (DialogueHandler.Insatance != null)
+        if (DialogueHandler.Instance != null)
         {
-            DialogueHandler.Insatance.ShowDialogue(gameObject.name, assignedDialogueText);
+            DialogueHandler.Instance.ShowDialogue(gameObject.name, idleDialogueText);
         }
         yield return new WaitForSeconds(2f);
-        if (DialogueHandler.Insatance != null)
+        if (DialogueHandler.Instance != null)
         {
-            DialogueHandler.Insatance.HideDialogue();
+            DialogueHandler.Instance.HideDialogue();
         }
         if (playerController != null)
         {
@@ -123,17 +133,27 @@ public class NPCcontroller : MonoBehaviour
         turnScript.SaveOriginalRotationPosition();
         TriggerStartSitting();
         yield return StartCoroutine(turnScript.TurnToPlayer());
-        if (DialogueHandler.Insatance != null)
+
+        if (DialogueHandler.Instance != null)
         {
-            DialogueHandler.Insatance.ShowDialogue(gameObject.name, assignedDialogueText);
+            DialogueHandler.Instance.ShowDialogue(gameObject.name, workDialogueText);
         }
-        Debug.Log("NPC is interacting with player");
-        yield return new WaitForSeconds(5f);
-        if (DialogueHandler.Insatance != null)
+        Debug.Log("calling coroutine");
+        yield return StartCoroutine(WaitForPlayerChoice());
+        if (SelectedChoiceIndex >= 0 && SelectedChoiceIndex < npcReplies.Length)
         {
-            DialogueHandler.Insatance.HideDialogue();
+            string reply = npcReplies[SelectedChoiceIndex];
+
+            if (DialogueHandler.Instance != null)
+            {
+                DialogueHandler.Instance.ShowDialogue(gameObject.name, reply);
+            }
         }
-        Debug.Log("NPC has finished interacting with player");
+        yield return new WaitForSeconds(3f);
+        if (DialogueHandler.Instance != null)
+        {
+            DialogueHandler.Instance.HideDialogue();
+        }
         yield return StartCoroutine(turnScript.ReturnToOriginalRotation());
         TriggerStopSitting();
         if (playerController != null)
@@ -145,5 +165,22 @@ public class NPCcontroller : MonoBehaviour
             prompt.SetActive(true);
         }
         isInteracting = false;
+    }
+
+    private IEnumerator WaitForPlayerChoice()
+    {
+        SelectedChoiceIndex = 3;
+
+        if (DialogueHandler.Instance != null)
+        {
+            DialogueHandler.Instance.ShowChoices(playerChoices, SetSelectedChoice);
+            Debug.Log("trying to write choices");
+        }
+        yield return new WaitUntil(() => SelectedChoiceIndex != 3);
+    }
+
+    public void SetSelectedChoice(int choiceIndex)
+    {
+        SelectedChoiceIndex = choiceIndex;
     }
 }

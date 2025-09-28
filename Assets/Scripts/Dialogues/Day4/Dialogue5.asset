@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306ae693f2d60f44db05a329a6812c80, type: 3}
+  m_Name: Dialogue5
+  m_EditorClassIdentifier: 
+  dialogue: I got a file from IT Support asking me to update my credentials. The
+    domain looks odd though.
+  firstChoice: "Don\u2019t trust it IT never asks that."
+  secondChoice: Looks normal enough, just follow instructions.
+  firstChoiceResponse: "Phew. That could\u2019ve stolen all my passwords."
+  secondChoiceResponse: "Now my login is locked and flagged\u2026"
+  dayAppears: 4

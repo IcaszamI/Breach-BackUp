@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306ae693f2d60f44db05a329a6812c80, type: 3}
+  m_Name: Dialogue3
+  m_EditorClassIdentifier: 
+  dialogue: I saw an email offering new VPN instructions, but the address looks a
+    bit off.
+  firstChoice: "Ignore it, that\u2019s a phishing attempt."
+  secondChoice: They might just be rebranding. Trust it.
+  firstChoiceResponse: "Close one that could\u2019ve stolen my VPN login."
+  secondChoiceResponse: "Now I can\u2019t connect to the network at all\u2026"
+  dayAppears: 4

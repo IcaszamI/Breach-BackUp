@@ -219,9 +219,7 @@ public class GameManager : MonoBehaviour
     {
         AfterHours = false;
         currentDay++;
-        mistakeTally = 0;
         processedEmailsToday.Clear();
-        mistakesMadeToday.Clear();
         if (currentDay > 4)
         {
             LoadSceneWithTransition("WinScene");

@@ -30,7 +30,7 @@ public class MainMenuLogic : MonoBehaviour
     }
     public void settings()
     {
-        SceneManager.LoadScene(loadSettings);
+        GameManager.Instance.LoadSceneWithTransition(loadSettings);
     }
     public void backToMenu()
     {

@@ -13,6 +13,7 @@ public class CursorManager : MonoBehaviour
     [Header("SettingsUI")]
     public GameObject SettingsCanvas;
     public static CursorManager instance;
+    public NPCcontroller[] npcController;
 
     public bool isPaused = false;
 
@@ -52,6 +53,15 @@ public class CursorManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+        foreach (NPCcontroller npc in npcController)
+        {
+            if (npc.isInteracting && npc.hasTeleported)
+            {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            }
+        }
+
 
     }
 

@@ -7,16 +7,19 @@ using StarterAssets;
 
 public class DialogueHandler : MonoBehaviour
 {
-    public static DialogueHandler Insatance;
+    public static DialogueHandler Instance;
     public GameObject dialogueCanvas;
     public TextMeshProUGUI npcNameText;
     public TextMeshProUGUI dialogueText;
+    public GameObject choicePanel;
+    public Button[] choiceButtons;
+    private System.Action<int> onChoiceMade;
 
     private void Awake()
     {
-        if (Insatance == null)
+        if (Instance == null)
         {
-            Insatance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -24,9 +27,13 @@ public class DialogueHandler : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (dialogueCanvas != null)
+        dialogueCanvas?.SetActive(false);
+        choicePanel?.SetActive(false);
+
+        for (int i = 0; i < choiceButtons.Length; i++)
         {
-            dialogueCanvas.SetActive(false);
+            int choiceIndex = i;
+            choiceButtons[i].onClick.AddListener(() => ChoiceSelected(choiceIndex));
         }
     }
 
@@ -44,6 +51,8 @@ public class DialogueHandler : MonoBehaviour
                 dialogueText.text = dialogue;
             }
         }
+
+        HideChoices();
     }
 
     public void HideDialogue()
@@ -52,6 +61,47 @@ public class DialogueHandler : MonoBehaviour
         {
             dialogueCanvas.SetActive(false);
         }
+
+        HideChoices();
     }
 
+    public void ShowChoices(string[] choices, System.Action<int> callback)
+    {
+        Debug.Log("method called");
+        onChoiceMade = callback;
+        if (choicePanel != null)
+        {
+            choicePanel.SetActive(true);
+        }
+        Debug.Log("Panel opened");
+        for (int i = 0; i < choiceButtons.Length; i++)
+        {
+            Debug.Log("for loop called");
+            if (i < choices.Length)
+            {
+                choiceButtons[i].gameObject.SetActive(true);
+                Debug.Log("buttons active");
+                choiceButtons[i].GetComponentInChildren<TextMeshProUGUI>().text = choices[i];
+                Debug.Log("buttons interactivity added");
+            }
+            else
+            {
+                choiceButtons[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void HideChoices()
+    {
+        if (choicePanel != null)
+        {
+            choicePanel.SetActive(false);
+        }
+    }
+
+    public void ChoiceSelected(int index)
+    {
+        HideChoices();
+        onChoiceMade?.Invoke(index);
+    }
 }

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306ae693f2d60f44db05a329a6812c80, type: 3}
+  m_Name: Dialogue1
+  m_EditorClassIdentifier: 
+  dialogue: Do i need help? oh yeah i got this email from Ananta@breachnetworks.com.ph
+    telling me to send them the notes of last night's meeting, Should I?
+  firstChoice: Send it
+  secondChoice: Ignore it
+  firstChoiceResponse: Yeah thats what i thought so as well since the domain looks
+    just about right.
+  secondChoiceResponse: Are you sure? the email domain looks right but alright i'll
+    trust you.
+  dayAppears: 1

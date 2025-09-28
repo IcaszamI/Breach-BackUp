@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class NPCmanager : MonoBehaviour
 {
     public NPCcontroller[] npcs;
     public Transform[] idlingSPots;
     public Transform[] workstationSpots;
-    public TurnScript turnScriptPrefab;
+    public List<WorkDialogueData> allDialogue;
     void Start()
     {
         Shuffle(idlingSPots);
+        if (GameManager.Instance == null) return;
+        int currentDay = GetCurrentDay();
+        List<WorkDialogueData> dailyDialogue = allDialogue.Where(dialogue => dialogue.dayAppears == currentDay).ToList();
+
         
         for (int i = 0; i < npcs.Length; i++)
         {
@@ -18,34 +23,22 @@ public class NPCmanager : MonoBehaviour
             {
                 npcs[i].transform.position = idlingSPots[i].position;
                 npcs[i].transform.rotation = idlingSPots[i].rotation;
+                npcs[i].hasTeleported = false;
 
-                if (!npcs[i].hasTeleported)
-                {
-                    if (idlingSPots[i].gameObject.name.Contains("SpawnbyWaterDispenser") && !npcs[i].hasTalkedOnce)
-                    {
-                        npcs[i].assignedDialogueText = "Man I'm thirsty";
-                        npcs[i].hasTalkedOnce = true;
-                    }
-                    else if (idlingSPots[i].gameObject.name.Contains("SpawnbyFer") && !npcs[i].hasTalkedOnce)
-                    {
-                        npcs[i].assignedDialogueText = "Our employee of the month is.... a cat?";
-                        npcs[i].hasTalkedOnce = true;
-                    }
-                    else if (idlingSPots[i].gameObject.name.Contains("SpawnbyFilingCabinet") && !npcs[i].hasTalkedOnce)
-                    {
-                        npcs[i].assignedDialogueText = "Why do we still use these?";
-                        npcs[i].hasTalkedOnce = true;
-                    }
+                npcs[i].idleDialogueText = GetIdleDialogue(idlingSPots[i].name);
+                npcs[i].hasTalkedOnce = true;
 
-                    if (i < workstationSpots.Length)
-                    {
-                        npcs[i].workStationTarget = workstationSpots[i];
-                    }
-                }
-                
-
+                AssignWorkDialogue(npcs[i], dailyDialogue);
             }
         }
+    }
+
+    private int GetCurrentDay()
+    {
+
+        return GameManager.Instance.currentDay;
+
+        
     }
 
     public void MoveNPCToWorkstations()
@@ -57,12 +50,49 @@ public class NPCmanager : MonoBehaviour
                 npcs[i].transform.position = npcs[i].workStationTarget.position;
                 npcs[i].transform.rotation = npcs[i].workStationTarget.rotation;
                 npcs[i].hasTeleported = true;
-                npcs[i].TriggerStartTyping(); 
+                npcs[i].TriggerStartTyping();
             }
         }
         foreach (NPCcontroller npc in npcs)
         {
             npc.hasMoved = true;
+        }
+    }
+
+    private string GetIdleDialogue(string spotName)
+    {
+        if (spotName.Contains("SpawnbyWaterDispenser"))
+        {
+            return "Man I'm thirsty";
+        }
+        else if (spotName.Contains("SpawnbyFer"))
+        {
+            return "Our employee of the month is.... a cat?";
+        }
+        else if (spotName.Contains("SpawnbyFilingCabinet"))
+        {
+            return "Why do we still use these?";
+        }
+        else
+        {
+            return "Just getting ready for the day. Feel free to stop by my desk later!";
+        }
+    }
+
+    private void AssignWorkDialogue(NPCcontroller npc, List<WorkDialogueData> dialogues)
+    {
+        if (dialogues.Count > 0)
+        {
+            Debug.Log("assigning work dialogue");
+            int dialogueIndex = Random.Range(0, dialogues.Count);
+            WorkDialogueData dialogue = dialogues[dialogueIndex];
+            npc.workDialogueText = dialogue.dialogue;
+            npc.playerChoices = new string[] { dialogue.firstChoice, dialogue.secondChoice };
+            npc.npcReplies = new string[] { dialogue.firstChoiceResponse, dialogue.secondChoiceResponse };
+        }
+        else
+        {
+            Debug.LogWarning($"No Work Dialogue found for current day!");
         }
     }
 

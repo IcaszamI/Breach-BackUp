@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306ae693f2d60f44db05a329a6812c80, type: 3}
+  m_Name: Dialogue5
+  m_EditorClassIdentifier: 
+  dialogue: I already got three emails labeled Urgebt already what a way to start
+    the day
+  firstChoice: you should answer them immediately if they're urgent
+  secondChoice: careful it might be a trick
+  firstChoiceResponse: Well thats what they want you to think soemtimes attackers
+    label their email as urgent to trick us onto prioritizing and replying to them.
+  secondChoiceResponse: Yeah. But don't worry i always double check on who sent the
+    email first before taking it seriously.
+  dayAppears: 1

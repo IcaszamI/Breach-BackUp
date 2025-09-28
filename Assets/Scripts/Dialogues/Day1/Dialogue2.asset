@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306ae693f2d60f44db05a329a6812c80, type: 3}
+  m_Name: Dialogue2
+  m_EditorClassIdentifier: 
+  dialogue: I seem to have received an email from an unfamilliar domain what should
+    i do?
+  firstChoice: Reply to the email
+  secondChoice: Ignore it
+  firstChoiceResponse: What? but didn't our manager told us to ignore emails like
+    these?
+  secondChoiceResponse: Yup I knew that was the thing do I was just testing you hehe.
+  dayAppears: 1

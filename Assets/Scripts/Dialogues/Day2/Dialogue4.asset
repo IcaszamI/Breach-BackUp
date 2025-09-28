@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306ae693f2d60f44db05a329a6812c80, type: 3}
+  m_Name: Dialogue4
+  m_EditorClassIdentifier: 
+  dialogue: "I received a zip file labeled \u2018Payroll Update\u2019. But payroll
+    never sends compressed files, do they?"
+  firstChoice: "It\u2019s probably just a new format, open it."
+  secondChoice: "If it\u2019s unusual, scan it before opening."
+  firstChoiceResponse: "That doesn\u2019t sound right\u2026 better not risk it."
+  secondChoiceResponse: Exactly. A quick scan could save the whole department.
+  dayAppears: 2
