@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f30389e51db65645afeb3ced60eae81, type: 3}
+  m_Name: SpoofedDomain
+  m_EditorClassIdentifier: 
+  threatName: Spoofed Domain
+  threatDescription: A spoofed domain is a fake web or email address that closely
+    imitates a legitimate one to deceive users. Attackers change small details like
+    missing letters, extra symbols, or altered extensions to make the domain look
+    authentic and trick people into trusting fraudulent emails or websites.
+  icon: {fileID: 21300000, guid: c0283295303128f458cc46999f44cb7a, type: 3}
+  dayAppears: 1
