@@ -169,13 +169,34 @@ public class EmailManager : MonoBehaviour
                 audioSource.PlayOneShot(newEmailSound);
             }
         }
-        
+
         if (email == null) return;
         activeEmails.Add(email);
         GameObject btnObj = Instantiate(emailButtonPrefab, emailButtonContainer);
         btnObj.transform.localScale = Vector3.one;
         btnObj.GetComponentInChildren<TextMeshProUGUI>().text = email.subject;
         btnObj.GetComponent<Button>().onClick.AddListener(() => ShowEmail(email, btnObj));
+    }
+    
+    public void TryDeliverEmailOnSit()
+    {
+        if (emailQueue.Count > 0)
+        {
+            if (Random.value < 0.1f)
+            {
+                EmailData emailToDeliver = emailQueue[0];
+                emailQueue.RemoveAt(0);
+                AddNewEmail(emailToDeliver);
+            }
+            else
+            {
+                Debug.Log("Chance failed");
+            }
+        }
+        else
+        {
+            Debug.Log("No more emails to deliver");
+        }
     }
       
     public void ShowEmail(EmailData email, GameObject buttonObj)

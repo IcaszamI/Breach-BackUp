@@ -32,6 +32,7 @@ public class SittingInteraction : MonoBehaviour
     public GameObject power;
     [Header("Screen Cursor Script")]
     public ScreenCursor screenCursor;
+    public EmailManager emailManager;
     public NPCcontroller[] npcs;
     public float interactionDistance = 1f;
     public KeyCode sit = KeyCode.F;
@@ -62,6 +63,10 @@ public class SittingInteraction : MonoBehaviour
 
     void sitDown()
     {
+        if (playerController != null)
+        {
+            playerController.gameObject.SetActive(false);
+        }
         npc?.MoveNPCToWorkstations();
         foreach (NPCcontroller npc in npcs)
         {
@@ -97,12 +102,17 @@ public class SittingInteraction : MonoBehaviour
             Debug.Log("tried to enabled");
         }
         hudManager.CompleteSitQuest();
+        emailManager.TryDeliverEmailOnSit();
     }
 
     public void standUp()
     {
         isSiting = false;
-        
+
+        if (playerController != null)
+        {
+            playerController.gameObject.SetActive(true);
+        }
         if (playerCam != null)
         {
             playerCam?.SetActive(true);
