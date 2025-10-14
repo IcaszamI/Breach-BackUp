@@ -2069,6 +2069,22 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bd6ea4270a935f144a523e33aec2b110, type: 2}
   - {fileID: 11400000, guid: dc1bf46618ed34b48b979163aca2efbc, type: 2}
   - {fileID: 11400000, guid: a18964cae6dda084b8a087c993a44b76, type: 2}
+  allHelpDialogue:
+  - {fileID: 11400000, guid: e532bd9313dcb17448dd9c19912bbd49, type: 2}
+  - {fileID: 11400000, guid: 1f544d333382c1f4abc6bfccb0407a4c, type: 2}
+  - {fileID: 11400000, guid: 62a8ced9f90c48a45843f184fb8ed944, type: 2}
+  - {fileID: 11400000, guid: dc902abef079bd0428ad3b912b3af035, type: 2}
+  - {fileID: 11400000, guid: 83bb22c194fe021488649f5f8da407fc, type: 2}
+  - {fileID: 11400000, guid: c6ef4c32409dd15449052a91f46e4919, type: 2}
+  - {fileID: 11400000, guid: ca017f02e8705254dba3b9fe4f0522a5, type: 2}
+  - {fileID: 11400000, guid: 807410db0831e3544af1a48b7c021c2c, type: 2}
+  - {fileID: 11400000, guid: 36689bad6bd24044d813c65d10885536, type: 2}
+  - {fileID: 11400000, guid: 7a467d11f2a6b3146bdf5795016168fb, type: 2}
+  - {fileID: 11400000, guid: f0465fdaafbf5a649a213444d75f05b1, type: 2}
+  - {fileID: 11400000, guid: 3de2c692fa69b814f9521dc4c2db35da, type: 2}
+  sit: {fileID: 8493015188648561606}
+  SpawnChance: 10
+  spawnSpot: {fileID: 556464853}
 --- !u!1 &192014969
 GameObject:
   m_ObjectHideFlags: 0
@@ -3097,6 +3113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7a198d57f90dc4f84d0689479ea596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npc: {fileID: 188940365}
   allEmails:
   - {fileID: 11400000, guid: 4b87ab718a6b2e04ab5d9627d499449f, type: 2}
   - {fileID: 11400000, guid: 5b28a9b51d5a3e94ab9c18f1c2c978cd, type: 2}
@@ -5431,13 +5448,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556464852}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 6.701, y: 1.138, z: 1.192}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &593060703
 GameObject:
   m_ObjectHideFlags: 0
@@ -10664,7 +10681,9 @@ GameObject:
   - component: {fileID: 1238571752}
   - component: {fileID: 1238571754}
   - component: {fileID: 1238571753}
+  - component: {fileID: 1238571757}
   - component: {fileID: 1238571756}
+  - component: {fileID: 1238571758}
   m_Layer: 0
   m_Name: SitCamer
   m_TagString: Untagged
@@ -10806,6 +10825,36 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &1238571757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238571751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88082df0738a23438e423036ec6d2d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 5
+--- !u!114 &1238571758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238571751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22386c7a7d670d34ab163d2782b48d61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npc:
+  - {fileID: 7822207134519116369}
+  - {fileID: 768911014249299765}
+  - {fileID: 198150077657162001}
+  turnTarget: {fileID: 556464852}
 --- !u!1 &1259343098
 GameObject:
   m_ObjectHideFlags: 0
@@ -22129,7 +22178,14 @@ MonoBehaviour:
   workDialogueText: 
   playerChoices: []
   npcReplies: []
+  helpDialoguetext: 
+  helpChoices: []
+  helpReply: []
+  originalReturnPosition: {x: 0, y: 0, z: 0}
+  originalReturnRotation: {x: 0, y: 0, z: 0, w: 0}
+  wasTyping: 0
   playerController: {fileID: 744785328}
+  cameraTurn: {fileID: 1238571758}
   turnScript: {fileID: 1987735592}
   npcManager: {fileID: 188940365}
   player: {fileID: 744785326}
@@ -22141,6 +22197,7 @@ MonoBehaviour:
   hasSat: 0
   interact: 102
   prompt: {fileID: 1121545824}
+  dialogueType: 0
 --- !u!1 &220391039824473041
 GameObject:
   m_ObjectHideFlags: 0
@@ -22711,7 +22768,14 @@ MonoBehaviour:
   workDialogueText: 
   playerChoices: []
   npcReplies: []
+  helpDialoguetext: 
+  helpChoices: []
+  helpReply: []
+  originalReturnPosition: {x: 0, y: 0, z: 0}
+  originalReturnRotation: {x: 0, y: 0, z: 0, w: 0}
+  wasTyping: 0
   playerController: {fileID: 744785328}
+  cameraTurn: {fileID: 1238571758}
   turnScript: {fileID: 11084186}
   npcManager: {fileID: 188940365}
   player: {fileID: 744785326}
@@ -22723,6 +22787,7 @@ MonoBehaviour:
   hasSat: 0
   interact: 102
   prompt: {fileID: 2120868453}
+  dialogueType: 0
 --- !u!33 &780290574001600630
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -30461,7 +30526,14 @@ MonoBehaviour:
   workDialogueText: 
   playerChoices: []
   npcReplies: []
+  helpDialoguetext: 
+  helpChoices: []
+  helpReply: []
+  originalReturnPosition: {x: 0, y: 0, z: 0}
+  originalReturnRotation: {x: 0, y: 0, z: 0, w: 0}
+  wasTyping: 0
   playerController: {fileID: 744785328}
+  cameraTurn: {fileID: 1238571758}
   turnScript: {fileID: 426631823}
   npcManager: {fileID: 188940365}
   player: {fileID: 744785326}
@@ -30473,6 +30545,7 @@ MonoBehaviour:
   hasSat: 0
   interact: 102
   prompt: {fileID: 1838309609}
+  dialogueType: 0
 --- !u!54 &7822207134519116370
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31347,7 +31420,7 @@ MonoBehaviour:
   - {fileID: 768911014249299765}
   interactionDistance: 1
   sit: 102
-  isSiting: 0
+  isSitting: 0
 --- !u!4 &8493770482923778954
 Transform:
   m_ObjectHideFlags: 0

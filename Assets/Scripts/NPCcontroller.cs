@@ -1,9 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using StarterAssets;
-using TMPro;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class NPCcontroller : MonoBehaviour
@@ -16,7 +12,21 @@ public class NPCcontroller : MonoBehaviour
     public string[] playerChoices;
     [HideInInspector]
     public string[] npcReplies;
+
+    [HideInInspector]
+    public string helpDialoguetext;
+    [HideInInspector]
+    public string[] helpChoices;
+    [HideInInspector]
+    public string[] helpReply;
+    [HideInInspector]
+    public Vector3 originalReturnPosition;
+    public Quaternion originalReturnRotation;
+    [HideInInspector]
+    public bool wasTyping = false;
+
     public FirstPersonController playerController;
+    public CameraTurn cameraTurn;
     public TurnScript turnScript;
     public NPCmanager npcManager;
     public Transform player;
@@ -27,11 +37,14 @@ public class NPCcontroller : MonoBehaviour
     public bool hasTalkedOnce = false;
     public bool isInteracting = false;
     public bool hasSat;
-    private int SelectedChoiceIndex = 1;
+    private int SelectedChoiceIndex = -1;
+    private bool isImmediateInteraction = false;
     float interactionDistance = 1.5f;
     public KeyCode interact = KeyCode.F;
     public GameObject prompt;
-    [HideInInspector]
+    public enum DialogueType { Idle, Work, Help }
+    public DialogueType dialogueType;
+
 
 
     void Update()
@@ -76,6 +89,11 @@ public class NPCcontroller : MonoBehaviour
         animator.SetTrigger("StopSitting");
     }
 
+    public void TriggerStartIdling()
+    {
+        animator.SetTrigger("StartIdling");
+    }
+
     public void OnPlayerInteraction()
     {
         if (hasTeleported)
@@ -87,6 +105,63 @@ public class NPCcontroller : MonoBehaviour
             StartCoroutine(StandinInteractionSequence());
         }
 
+    }
+
+    public void StartImmediateInteraction()
+    {
+        isImmediateInteraction = true;
+        StartCoroutine(ImmediateInteractionSequence());
+    }
+
+    private IEnumerator ImmediateInteractionSequence()
+    {
+        TriggerStartIdling();
+        isImmediateInteraction = true;
+        isInteracting = true;
+        if (prompt != null)
+        {
+            prompt.SetActive(false);
+        }
+        if (cameraTurn != null)
+        {
+            Debug.Log("calling camera turn");
+            yield return StartCoroutine(cameraTurn.FaceNPC());
+        }
+        if (DialogueHandler.Instance != null)
+        {
+            dialogueType = DialogueType.Help;
+            DialogueHandler.Instance.ShowDialogue(gameObject.name, helpDialoguetext);
+        }
+        yield return StartCoroutine(WaitForHelpChoice());
+        if (SelectedChoiceIndex >= 0 && SelectedChoiceIndex < helpReply.Length)
+        {
+            string reply = helpReply[SelectedChoiceIndex];
+
+            if (DialogueHandler.Instance != null)
+            {
+                DialogueHandler.Instance.ShowDialogue(gameObject.name, reply);
+            }
+        }
+        yield return new WaitForSeconds(3f);
+        if (DialogueHandler.Instance != null)
+        {
+            DialogueHandler.Instance.HideDialogue();
+        }
+        if (cameraTurn != null)
+        {
+            Debug.Log("calling camera turn");
+            yield return StartCoroutine(cameraTurn.FaceComputer());
+        }
+        transform.position = originalReturnPosition;
+        transform.rotation = originalReturnRotation;
+        hasTeleported = true;
+        if (wasTyping)
+        {
+            TriggerStartTyping();
+        }
+
+        isImmediateInteraction = false;
+        isInteracting = false;
     }
 
     private IEnumerator StandinInteractionSequence()
@@ -102,6 +177,7 @@ public class NPCcontroller : MonoBehaviour
         }
         if (DialogueHandler.Instance != null)
         {
+            dialogueType = DialogueType.Idle;
             DialogueHandler.Instance.ShowDialogue(gameObject.name, idleDialogueText);
         }
         yield return new WaitForSeconds(2f);
@@ -136,6 +212,7 @@ public class NPCcontroller : MonoBehaviour
 
         if (DialogueHandler.Instance != null)
         {
+            dialogueType = DialogueType.Work;
             DialogueHandler.Instance.ShowDialogue(gameObject.name, workDialogueText);
         }
         Debug.Log("calling coroutine");
@@ -174,6 +251,17 @@ public class NPCcontroller : MonoBehaviour
         if (DialogueHandler.Instance != null)
         {
             DialogueHandler.Instance.ShowChoices(playerChoices, SetSelectedChoice);
+            Debug.Log("trying to write choices");
+        }
+        yield return new WaitUntil(() => SelectedChoiceIndex != 3);
+    }
+    private IEnumerator WaitForHelpChoice()
+    {
+        SelectedChoiceIndex = 3;
+
+        if (DialogueHandler.Instance != null)
+        {
+            DialogueHandler.Instance.ShowChoices(helpChoices, SetSelectedChoice);
             Debug.Log("trying to write choices");
         }
         yield return new WaitUntil(() => SelectedChoiceIndex != 3);

@@ -11,7 +11,7 @@ public class LapTopPower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!sit.isSiting)
+        if (!sit.isSitting)
         {
             screenOff.SetActive(true);
         }

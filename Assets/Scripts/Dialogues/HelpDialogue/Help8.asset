@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306ae693f2d60f44db05a329a6812c80, type: 3}
+  m_Name: Help8
+  m_EditorClassIdentifier: 
+  dialogue: A coworker said ChartBuilder helps in creating charts and presentations.
+    Can I get permission to use it?
+  firstChoice: Sure go ahead its not blacklisted
+  secondChoice: No just do your job better
+  firstChoiceResponse: Thanks i am gonna make the best presentation for tommorows
+    meeting with this
+  secondChoiceResponse: Whats with the attitude? Ugh fine looks like its going to
+    be a long night tonight
+  dayAppears: 3

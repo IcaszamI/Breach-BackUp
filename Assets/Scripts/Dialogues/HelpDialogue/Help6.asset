@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306ae693f2d60f44db05a329a6812c80, type: 3}
+  m_Name: Help6
+  m_EditorClassIdentifier: 
+  dialogue: Ever wondered who the two empty cubicles are for?
+  firstChoice: Now that youve mentioned it...
+  secondChoice: Nah its not my job to ask questions
+  firstChoiceResponse: well the one on the far left was Fer's but we dont see him
+    much. The other one? thats for the previous IT guy we have who was fired before
+    we hired you
+  secondChoiceResponse: Wow it takes a strong mind to not want to hear gossip but
+    hey i'll leave you be now
+  dayAppears: 2

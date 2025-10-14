@@ -11891,6 +11891,7 @@ MonoBehaviour:
   loadSettings: Settings
   loadMenu: MainMenu
   loadHome: Home
+  loadIntro: NewGameScene
 --- !u!114 &563183631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18280,6 +18281,7 @@ MonoBehaviour:
   loadSettings: Settings
   loadMenu: MainMenu
   loadHome: Home
+  loadIntro: NewGameScene
 --- !u!1 &825255036
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,13 +36,13 @@ public class SittingInteraction : MonoBehaviour
     public NPCcontroller[] npcs;
     public float interactionDistance = 1f;
     public KeyCode sit = KeyCode.F;
-    public bool isSiting = false;
+    public bool isSitting = false;
 
     void Update()
     {
         float distance = Vector3.Distance(player.position, transform.position);
 
-        if (distance <= interactionDistance && !isSiting)
+        if (distance <= interactionDistance && !isSitting)
         {
             if (prompt != null)
             {
@@ -75,7 +75,7 @@ public class SittingInteraction : MonoBehaviour
                 npc.hasSat = true;
             }
         }
-        isSiting = true;
+        isSitting = true;
         if (playerCam != null)
         {
             playerCam.SetActive(false);
@@ -107,7 +107,7 @@ public class SittingInteraction : MonoBehaviour
 
     public void standUp()
     {
-        isSiting = false;
+        isSitting = false;
 
         if (playerController != null)
         {

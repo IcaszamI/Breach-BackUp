@@ -5,9 +5,11 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Security;
+using UnityEngine.Timeline;
 
 public class EmailManager : MonoBehaviour
 {
+    public NPCmanager npc;
     [Header("Email Data")]
     public List<EmailData> allEmails;
     [Header("UI reference")]
@@ -242,6 +244,14 @@ public class EmailManager : MonoBehaviour
         {
             int timeToAdvance = Random.Range(30, 61);
             GameManager.Instance.AdvanceTime(timeToAdvance);
+        }
+        if (npc != null)
+        {
+            if (activeEmails.Count > 1)
+            {
+                npc.TrySpawnRandomInteraction();
+            }
+            
         }
         clearContents();
         CheckDayCompletion();

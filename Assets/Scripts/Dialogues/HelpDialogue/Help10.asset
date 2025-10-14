@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306ae693f2d60f44db05a329a6812c80, type: 3}
+  m_Name: Help10
+  m_EditorClassIdentifier: 
+  dialogue: "I got an email from security@breachnetwork.ph without the \u2018s\u2019
+    again telling me to update my login via a link."
+  firstChoice: Ignore it its probably a spoofed domain
+  secondChoice: Maybe its real?
+  firstChoiceResponse: Yeah thats what i was thinking i just needed somebody else's
+    input
+  secondChoiceResponse: Are you for real? the last IT guy that got fired did exactly
+    what this email told him. Forget it ill look for someone else to help me decide
+  dayAppears: 4

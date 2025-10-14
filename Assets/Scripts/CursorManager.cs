@@ -43,7 +43,7 @@ public class CursorManager : MonoBehaviour
             Cursor.visible = true;
         }
 
-        else if (sit.isSiting)
+        else if (sit.isSitting)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;

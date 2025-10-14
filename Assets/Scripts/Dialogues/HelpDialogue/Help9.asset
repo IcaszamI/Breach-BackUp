@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306ae693f2d60f44db05a329a6812c80, type: 3}
+  m_Name: Help9
+  m_EditorClassIdentifier: 
+  dialogue: Hey sorrry to disturb you while you  were working i just wanted to check
+    up on you. How have you been adjusting to the office life?
+  firstChoice: Its a lot but i think i can manage
+  secondChoice: I'm doing great this is everything ive imagined office life to be
+    like
+  firstChoiceResponse: Yeah we've all been there but hey I like your moxy kid you'd
+    probably adapt to the office life in no time
+  secondChoiceResponse: I like the enthusiasm not many people enjoy being stuck in
+    a cubivle for 8 hours straight
+  dayAppears: 3

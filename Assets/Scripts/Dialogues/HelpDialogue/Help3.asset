@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306ae693f2d60f44db05a329a6812c80, type: 3}
+  m_Name: Help3
+  m_EditorClassIdentifier: 
+  dialogue: You're the new hire right? do you know what youre task is today?
+  firstChoice: I dont really know what is it?
+  secondChoice: Im checking domains right?
+  firstChoiceResponse: are you serious? check the criterias app on your computer
+    before answering your emails okay?
+  secondChoiceResponse: Good at least youre better than the last guy we fired. Guy
+    was so gullible he was giving his company credentials left, right, abd center
+    hahahaha
+  dayAppears: 1
