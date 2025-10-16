@@ -7,6 +7,7 @@ using UnityEngine;
 public class PauseScript : MonoBehaviour
 {
     public ScreenCursor screenCursor;
+    public GameObject virtualCursor;
     public CursorManager cursor;
     public GameObject hudPanel;
     public GameObject dialoguePanel;
@@ -55,6 +56,7 @@ public class PauseScript : MonoBehaviour
         SettingsUI?.SetActive(false);
         hudPanel?.SetActive(true);
         dialoguePanel?.SetActive(false);
+        virtualCursor?.SetActive(true);
         if (playerController != null)
         {
             playerController.enabled = true;
@@ -73,6 +75,7 @@ public class PauseScript : MonoBehaviour
         SettingsUI?.SetActive(false);
         hudPanel?.SetActive(false);
         dialoguePanel?.SetActive(false);
+        virtualCursor?.SetActive(false);
         if (screenCursor != null)
         {
             screenCursor.enabled = false;

@@ -1,15 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using UnityEngine.SceneManagement;
-using System.Security;
-using UnityEngine.Timeline;
 
-public class EmailManager : MonoBehaviour
+public class HomeEmailManager : MonoBehaviour
 {
-    public NPCmanager npc;
     [Header("Email Data")]
     public List<EmailData> allEmails;
     [Header("UI reference")]
@@ -35,7 +31,6 @@ public class EmailManager : MonoBehaviour
     private List<EmailData> activeEmails = new List<EmailData>();
     private List<EmailData> emailQueue = new List<EmailData>();
     private List<EmailData> mistakesMade = new List<EmailData>();
-    private List<EmailData> processedEmailsToday = new List<EmailData>();
 
     private EmailData currentEmail;
     private GameObject currentEmailButton;
@@ -59,10 +54,6 @@ public class EmailManager : MonoBehaviour
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-    }
-    public List<EmailData> GetProcessedEmails()
-    {
-        return processedEmailsToday;
     }
 
     public List<EmailData> GetMistakes()
@@ -93,7 +84,6 @@ public class EmailManager : MonoBehaviour
         emailQueue.Clear();
         activeEmails.Clear();
         mistakesMade.Clear();
-        processedEmailsToday.Clear();
         mistakeTally = 0;
         tallyCounter.text = mistakeTally.ToString();
         foreach (Transform child in emailButtonContainer)
@@ -242,19 +232,10 @@ public class EmailManager : MonoBehaviour
         }
         if (GameManager.Instance != null)
         {
-            int timeToAdvance = Random.Range(30, 61);
+            int timeToAdvance = Random.Range(5, 10);
             GameManager.Instance.AdvanceTime(timeToAdvance);
         }
-        if (npc != null)
-        {
-            if (activeEmails.Count > 2)
-            {
-                npc.TrySpawnRandomInteraction();
-            }
-            
-        }
         clearContents();
-        CheckDayCompletion();
     }
 
     public void OnClickAttachment()
@@ -283,7 +264,6 @@ public class EmailManager : MonoBehaviour
     public void OnDownloadFile()
     {
         attachmentOptionsPanel.SetActive(false);
-        processedEmailsToday.Add(currentEmail);
         if (currentEmail.isMalicious)
         {
             Mistake(currentEmail.mistakeExplanation, currentEmail);
@@ -302,7 +282,6 @@ public class EmailManager : MonoBehaviour
         }
         else
         {
-            processedEmailsToday.Add(currentEmail);
             if (!currentEmail.isFriendlyEmail)
             {
                 Debug.Log("mistakeExplanation was triggered");
@@ -331,7 +310,6 @@ public class EmailManager : MonoBehaviour
         }
         else
         {
-            processedEmailsToday.Add(currentEmail);
 
             if (currentEmail.isFriendlyEmail)
             {
@@ -363,21 +341,8 @@ public class EmailManager : MonoBehaviour
         {
             mistakesMade.Add(email);
         }
-
-        if (mistakeTally >= maxTally)
-        {
-            if (GameManager.Instance != null)
-            {
-                GameManager.Instance.CompleteDay(processedEmailsToday, mistakesMade);
-            }
-
-        }
     }
 
-    void CheckDayCompletion()
-    {
-        StartCoroutine(CheckAfterFrame());
-    }
 
     IEnumerator ShowProgressBar(string text, float duration, System.Action onComplete)
     {
@@ -428,22 +393,6 @@ public class EmailManager : MonoBehaviour
         activeProgressBarCoroutine = null;
     }
 
-    IEnumerator CheckAfterFrame()
-    {
-        yield return null;
-
-        if (emailButtonContainer.childCount == 0 && emailQueue.Count == 0)
-        {
-            Debug.Log("Day Complete, Transitioniung to report scene");
-            Debug.Log("Emailmanager is sending" + processedEmailsToday.Count + " processed and " + mistakesMade.Count + " mistakes");
-            if (GameManager.Instance != null)
-            {
-                GameManager.Instance.StopTimer();
-                GameManager.Instance.CompleteDay(processedEmailsToday, mistakesMade);
-            }
-        }
-
-    }
 
     public void buildMistakePanel()
     {

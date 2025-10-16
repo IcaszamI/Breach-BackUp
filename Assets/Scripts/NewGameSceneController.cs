@@ -11,9 +11,18 @@ public class NewGameSceneController : MonoBehaviour
     public string introMessage;
     public float typingSpeed = 0.3f;
     public float endDelay = 3.0f;
+    public KeyCode skip = KeyCode.Space;
     void Start()
     {
         StartCoroutine(PlayIntroCoroutine());
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(skip))
+        {
+            SkipIntroCoroutine();
+        }
     }
 
     private IEnumerator PlayIntroCoroutine()
@@ -30,5 +39,10 @@ public class NewGameSceneController : MonoBehaviour
         {
             GameManager.Instance.LoadSceneWithTransition("Home");
         }
+    }
+
+    public void SkipIntroCoroutine()
+    {
+        GameManager.Instance.LoadSceneWithTransition("Home");
     }
 }

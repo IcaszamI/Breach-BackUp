@@ -93,14 +93,9 @@ public class SittingInteraction : MonoBehaviour
             power?.SetActive(false);
         }
 
-        if (playerController != null)
-            playerController.enabled = false;
-
-        if (screenCursor != null)
-        {
-            screenCursor.enabled = true;
-            Debug.Log("tried to enabled");
-        }
+        if (playerController != null) playerController.enabled = false;
+        screenCursor.enabled = true;
+        Debug.Log("tried to enabled");
         hudManager.CompleteSitQuest();
         emailManager.TryDeliverEmailOnSit();
     }
@@ -132,13 +127,9 @@ public class SittingInteraction : MonoBehaviour
             power?.SetActive(false);
         }
 
-        if (playerController != null)
-            playerController.enabled = true;
+        if (playerController != null) playerController.enabled = true;
+        screenCursor.enabled = false;
 
-        if (screenCursor != null)
-        {
-            screenCursor.enabled = false;
-        }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

@@ -8,6 +8,8 @@ public class LaptopScreenLogic : MonoBehaviour
     public GameObject threatsIcon;
     public GameObject emailUI;
     public GameObject threatsUI;
+    public GameObject mistakeIcon;
+    public GameObject mistakeUI;
 
     public void OpenEmail()
     {
@@ -25,6 +27,14 @@ public class LaptopScreenLogic : MonoBehaviour
         }
     }
 
+    public void OpenMistakes()
+    {
+        if (mistakeUI != null && !mistakeUI.activeInHierarchy)
+        {
+            mistakeUI.SetActive(true);
+        }
+    }
+
     public void closeEmail()
     {
         if (emailUI != null && emailUI.activeInHierarchy)
@@ -37,6 +47,13 @@ public class LaptopScreenLogic : MonoBehaviour
         if (threatsUI != null && threatsUI.activeInHierarchy)
         {
             threatsUI.SetActive(false);
+        }
+    }
+    public void closeMistakes()
+    {
+        if (mistakeUI != null && mistakeUI.activeInHierarchy)
+        {
+            mistakeUI.SetActive(false);
         }
     }
 }

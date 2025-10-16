@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour
 {
     public string loadMainMenu = "MainMenu";
-    // Start is called before the first frame update
     public void goToMainMenu()
     {
         GameManager.Instance.LoadSceneWithTransition(loadMainMenu); 
