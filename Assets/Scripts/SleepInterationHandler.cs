@@ -13,6 +13,14 @@ public class SleepInterationHandler : MonoBehaviour
     public GameObject daylights;
     public float interactionDistance = 4f;
     public KeyCode interact = KeyCode.F;
+    private AudioSource audioSource;
+    public AudioClip Yawn;
+
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
 
     void Update()
     {
@@ -34,12 +42,22 @@ public class SleepInterationHandler : MonoBehaviour
             }
             if (Input.GetKeyDown(interact))
             {
-                GameManager.Instance.StartNextDay();
+                StartCoroutine(SleepSequence());
             }
         }
         else
         {
             prompt?.gameObject.SetActive(false);
         }
+    }
+
+    private IEnumerator SleepSequence()
+    {
+        if (audioSource != null && Yawn != null)
+        {
+            audioSource.PlayOneShot(Yawn);
+        }
+        yield return new WaitForSeconds(3f);
+        GameManager.Instance.StartNextDay();
     }
 }

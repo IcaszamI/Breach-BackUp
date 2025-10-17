@@ -147,6 +147,14 @@ public class EmailManager : MonoBehaviour
             emailQueue.RemoveAt(0);
         }
 
+        if (GameManager.Instance != null)
+        {
+            if (GameManager.Instance.AfterHours && GameManager.Instance.currentDay == 1)
+            {
+                activeEmails.RemoveAt(0);
+            }
+        }
+
         StartCoroutine(EmailDeliveryCoroutine());
     }
 

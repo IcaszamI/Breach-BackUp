@@ -10,13 +10,11 @@ public class HUDManager : MonoBehaviour
 {
     [Header("UI References")]
     public FirstPersonController playerController;
-    public GameObject phoneCanvas;
     public TextMeshProUGUI dayText;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI sitQuestText;
     public TextMeshProUGUI emailQuestText;
     public TextMeshProUGUI criteriaQuestText;
-    public GameObject phonePrompt;
     public TextMeshProUGUI HomeQuests;
     public GameObject helper;
     private int emailsProcessed = 0;
@@ -63,42 +61,7 @@ public class HUDManager : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(checkPhone) && !phoneCanvas.activeInHierarchy)
-        {
-            OpenPhone();
-        }
-        else if (Input.GetKeyDown(checkPhone) && phoneCanvas.activeInHierarchy)
-        {
-            ClosePhone();
-        }
-    }
 
-    public void OpenPhone()
-    {
-        if (playerController != null)
-        {
-            playerController.enabled = false;
-        }
-        if (phoneCanvas != null)
-        {
-            phoneCanvas.SetActive(true);
-            phonePrompt?.SetActive(false);
-        }
-    }
-
-    public void ClosePhone()
-    {
-        if (playerController != null)
-        {
-            playerController.enabled = true;
-        }
-        if (phoneCanvas != null)
-        {
-            phoneCanvas.SetActive(false);
-        }
-    }
 
 
     public void SetHomeQuestsText()
@@ -205,19 +168,6 @@ public class HUDManager : MonoBehaviour
         {
             emailQuestText.gameObject.SetActive(true);
             UpdateEmailQuestText();
-        }
-    }
-
-    public void DisplayPhonePrompt()
-    {
-        if (phoneCanvas != null && !phoneCanvas.activeInHierarchy)
-        {
-            phonePrompt?.SetActive(true);
-        }
-        else
-        {
-            phoneCanvas.SetActive(false);
-        
         }
     }
 }

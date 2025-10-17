@@ -22,9 +22,13 @@ public class GameManager : MonoBehaviour
     public List<EmailData> processedEmailsToday = new List<EmailData>();
     public List<EmailData> mistakesMadeToday = new List<EmailData>();
     public bool AfterHours = false;
-    public bool hasSeenIntroDialogue;
+    public bool hasSeenHomeIntro = false;
     public bool hasSeenCriteria;
     public bool hasSeenEmail;
+    public bool hasSeenOfficeIntro = false;
+    public bool firstTimeOpeningEmailInDay2 = false;
+    public bool firstTimeOpeningCriteriaInDay3 = false;
+    public bool firsTimeStandingUp = false;
 
 
     private void OnEnable() { SceneManager.sceneLoaded += OnSceneLoaded; }
@@ -197,11 +201,11 @@ public class GameManager : MonoBehaviour
         processedEmailsToday = new List<EmailData>(processedEmails);
         mistakesMadeToday = new List<EmailData>(mistakes);
         Debug.Log("Game manager has stored " + processedEmailsToday.Count + " processed emails and " + mistakesMadeToday.Count + " mistakes.");
-        if (mistakes.Count == 3)
+        if (mistakes.Count >= 3)
         {
             LoadSceneWithTransition("RepeatDayScene");
         }
-        if (mistakes.Count < 3)
+        else if (mistakes.Count < 3)
         {
             LoadSceneWithTransition("NextDayScene");
         }

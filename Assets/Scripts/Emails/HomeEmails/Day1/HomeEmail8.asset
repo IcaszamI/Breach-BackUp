@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: HomeEmail8
+  m_EditorClassIdentifier: 
+  senderEmail: Robert@Jmeil.com
+  subject: Yo
+  body: Caz! long time no see I haven't seen you at the club lately are you okay?
+    oh yeah I remembered last time you said you were app;ying for a job how'd it
+    go?
+  attachmentName: 
+  hasAttachment: 0
+  isMalicious: 0
+  isBlacklistedApp: 0
+  isCorrectDomain: 0
+  isFriendlyEmail: 1
+  isFirstEmail: 0
+  hasBeenScanned: 0
+  dayAppears: 1
+  mistakeExplanation: This email was safe it was not asking for any personal information
+    nor was it was it asking you ti click / claim something
+  correctActionHint: this email should have received a reply
+  consequenceText: Ignoring this email and being too focused on your job has strained
+    your social life that your friends are now slowly moving on without you
+  mistakeExplanationUnscanned: 

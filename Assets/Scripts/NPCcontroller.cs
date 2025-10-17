@@ -44,8 +44,15 @@ public class NPCcontroller : MonoBehaviour
     public GameObject prompt;
     public enum DialogueType { Idle, Work, Help }
     public DialogueType dialogueType;
+    private AudioSource audioSource;
+    public AudioClip Hmm;
+    public AudioClip Hey;
 
-
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -67,11 +74,6 @@ public class NPCcontroller : MonoBehaviour
             prompt?.gameObject.SetActive(false);
         }
 
-    }
-
-    void Awake()
-    {
-        animator = GetComponent<Animator>();
     }
 
     public void TriggerStartTyping()
@@ -121,6 +123,10 @@ public class NPCcontroller : MonoBehaviour
         if (prompt != null)
         {
             prompt.SetActive(false);
+        }
+        if (audioSource != null && Hey != null)
+        {
+            audioSource.PlayOneShot(Hey);
         }
         if (cameraTurn != null)
         {
@@ -175,6 +181,10 @@ public class NPCcontroller : MonoBehaviour
         {
             prompt.SetActive(false);
         }
+        if (audioSource != null && Hmm != null)
+        {
+            audioSource.PlayOneShot(Hmm);
+        }
         if (DialogueHandler.Instance != null)
         {
             dialogueType = DialogueType.Idle;
@@ -205,6 +215,10 @@ public class NPCcontroller : MonoBehaviour
         if (prompt != null)
         {
             prompt.SetActive(false);
+        }
+        if (audioSource != null && Hmm != null)
+        {
+            audioSource.PlayOneShot(Hmm);
         }
         turnScript.SaveOriginalRotationPosition();
         TriggerStartSitting();

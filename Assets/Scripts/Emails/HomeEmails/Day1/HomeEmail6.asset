@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: HomeEmail6
+  m_EditorClassIdentifier: 
+  senderEmail: security@Jmeil.com
+  subject: Check-up
+  body: 'We have detected unauthorized access on your Jmeil account. Please verify
+    your identity by clicking the secure link below.
+
+    <u>VERIFY ACCOUNT</u>'
+  attachmentName: 
+  hasAttachment: 0
+  isMalicious: 0
+  isBlacklistedApp: 0
+  isCorrectDomain: 0
+  isFriendlyEmail: 0
+  isFirstEmail: 0
+  hasBeenScanned: 0
+  dayAppears: 1
+  mistakeExplanation: Do not easily trust emails like these especially when they
+    ask you to click or claim something
+  correctActionHint: This email should have been ignored
+  consequenceText: Because you responded by clicking the link your personal data
+    was later seen being sold off in the dark web.
+  mistakeExplanationUnscanned: 

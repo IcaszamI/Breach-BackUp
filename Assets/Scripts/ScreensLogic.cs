@@ -17,6 +17,7 @@ public class ScreensLogic : MonoBehaviour
     [Header("BlackListed Apps")]
     public GameObject blackListedAppsUI;
     public HUDManager hudManager;
+    public HelperMessagesScript helperMessagesScript; 
     [Header("Mistakes")]
     public GameObject mistakesUI;
     [Header("Icons")]
@@ -57,6 +58,14 @@ public class ScreensLogic : MonoBehaviour
     {
         if (emailUI != null && !emailUI.activeInHierarchy)
         {
+            if (helperMessagesScript != null)
+            {
+                if (GameManager.Instance.currentDay == 2 && !GameManager.Instance.firstTimeOpeningEmailInDay2)
+                {
+                    StartCoroutine(helperMessagesScript.FirstTimeOpeningEmailInDay2Sequence());
+                    GameManager.Instance.firstTimeOpeningEmailInDay2 = true;
+                }
+            }
             emailUI.SetActive(true);
             criteriaIcon.SetActive(false);
             powerIcon.SetActive(false);
@@ -74,6 +83,14 @@ public class ScreensLogic : MonoBehaviour
     {
         if (criteriaUI != null && !criteriaUI.activeInHierarchy)
         {
+            if (helperMessagesScript != null)
+            {
+                if (GameManager.Instance.currentDay == 3 && !GameManager.Instance.firstTimeOpeningCriteriaInDay3)
+                {
+                    StartCoroutine(helperMessagesScript.FirstTimeOpeningCriteriaInDay3Sequence());
+                    GameManager.Instance.firstTimeOpeningCriteriaInDay3 = true;
+                }
+            }
             criteriaUI.SetActive(true);
             criteriaIcon.SetActive(false);
             powerIcon.SetActive(false);

@@ -30576,9 +30576,13 @@ MonoBehaviour:
   processedEmailsToday: []
   mistakesMadeToday: []
   AfterHours: 0
-  hasSeenIntroDialogue: 0
+  hasSeenHomeIntro: 0
   hasSeenCriteria: 0
   hasSeenEmail: 0
+  hasSeenOfficeIntro: 0
+  firstTimeOpeningEmailInDay2: 0
+  firstTimeOpeningCriteriaInDay3: 0
+  firsTimeStandingUp: 0
 --- !u!4 &1411998494
 Transform:
   m_ObjectHideFlags: 0
@@ -37208,7 +37212,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 822344701}
         m_TargetAssemblyTypeName: MainMenuLogic, Assembly-CSharp
-        m_MethodName: startNewGame
+        m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

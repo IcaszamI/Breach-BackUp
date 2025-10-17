@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using StarterAssets;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,6 +29,7 @@ public class SittingInteraction : MonoBehaviour
     [Header("Screen Cursor Script")]
     public ScreenCursor screenCursor;
     public EmailManager emailManager;
+    public HelperMessagesScript helperMessagesScript;
     public NPCcontroller[] npcs;
     public float interactionDistance = 1f;
     public KeyCode sit = KeyCode.F;
@@ -103,7 +100,14 @@ public class SittingInteraction : MonoBehaviour
     public void standUp()
     {
         isSitting = false;
-
+        if (helperMessagesScript != null)
+        {
+            if (!GameManager.Instance.firsTimeStandingUp)
+            {
+                StartCoroutine(helperMessagesScript.FirstTimeStandinUp());
+                GameManager.Instance.firsTimeStandingUp = true;
+            }
+        }
         if (playerController != null)
         {
             playerController.gameObject.SetActive(true);

@@ -9,7 +9,6 @@ public class HomeEmailManager : MonoBehaviour
     [Header("Email Data")]
     public List<EmailData> allEmails;
     [Header("UI reference")]
-    public HUDManager hudManager;
     public Transform emailButtonContainer;
     public GameObject emailButtonPrefab;
     public GameObject attachmentButtonImage;
@@ -122,8 +121,6 @@ public class HomeEmailManager : MonoBehaviour
         {
             emailQueue.Add(emailCandidates[i]);
         }
-        HUDManager hudManager = FindObjectOfType<HUDManager>();
-        if (hudManager != null) hudManager.SetEmailQuestGoal(5);
 
         if (day == 1 && firstEmail != null)
         {
@@ -225,10 +222,6 @@ public class HomeEmailManager : MonoBehaviour
         if (currentEmailButton != null)
         {
             Destroy(currentEmailButton);
-        }
-        if (hudManager != null)
-        {
-            hudManager.UpdateEmailQuestProgress();
         }
         if (GameManager.Instance != null)
         {

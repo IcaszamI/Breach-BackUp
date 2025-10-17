@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: HomeEMail6
+  m_EditorClassIdentifier: 
+  senderEmail: Jim@jmeil.com
+  subject: 
+  body: Caz! i am at the bahamas right now and oh my god the sights here are just
+    amazing ive sent you photo i took where it looks like a perfect sunset next time
+    i go here you've got to come with  me
+  attachmentName: PerfectSunset.jpeg
+  hasAttachment: 1
+  isMalicious: 0
+  isBlacklistedApp: 0
+  isCorrectDomain: 0
+  isFriendlyEmail: 1
+  isFirstEmail: 0
+  hasBeenScanned: 0
+  dayAppears: 4
+  mistakeExplanation: The attachment was safe
+  correctActionHint: This email deserved a reply
+  consequenceText: Nothing really happende when ignoring this email
+  mistakeExplanationUnscanned: 

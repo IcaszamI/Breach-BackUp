@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: HomeEmail5
+  m_EditorClassIdentifier: 
+  senderEmail: Maxwell@breachnetworks.com.ph
+  subject: reminder
+  body: Hello, this is a widespread email to remind everybody for the upcoming company
+    vacation meeting please go to the conference hall at 5:00PM tommorow evening
+  attachmentName: 
+  hasAttachment: 0
+  isMalicious: 0
+  isBlacklistedApp: 0
+  isCorrectDomain: 0
+  isFriendlyEmail: 1
+  isFirstEmail: 0
+  hasBeenScanned: 0
+  dayAppears: 3
+  mistakeExplanation: This email was legitimate as seen by the domain which you checked
+    before
+  correctActionHint: This email should have received a reply
+  consequenceText: Nothing major cam up form ignoring the email younn just did'nt
+    get to give you opinion on where the company vacation should be.
+  mistakeExplanationUnscanned: 

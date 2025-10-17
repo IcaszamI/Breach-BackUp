@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
+  m_Name: HomeEmail7
+  m_EditorClassIdentifier: 
+  senderEmail: Ben@breachnetworks.com.ph
+  subject: checking
+  body: Got the report you submitted to me earlier it looks good but i want you to
+    show this to korra or sasha as well before i pass it on to maxwell
+  attachmentName: 
+  hasAttachment: 0
+  isMalicious: 0
+  isBlacklistedApp: 0
+  isCorrectDomain: 0
+  isFriendlyEmail: 1
+  isFirstEmail: 0
+  hasBeenScanned: 0
+  dayAppears: 3
+  mistakeExplanation: This email was legitimate as seen by the domain which you checked
+    before
+  correctActionHint: This email should have received a reply
+  consequenceText: Ignoring this email made Ben second guess handng the report over
+    to maxwell because it has not been verified by personnel properly
+  mistakeExplanationUnscanned: 
