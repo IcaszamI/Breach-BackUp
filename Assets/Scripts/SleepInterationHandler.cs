@@ -57,7 +57,8 @@ public class SleepInterationHandler : MonoBehaviour
         {
             audioSource.PlayOneShot(Yawn);
         }
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
+
         GameManager.Instance.StartNextDay();
     }
 }

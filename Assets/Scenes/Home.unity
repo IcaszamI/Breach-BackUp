@@ -6256,7 +6256,7 @@ MonoBehaviour:
   daylights: {fileID: 762281456}
   interactionDistance: 4
   interact: 102
-  Yawn: {fileID: 8300000, guid: cc5c297db194ac64c9fe7c60d80171b3, type: 3}
+  Yawn: {fileID: 8300000, guid: 2a08644f31b3a504a9d1791963c89a8b, type: 3}
 --- !u!4 &882777200
 Transform:
   m_ObjectHideFlags: 0
@@ -11181,7 +11181,7 @@ MonoBehaviour:
   daylights: {fileID: 762281456}
   interactionDistance: 4
   interact: 102
-  Yawn: {fileID: 8300000, guid: cc5c297db194ac64c9fe7c60d80171b3, type: 3}
+  Yawn: {fileID: 8300000, guid: 2a08644f31b3a504a9d1791963c89a8b, type: 3}
 --- !u!4 &1381096025
 Transform:
   m_ObjectHideFlags: 0

@@ -30571,7 +30571,7 @@ MonoBehaviour:
   prompt: {fileID: 1838309609}
   dialogueType: 0
   Hmm: {fileID: 8300000, guid: 2e96434283a6baf49b9bfb6cc78e206c, type: 3}
-  Hey: {fileID: 8300000, guid: 1c0de238efafd6246bc844d6904491cf, type: 3}
+  Hey: {fileID: 8300000, guid: e39c40a79f46deb44b96c94ba9aee79f, type: 3}
 --- !u!54 &7822207134519116370
 Rigidbody:
   m_ObjectHideFlags: 0
