@@ -80,7 +80,7 @@ public class HomeEmailManager : MonoBehaviour
 
     public void LoadEmailsForDay(int day)
     {
-        dailyEmails = day == 1 ? 4 : 5;
+        dailyEmails = 3;
         emailQueue.Clear();
         activeEmails.Clear();
         mistakesMade.Clear();
@@ -130,7 +130,7 @@ public class HomeEmailManager : MonoBehaviour
             emailQueue.Insert(0, firstEmail);
         }
 
-        int initialEmailCount = 2;
+        int initialEmailCount = 1;
         for (int i = 0; i < initialEmailCount && emailQueue.Count > 0; i++)
         {
             AddNewEmail(emailQueue[0]);
@@ -154,7 +154,7 @@ public class HomeEmailManager : MonoBehaviour
 
     private void AddNewEmail(EmailData email)
     {
-        if (activeEmails.Count >= 2)
+        if (activeEmails.Count >= 1)
         {
             if (audioSource != null && newEmailSound != null)
             {

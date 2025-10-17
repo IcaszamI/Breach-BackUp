@@ -131,6 +131,7 @@ namespace StarterAssets
 
 		private void CameraRotation()
 		{
+			if (Time.timeScale == 0f) return;
 			// if there is an input
 			if (_input.look.sqrMagnitude >= _threshold)
 			{

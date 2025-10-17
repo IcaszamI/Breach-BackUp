@@ -56,7 +56,7 @@ public class PauseScript : MonoBehaviour
         SettingsUI?.SetActive(false);
         hudPanel?.SetActive(true);
         dialoguePanel?.SetActive(false);
-        virtualCursor?.SetActive(true);
+        virtualCursor?.SetActive(true); 
         if (playerController != null)
         {
             playerController.enabled = true;
@@ -92,19 +92,11 @@ public class PauseScript : MonoBehaviour
     {
         pauseMenuUI?.SetActive(false);
         SettingsUI?.SetActive(true);
-
-        if (playerController != null)
-            playerController.enabled = false;
-
     }
 
     public void closeSettings()
     {
         SettingsUI?.SetActive(false);
         pauseMenuUI?.SetActive(true);
-
-        if (playerController != null)
-            playerController.enabled = false;
-
     }
 }
