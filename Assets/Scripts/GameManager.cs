@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public CanvasGroup fadeCanvasGroup;
     public float fadeDuration = 0.5f;
     private bool isTransitioning = false;
-
     public int currentHour { get; private set; }
     public int currentMinute { get; private set; }
     public static event Action<int, int> OnTimeChanged;
@@ -21,6 +20,7 @@ public class GameManager : MonoBehaviour
     public int currentDay = 1;
     public List<EmailData> processedEmailsToday = new List<EmailData>();
     public List<EmailData> mistakesMadeToday = new List<EmailData>();
+    public List<EmailData> emailsReceivedToday = new List<EmailData>();
     public bool AfterHours = false;
     public bool hasSeenHomeIntro = false;
     public bool hasSeenCriteria;
@@ -198,6 +198,7 @@ public class GameManager : MonoBehaviour
     public void CompleteDay(List<EmailData> processedEmails, List<EmailData> mistakes)
     {
         StopTimer();
+        emailsReceivedToday.Clear();
         processedEmailsToday = new List<EmailData>(processedEmails);
         mistakesMadeToday = new List<EmailData>(mistakes);
         Debug.Log("Game manager has stored " + processedEmailsToday.Count + " processed emails and " + mistakesMadeToday.Count + " mistakes.");

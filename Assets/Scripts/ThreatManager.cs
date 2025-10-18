@@ -53,12 +53,7 @@ public class ThreatManager : MonoBehaviour
 
             SetDefaultDisplay();
         }
-        else
-        {
-            noThreatsEncountered.SetActive(true);
-            noThreatSelected.SetActive(true);
-            threatselections.SetActive(false);
-        }
+        SetupPastThreats();
     }
 
     void SetupDay(List<ThreatData> dayThreats, List<Button> dayButtons)
@@ -72,6 +67,40 @@ public class ThreatManager : MonoBehaviour
                 dayButtons[i].onClick.RemoveAllListeners();
                 dayButtons[i].onClick.AddListener(() => DisplayThreatInfo(currentThreat));
             }
+        }
+    }
+
+    void SetupPastThreats()
+    {
+        if (!GameManager.Instance.AfterHours && GameManager.Instance.currentDay > 1)
+        {
+            noThreatsEncountered.SetActive(false);
+            noThreatSelected.SetActive(false);
+            threatselections.SetActive(true);
+            HideAllButtons();
+
+            switch (GameManager.Instance.currentDay)
+            {
+                case 2:
+                    SetupDay(day1Threats, day1Buttons);
+                    break;
+                case 3:
+                    SetupDay(day2Threats, day2Buttons);
+                    break;
+                case 4:
+                    SetupDay(day3Threats, day3Buttons);
+                    break;
+                default:
+                    break;
+            }
+
+            SetDefaultDisplay();
+        }
+        else if (!GameManager.Instance.AfterHours && GameManager.Instance.currentDay == 1)
+        {
+            noThreatsEncountered.SetActive(true);
+            noThreatSelected.SetActive(true);
+            threatselections.SetActive(false);
         }
     }
 

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class HomeEmailManager : MonoBehaviour
 {
+    private const int totalEMailsPerDay = 8;
+    private const int maxEmailsReceivedPerLoad = 3;
     [Header("Email Data")]
     public List<EmailData> allEmails;
     [Header("UI reference")]
@@ -34,7 +36,6 @@ public class HomeEmailManager : MonoBehaviour
     private EmailData currentEmail;
     private GameObject currentEmailButton;
     public int mistakeTally = 0;
-    private int dailyEmails;
     private bool currentAttachmentHasBeenScanned = false;
     private Coroutine activeProgressBarCoroutine;
 
@@ -79,11 +80,13 @@ public class HomeEmailManager : MonoBehaviour
 
     public void LoadEmailsForDay(int day)
     {
-        dailyEmails = 3;
         emailQueue.Clear();
         activeEmails.Clear();
-        mistakesMade.Clear();
-        mistakeTally = 0;
+        if (GameManager.Instance == null || !GameManager.Instance.AfterHours)
+        {
+            mistakesMade.Clear();
+            mistakeTally = 0;
+        }
         tallyCounter.text = mistakeTally.ToString();
         foreach (Transform child in emailButtonContainer)
         {
@@ -92,22 +95,29 @@ public class HomeEmailManager : MonoBehaviour
 
         List<EmailData> emailCandidates = new List<EmailData>();
         EmailData firstEmail = null;
-
+        List<EmailData> emailsReceivedEarlier = (GameManager.Instance != null && GameManager.Instance.emailsReceivedToday != null)? GameManager.Instance.emailsReceivedToday : new List<EmailData>();
         foreach (var email in allEmails)
         {
             if (email.dayAppears == day)
             {
-                if (email.isFirstEmail && day == 1)
+                if (!emailsReceivedEarlier.Contains(email))
                 {
-                    firstEmail = email;
+                    if (email.isFirstEmail && day == 1)
+                    {
+                        firstEmail = email;
+                    }
+                    else
+                    {
+                        emailCandidates.Add(email);
+                    }
                 }
-                else
-                {
-                    emailCandidates.Add(email);
-                }
+
             }
         }
-
+        int totalEmailsTodaySoFar = emailsReceivedEarlier.Count;
+        int remainingEmailsForToday = totalEMailsPerDay - totalEmailsTodaySoFar;
+        int emailsToLoadThisSession = Mathf.Min(maxEmailsReceivedPerLoad, remainingEmailsForToday);
+        Debug.Log($"Emails received earlier today: {totalEmailsTodaySoFar}. Loading {emailsToLoadThisSession} new emails this session.");
 
         for (int i = 0; i < emailCandidates.Count; i++)
         {
@@ -117,14 +127,24 @@ public class HomeEmailManager : MonoBehaviour
             emailCandidates[randomIndex] = temp;
         }
 
-        for (int i = 0; i < Mathf.Min(dailyEmails, emailCandidates.Count); i++)
+        for (int i = 0; i < Mathf.Min(emailsToLoadThisSession, emailCandidates.Count); i++)
         {
+            EmailData emailToAdd = emailCandidates[i];
             emailQueue.Add(emailCandidates[i]);
+
+            if (GameManager.Instance != null && GameManager.Instance.emailsReceivedToday != null)
+            {
+                GameManager.Instance.emailsReceivedToday.Add(emailToAdd);
+            }
         }
 
-        if (day == 1 && firstEmail != null)
+        if (day == 1 && firstEmail != null && !emailsReceivedEarlier.Contains(firstEmail))
         {
             emailQueue.Insert(0, firstEmail);
+            if (GameManager.Instance != null && GameManager.Instance.emailsReceivedToday != null)
+            {
+                GameManager.Instance.emailsReceivedToday.Add(firstEmail);
+            }
         }
 
         int initialEmailCount = 1;
@@ -193,7 +213,7 @@ public class HomeEmailManager : MonoBehaviour
         
         currentEmail = email;
         currentEmailButton = buttonObj;
-        if (email.dayAppears == 2)
+        if (email.hasAttachment)
         {
             replyButton?.gameObject.SetActive(false);
         }

@@ -214,7 +214,7 @@ public class EmailManager : MonoBehaviour
         
         currentEmail = email;
         currentEmailButton = buttonObj;
-        if (email.dayAppears == 2)
+        if (email.hasAttachment)
         {
             replyButton?.gameObject.SetActive(false);
         }

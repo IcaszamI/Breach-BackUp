@@ -15,6 +15,8 @@ public class SleepInterationHandler : MonoBehaviour
     public KeyCode interact = KeyCode.F;
     private AudioSource audioSource;
     public AudioClip Yawn;
+    private bool isSleeping = false;
+
 
     void Awake()
     {
@@ -40,7 +42,7 @@ public class SleepInterationHandler : MonoBehaviour
             {
                 prompt.SetActive(true);
             }
-            if (Input.GetKeyDown(interact))
+            if (Input.GetKeyDown(interact) && !isSleeping)
             {
                 StartCoroutine(SleepSequence());
             }
@@ -53,12 +55,20 @@ public class SleepInterationHandler : MonoBehaviour
 
     private IEnumerator SleepSequence()
     {
+        isSleeping = true;
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+        }
         if (audioSource != null && Yawn != null)
         {
             audioSource.PlayOneShot(Yawn);
         }
         yield return new WaitForSeconds(1f);
-
+        if (playerController != null)
+        {
+            playerController.enabled = true;
+        }
         GameManager.Instance.StartNextDay();
     }
 }

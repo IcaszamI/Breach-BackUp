@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 306ae693f2d60f44db05a329a6812c80, type: 3}
   m_Name: Dialogue5
   m_EditorClassIdentifier: 
-  dialogue: I already got three emails labeled Urgebt already what a way to start
+  dialogue: I already got three emails labeled Urgent already what a way to start
     the day
   firstChoice: you should answer them immediately if they're urgent
   secondChoice: careful it might be a trick

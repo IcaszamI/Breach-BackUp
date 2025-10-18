@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LapTopPower : MonoBehaviour
 {
-    public SittingInteraction sit;
+    public HomeSittingInteraction sit;
     public GameObject screenOff;
     public GameObject powerOffPanel;
 

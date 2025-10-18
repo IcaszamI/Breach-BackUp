@@ -26,6 +26,7 @@ public class NPCcontroller : MonoBehaviour
     public bool wasTyping = false;
 
     public FirstPersonController playerController;
+    public InteractionManager interacting;
     public CameraTurn cameraTurn;
     public TurnScript turnScript;
     public NPCmanager npcManager;
@@ -93,6 +94,9 @@ public class NPCcontroller : MonoBehaviour
 
     public void TriggerStartIdling()
     {
+        animator.ResetTrigger("StartTyping");
+        animator.ResetTrigger("StartSitting");
+        animator.ResetTrigger("StopSitting");
         animator.SetTrigger("StartIdling");
     }
 
@@ -118,8 +122,14 @@ public class NPCcontroller : MonoBehaviour
     private IEnumerator ImmediateInteractionSequence()
     {
         TriggerStartIdling();
+        yield return new WaitForSeconds(1f);
         isImmediateInteraction = true;
         isInteracting = true;
+        if (DialogueHandler.Instance != null)
+        {
+            DialogueHandler.Instance.EnterDialogueMode();
+        }
+        interacting.currentlyInteracting = true;
         if (prompt != null)
         {
             prompt.SetActive(false);
@@ -158,6 +168,10 @@ public class NPCcontroller : MonoBehaviour
             Debug.Log("calling camera turn");
             yield return StartCoroutine(cameraTurn.FaceComputer());
         }
+        if (DialogueHandler.Instance != null)
+        {
+            DialogueHandler.Instance.ExitDialogueMode();
+        }
         transform.position = originalReturnPosition;
         transform.rotation = originalReturnRotation;
         hasTeleported = true;
@@ -168,11 +182,18 @@ public class NPCcontroller : MonoBehaviour
 
         isImmediateInteraction = false;
         isInteracting = false;
+        interacting.currentlyInteracting = false;
     }
 
     private IEnumerator StandinInteractionSequence()
     {
         isInteracting = true;
+        interacting.currentlyInteracting = true;
+        if (DialogueHandler.Instance != null)
+        {
+            Debug.Log("standing still");
+            DialogueHandler.Instance.EnterStandingDialogueMode();
+        }
         if (playerController != null)
         {
             playerController.enabled = false;
@@ -203,11 +224,21 @@ public class NPCcontroller : MonoBehaviour
         {
             prompt.SetActive(true);
         }
+        if (DialogueHandler.Instance != null)
+        {
+            DialogueHandler.Instance.ExitStandingDialogueMode();
+        }
         isInteracting = false;
+        interacting.currentlyInteracting = false;
     }
     private IEnumerator InteractionSequence()
     {
         isInteracting = true;
+        interacting.currentlyInteracting = true;
+        if (DialogueHandler.Instance != null)
+        {
+            DialogueHandler.Instance.EnterDialogueMode();
+        }
         if (playerController != null)
         {
             playerController.enabled = false;
@@ -255,7 +286,12 @@ public class NPCcontroller : MonoBehaviour
         {
             prompt.SetActive(true);
         }
+        if (DialogueHandler.Instance != null)
+        {
+            DialogueHandler.Instance.ExitDialogueMode();
+        }
         isInteracting = false;
+        interacting.currentlyInteracting = false;
     }
 
     private IEnumerator WaitForPlayerChoice()

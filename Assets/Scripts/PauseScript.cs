@@ -8,6 +8,7 @@ public class PauseScript : MonoBehaviour
 {
     public ScreenCursor screenCursor;
     public GameObject virtualCursor;
+    public NPCcontroller[] npc;
     public CursorManager cursor;
     public GameObject hudPanel;
     public GameObject dialoguePanel;
@@ -40,6 +41,12 @@ public class PauseScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Pause();
+        }
+        if (!isPaused && Cursor.lockState != CursorLockMode.Locked)
+        {
+            
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 

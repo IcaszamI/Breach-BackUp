@@ -163,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 11084185}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.2803, y: 1.2594, z: -0.277}
+  m_LocalPosition: {x: 8.2803, y: 1.2594, z: -0.293}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4016,6 +4016,7 @@ GameObject:
   - component: {fileID: 401971288}
   - component: {fileID: 401971293}
   - component: {fileID: 401971294}
+  - component: {fileID: 401971296}
   - component: {fileID: 401971295}
   m_Layer: 0
   m_Name: UIManager
@@ -4093,6 +4094,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenCursor: {fileID: 1683387329}
   virtualCursor: {fileID: 1857460091}
+  npc: []
   cursor: {fileID: 1683387327}
   hudPanel: {fileID: 1773559602}
   dialoguePanel: {fileID: 1504657150}
@@ -4247,6 +4249,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &401971296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401971287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d01852d0c407445b48a3c797ea555c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentlyInteracting: 0
 --- !u!1 &412143770
 GameObject:
   m_ObjectHideFlags: 0
@@ -6463,6 +6478,7 @@ GameObject:
   - component: {fileID: 744785325}
   - component: {fileID: 744785328}
   - component: {fileID: 744785330}
+  - component: {fileID: 744785333}
   - component: {fileID: 744785327}
   - component: {fileID: 744785329}
   - component: {fileID: 744785331}
@@ -6637,6 +6653,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 744785328}
+--- !u!114 &744785333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744785324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c28ac206f8328498e31aeed3834db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 744785328}
+  interacting: {fileID: 401971296}
 --- !u!1 &745790491
 GameObject:
   m_ObjectHideFlags: 0
@@ -12376,8 +12406,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.8374939, y: 2.9959}
-  m_SizeDelta: {x: 369.1308, y: 43.7864}
+  m_AnchoredPosition: {x: 6.5700073, y: 2.9959}
+  m_SizeDelta: {x: 383.9459, y: 43.7864}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1513653309
 MonoBehaviour:
@@ -12709,10 +12739,10 @@ RectTransform:
   - {fileID: 1606448198}
   - {fileID: 1739524129}
   - {fileID: 1449593141}
-  - {fileID: 1697647500}
   - {fileID: 278473093}
   - {fileID: 290334884}
   - {fileID: 240134538}
+  - {fileID: 1697647500}
   - {fileID: 1857460092}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -14631,7 +14661,7 @@ Transform:
   m_GameObject: {fileID: 1573625104}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 8.33, y: 1.144, z: -0.543}
+  m_LocalPosition: {x: 8.295, y: 1.144, z: -0.377}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17043,7 +17073,7 @@ Transform:
   m_GameObject: {fileID: 1786589452}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 8.43, y: 1.156, z: 1.212}
+  m_LocalPosition: {x: 8.43, y: 1.156, z: 1.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22010,6 +22040,7 @@ MonoBehaviour:
   originalReturnRotation: {x: 0, y: 0, z: 0, w: 0}
   wasTyping: 0
   playerController: {fileID: 744785328}
+  interacting: {fileID: 401971296}
   cameraTurn: {fileID: 1238571758}
   turnScript: {fileID: 1987735592}
   npcManager: {fileID: 188940365}
@@ -22603,6 +22634,7 @@ MonoBehaviour:
   originalReturnRotation: {x: 0, y: 0, z: 0, w: 0}
   wasTyping: 0
   playerController: {fileID: 744785328}
+  interacting: {fileID: 401971296}
   cameraTurn: {fileID: 1238571758}
   turnScript: {fileID: 11084186}
   npcManager: {fileID: 188940365}
@@ -27588,7 +27620,7 @@ Transform:
   m_GameObject: {fileID: 4974375837954015078}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.9999644, z: -0, w: -0.008437635}
-  m_LocalPosition: {x: -0.06550026, y: -0.10899413, z: 0.28053188}
+  m_LocalPosition: {x: -0.06550026, y: -0.10899413, z: 0.307}
   m_LocalScale: {x: 0.74999994, y: 0.75, z: 0.74999994}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30557,6 +30589,7 @@ MonoBehaviour:
   originalReturnRotation: {x: 0, y: 0, z: 0, w: 0}
   wasTyping: 0
   playerController: {fileID: 744785328}
+  interacting: {fileID: 401971296}
   cameraTurn: {fileID: 1238571758}
   turnScript: {fileID: 426631823}
   npcManager: {fileID: 188940365}

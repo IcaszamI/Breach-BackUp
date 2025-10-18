@@ -30575,6 +30575,7 @@ MonoBehaviour:
   currentDay: 2
   processedEmailsToday: []
   mistakesMadeToday: []
+  emailsReceivedToday: []
   AfterHours: 0
   hasSeenHomeIntro: 0
   hasSeenCriteria: 0
