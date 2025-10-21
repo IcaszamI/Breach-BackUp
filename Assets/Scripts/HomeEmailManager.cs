@@ -36,7 +36,6 @@ public class HomeEmailManager : MonoBehaviour
     private EmailData currentEmail;
     private GameObject currentEmailButton;
     public int mistakeTally = 0;
-    private bool currentAttachmentHasBeenScanned = false;
     private Coroutine activeProgressBarCoroutine;
 
 
@@ -224,7 +223,6 @@ public class HomeEmailManager : MonoBehaviour
         fromText.text = "From: " + email.senderEmail;
         subjectText.text = "Subject: " + email.subject;
         bodyText.text = email.body;
-        currentAttachmentHasBeenScanned = false;
         attachmentOptionsPanel.SetActive(false);
         emailPanel.SetActive(true);
         if (email.hasAttachment)
@@ -262,7 +260,6 @@ public class HomeEmailManager : MonoBehaviour
         EmailData emailToScan = currentEmail;
         StartCoroutine(ShowProgressBar("Scanning...", 2f, () =>
         {
-            currentAttachmentHasBeenScanned = true;
             if (emailToScan.isMalicious)
             {
                 showResult("MALICIOUS FILE DETECTED!");
@@ -300,12 +297,6 @@ public class HomeEmailManager : MonoBehaviour
                 Debug.Log("mistakeExplanation was triggered");
                 Mistake(currentEmail.mistakeExplanation, currentEmail);
             }
-            else if (currentEmail.hasAttachment && !currentAttachmentHasBeenScanned)
-            {
-                Debug.Log("mistakeExplanationUnscanned was triggered");
-                Mistake(currentEmail.mistakeExplanationUnscanned, currentEmail);
-            }
-
             else
             {
                 Debug.Log(" Correct Choice! ");
@@ -327,10 +318,6 @@ public class HomeEmailManager : MonoBehaviour
             if (currentEmail.isFriendlyEmail)
             {
                 Mistake(currentEmail.mistakeExplanation, currentEmail);
-            }
-            else if (!currentEmail.isFriendlyEmail && currentEmail.hasAttachment && !currentAttachmentHasBeenScanned)
-            {
-                Mistake(currentEmail.mistakeExplanationUnscanned, currentEmail);
             }
             else
             {

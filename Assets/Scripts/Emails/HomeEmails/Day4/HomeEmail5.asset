@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
   m_Name: HomeEmail5
   m_EditorClassIdentifier: 
-  senderEmail: Jim@Jmeil.com
+  senderEmail: Jim@jmeil.com
   subject: pictures
   body: Yo caz I uploaded the pictures i took during your celebration on our shared
     drive just take them from there don't delete them tho

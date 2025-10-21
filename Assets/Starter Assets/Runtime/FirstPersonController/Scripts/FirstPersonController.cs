@@ -2,6 +2,7 @@
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
+using System.IO;
 
 namespace StarterAssets
 {
@@ -63,6 +64,7 @@ namespace StarterAssets
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
+		//private Vector3 _moveInput;
 
 
 #if ENABLE_INPUT_SYSTEM
@@ -86,6 +88,26 @@ namespace StarterAssets
 			}
 		}
 
+		private void WriteMovementLogToFile(string message)
+        {
+            // Path to place the log file next to the executable
+            string path = Application.dataPath + "/../debug_movement_log.txt";
+            
+            // Format the message with a timestamp
+            string logEntry = $"[{System.DateTime.Now:HH:mm:ss}] {message}\n";
+
+            try
+            {
+                // Append the message to the file (creates it if it doesn't exist)
+                File.AppendAllText(path, logEntry);
+            }
+            catch (System.Exception e)
+            {
+                // If file writing fails (Editor only fallback)
+                Debug.LogError($"[Movement Log Fail] Could not write to file: {e.Message}");
+            }
+        }
+
 		private void Awake()
 		{
 			// get a reference to our main camera
@@ -93,12 +115,12 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
+			_controller = GetComponent<CharacterController>();
+        	_input = GetComponent<StarterAssetsInputs>();
 		}
 
 		private void Start()
 		{
-			_controller = GetComponent<CharacterController>();
-			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM
 			_playerInput = GetComponent<PlayerInput>();
 #else
@@ -108,18 +130,35 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+#if ENABLE_INPUT_SYSTEM
+        if (_playerInput != null && _playerInput.actions != null)
+        {
+            _playerInput.actions.Enable(); 
+            // We can remove the log here later, but keep it for now to confirm the fix.
+            WriteMovementLogToFile("PlayerInput actions explicitly enabled.");
+        }
+#endif
 		}
 
 		private void Update()
 		{
 			JumpAndGravity();
 			GroundedCheck();
-			Move();
+			if (Cursor.lockState == CursorLockMode.Locked)
+			{
+				Move();
+			}
+
+			_jumpTimeoutDelta -= Time.deltaTime;
+			_fallTimeoutDelta -= Time.deltaTime;
 		}
 
-		private void LateUpdate()
+        private void LateUpdate()
 		{
-			CameraRotation();
+			if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            CameraRotation();
+        }
 		}
 
 		private void GroundedCheck()
@@ -131,6 +170,7 @@ namespace StarterAssets
 
 		private void CameraRotation()
 		{
+			if (Cursor.lockState != CursorLockMode.Locked) return;
 			if (Time.timeScale == 0f) return;
 			// if there is an input
 			if (_input.look.sqrMagnitude >= _threshold)
@@ -154,12 +194,21 @@ namespace StarterAssets
 
 		private void Move()
 		{
-			if (Cursor.lockState != CursorLockMode.Locked)
+			Vector3 targetDirection = new Vector3(_input.move.x, 0.0f, _input.move.y);
+			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+			if (targetDirection == Vector3.zero) targetSpeed = 0.0f;
+			if (_input.move.sqrMagnitude > _threshold)
             {
-                return;
+                 // Log only when we expect movement
+                 WriteMovementLogToFile($"Move() Running: Input vector is {_input.move}. Target speed is {_input.sprint}.");
+            }
+            else
+            {
+                // Log when we are in the bug state (WASD held, but input is zero)
+                WriteMovementLogToFile($"Move() Running: Input vector is ZERO ({_input.move}).");
             }
 			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+			
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -179,8 +228,6 @@ namespace StarterAssets
 				// creates curved result rather than a linear one giving a more organic speed change
 				// note T in Lerp is clamped, so we don't need to clamp our speed
 				_speed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * SpeedChangeRate);
-
-				// round speed to 3 decimal places
 				_speed = Mathf.Round(_speed * 1000f) / 1000f;
 			}
 			else
@@ -189,18 +236,19 @@ namespace StarterAssets
 			}
 
 			// normalise input direction
-			Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+			//Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+			Vector3 newMoveDirection = (transform.right * targetDirection.x + transform.forward * targetDirection.z).normalized;
 
 			// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is a move input rotate player when the player is moving
-			if (_input.move != Vector2.zero)
-			{
+			//if (_input.move != Vector2.zero)
+			//{
 				// move
-				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
-			}
+				//inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+			//}
 
 			// move the player
-			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			_controller.Move(newMoveDirection * _speed	* Time.deltaTime + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 		}
 
 		private void JumpAndGravity()

@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
   m_Name: Email_8_Day 4
   m_EditorClassIdentifier: 
-  senderEmail: Marcus@breachnetworks.com
-  subject: New worload
+  senderEmail: Marcus@breachnetworks.com.ph
+  subject: New workload
   body: attached is your team's responsibility and jurisdiction for the upcoming
     company fair m,ake sure to read and follow it entirely
   attachmentName: CompanyFairT2.docx
   hasAttachment: 1
   isMalicious: 0
   isBlacklistedApp: 0
-  isCorrectDomain: 1
+  isCorrectDomain: 0
   isFriendlyEmail: 1
   isFirstEmail: 0
   hasBeenScanned: 0

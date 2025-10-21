@@ -357,7 +357,8 @@ MonoBehaviour:
     time with this game. We hope you learned a thing or two along the way. Remember,
     nobody is too small or unimportant when it comes to cyber threats. Always stay
     safe.'
-  footerMessage: Breach Developers
+  footerMessage: Sincerely,<br>Breach Developers<br>Justine Z. Casal,<br>MiguelErnest
+    L.Canicosa,<br>Cyru Laurence L. Quibal
   typingSpeed: 0.1
   endDelay: 3
 --- !u!4 &557117969
@@ -857,7 +858,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 111}
+  m_AnchoredPosition: {x: 0, y: 220}
   m_SizeDelta: {x: 0, y: 113.991}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1486350786

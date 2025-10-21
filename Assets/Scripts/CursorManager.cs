@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 
 public class CursorManager : MonoBehaviour
@@ -25,82 +22,63 @@ public class CursorManager : MonoBehaviour
 
     void Start()
     {
-        UpdateCursorState();
+        ForceCursorState();
     }
 
     void Update()
     {
-        UpdateCursorState();
-        if (PauseCanvas.activeSelf)
+        if (PauseCanvas.activeSelf || SettingsCanvas.activeSelf || isPaused)
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            SetCursor(CursorLockMode.None, true);
+            return;
         }
 
-        else if (SettingsCanvas.activeSelf)
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (currentScene == "MainMenu" || currentScene == "Settings" || currentScene == "NextDayScene" || currentScene == "RepeatDayScene")
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            SetCursor(CursorLockMode.None, true);
         }
 
-        else if (sit.isSitting)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else if (isPaused == false)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
         foreach (NPCcontroller npc in npcController)
         {
             if (npc.isInteracting && npc.hasTeleported)
             {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }
 
+        if (sit != null && sit.isSitting)
+        {
+            SetCursor(CursorLockMode.None, true);
+            return;
+        }
+
+        SetCursor(CursorLockMode.Locked, false);
 
     }
+    private void SetCursor(CursorLockMode mode, bool visible)
+    {
+        Cursor.lockState = mode;
+        Cursor.visible = visible;
+    }
 
-    void UpdateCursorState()
+    private void ForceCursorState()
     {
         string currentScene = SceneManager.GetActiveScene().name;
-
-
-        if (currentScene == "MainMenu")
+        if (currentScene == "MainMenu" || currentScene == "Settings" || currentScene == "NextDayScene" || currentScene == "RepeatDayScene")
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else if (isPaused)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else if (currentScene == "Settings")
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else if (currentScene == "NextDayScene")
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            SetCursor(CursorLockMode.None, true);
         }
         else
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            SetCursor(CursorLockMode.Locked, false);
         }
     }
 
     public void SetPaused(bool pause)
     {
         isPaused = pause;
-        UpdateCursorState();
     }
 
 } 

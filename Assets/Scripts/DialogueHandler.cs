@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using StarterAssets;
+using System.Collections;
 
 public class DialogueHandler : MonoBehaviour
 {
@@ -54,6 +55,19 @@ public class DialogueHandler : MonoBehaviour
         else
         {
             Debug.LogError("no gameobject named PlayerRoot");
+        }
+
+        StartCoroutine(ForceLockOnInit());
+    }
+
+    private IEnumerator ForceLockOnInit()
+    {
+        yield return null;
+
+        if (!isDialogueActive)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 

@@ -19,9 +19,10 @@ MonoBehaviour:
   hasAttachment: 1
   isMalicious: 0
   isBlacklistedApp: 0
-  isCorrectDomain: 1
+  isCorrectDomain: 0
   isFriendlyEmail: 1
   isFirstEmail: 0
+  hasBeenScanned: 0
   dayAppears: 2
   mistakeExplanation: The attachment in the email was safe
   correctActionHint: This email should have been replied to

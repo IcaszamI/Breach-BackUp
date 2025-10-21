@@ -20,7 +20,7 @@ MonoBehaviour:
   hasAttachment: 1
   isMalicious: 0
   isBlacklistedApp: 0
-  isCorrectDomain: 1
+  isCorrectDomain: 0
   isFriendlyEmail: 1
   isFirstEmail: 0
   hasBeenScanned: 0

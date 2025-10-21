@@ -20,13 +20,14 @@ MonoBehaviour:
   hasAttachment: 0
   isMalicious: 0
   isBlacklistedApp: 0
-  isCorrectDomain: 1
+  isCorrectDomain: 0
   isFriendlyEmail: 1
   isFirstEmail: 0
   hasBeenScanned: 0
   dayAppears: 3
-  mistakeExplanation: The app requested is blacklisted
-  correctActionHint: This email should have been ignored
-  consequenceText: SecurePass Helper is a fake password manager that steals all stored
-    login credentials.
+  mistakeExplanation: The app requested was not blacklisted
+  correctActionHint: This email should have received a reply
+  consequenceText: Without your approval layla did not install SecurePass Helper
+    and chose to write t=down her password on her little notebook which you later
+    found unattended to.
   mistakeExplanationUnscanned: 

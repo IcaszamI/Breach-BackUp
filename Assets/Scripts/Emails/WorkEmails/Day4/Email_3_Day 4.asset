@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
   m_Name: Email_3_Day 4
   m_EditorClassIdentifier: 
-  senderEmail: Hannah
+  senderEmail: Hannah@breachnetworks.com.ph
   subject: Maintenance
   body: Please confirm whether the maintenance team scheduled service for the 3rd
     floor printer, since it has been jamming frequently.
@@ -20,7 +20,7 @@ MonoBehaviour:
   hasAttachment: 0
   isMalicious: 0
   isBlacklistedApp: 0
-  isCorrectDomain: 1
+  isCorrectDomain: 0
   isFriendlyEmail: 1
   isFirstEmail: 0
   hasBeenScanned: 0

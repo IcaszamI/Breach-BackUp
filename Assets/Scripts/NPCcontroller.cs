@@ -39,7 +39,6 @@ public class NPCcontroller : MonoBehaviour
     public bool isInteracting = false;
     public bool hasSat;
     private int SelectedChoiceIndex = -1;
-    private bool isImmediateInteraction = false;
     float interactionDistance = 1.5f;
     public KeyCode interact = KeyCode.F;
     public GameObject prompt;
@@ -115,7 +114,6 @@ public class NPCcontroller : MonoBehaviour
 
     public void StartImmediateInteraction()
     {
-        isImmediateInteraction = true;
         StartCoroutine(ImmediateInteractionSequence());
     }
 
@@ -123,7 +121,6 @@ public class NPCcontroller : MonoBehaviour
     {
         TriggerStartIdling();
         yield return new WaitForSeconds(1f);
-        isImmediateInteraction = true;
         isInteracting = true;
         if (DialogueHandler.Instance != null)
         {
@@ -179,8 +176,6 @@ public class NPCcontroller : MonoBehaviour
         {
             TriggerStartTyping();
         }
-
-        isImmediateInteraction = false;
         isInteracting = false;
         interacting.currentlyInteracting = false;
     }

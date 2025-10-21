@@ -14,14 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   senderEmail: Ada@breachnetworks.com.ph
   subject: MailSync tool
-  body: <u>MailSync</u> says it can link my work email to my phone. Can I use it?
+  body: <u>MailSync tool</u> says it can link my work email to my phone. Can I use
+    it?
   attachmentName: 
   hasAttachment: 0
   isMalicious: 0
   isBlacklistedApp: 1
-  isCorrectDomain: 1
+  isCorrectDomain: 0
   isFriendlyEmail: 0
   isFirstEmail: 0
+  hasBeenScanned: 0
   dayAppears: 3
   mistakeExplanation: The app requested is blacklisted
   correctActionHint: This email should have been ignored

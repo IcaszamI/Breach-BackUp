@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba8be429798e214a9cda86d7a2e0252, type: 3}
   m_Name: HomeEmail1
   m_EditorClassIdentifier: 
-  senderEmail: Perre@GiGolO.com.ru
-  subject: Book draft
+  senderEmail: Perre@GiGoLo.com.ru
+  subject: Draft
   body: Attached is a draft of a book ive mean making i would appreciate it if you
     could give it a read
   attachmentName: BookDraft.exe

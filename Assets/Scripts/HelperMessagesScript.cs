@@ -50,45 +50,45 @@ public class HelperMessagesScript : MonoBehaviour
 
     private IEnumerator IntroDialogueSequence()
     {
-        helperManager.showDialogue("Hello again my name is Fer, the company pet. Im here to help you get started. and to be your guide throughout your time in Breach Networks", 5f);
-        yield return new WaitForSeconds(5f);
-        helperManager.showDialogue("Have a look around the office and find your cubicle.", 5f);
+        helperManager.showDialogue("Hello again my name is Fer, the company pet. Im here to help you get started. and to be your guide throughout your time in Breach Networks", 15f);
+        yield return new WaitForSeconds(15f);
+        helperManager.showDialogue("Have a look around the office and find your cubicle.", 15f);
         GameManager.Instance.hasSeenOfficeIntro = true;
     }
 
     private IEnumerator HomeIntroDialogueSequence()
     {
-        helperManager.showDialogue("Hi I'll introduce myself later for now you should look around your home", 5f);
-        yield return new WaitForSeconds(5f);
-        helperManager.showDialogue("You can either go to the office immediately or answer some personal emails at you laptop", 5f);
+        helperManager.showDialogue("Hi I'll introduce myself later for now you should look around your home", 15f);
+        yield return new WaitForSeconds(15f);
+        helperManager.showDialogue("You can either go to the office immediately or answer some personal emails at you laptop", 15f);
         GameManager.Instance.hasSeenHomeIntro = true;
     }
 
     private IEnumerator FirstAfterHoursSequence()
     {
-        helperManager.showDialogue("It's been a long day right? you can choose to sleep immediately and start your next day or check your laptop", 5f);
-        yield return new WaitForSeconds(5f);
-        helperManager.showDialogue("there you'll see the threats you have faced up until now and you can also answer more personal emails if you'd like", 5f);
+        helperManager.showDialogue("It's been a long day right? you can choose to sleep immediately and start your next day or check your laptop", 15f);
+        yield return new WaitForSeconds(15f);
+        helperManager.showDialogue("there you'll see the threats you have faced up until now and you can also answer more personal emails if you'd like", 15f);
     }
 
     public IEnumerator FirstTimeOpeningEmailInDay2Sequence()
     {
-        helperManager.showDialogue("To scan the file start by left clicking the file icon below the email's Body text then click scan.", 5f);
-        yield return new WaitForSeconds(5f);
-        helperManager.showDialogue("After scanning you'll see if the file is safe to download or if you should ignore it.", 5f);
+        helperManager.showDialogue("To scan the file start by left clicking the file icon below the email's Body text then click scan.", 10f);
+        yield return new WaitForSeconds(10f);
+        helperManager.showDialogue("After scanning you'll see if the file is safe to download or if you should ignore it.", 10f);
 
     }
 
 
     public IEnumerator FirstTimeOpeningCriteriaInDay3Sequence()
     {
-        helperManager.showDialogue("You can see which apps are blacklisted on the  BlkLstdApps.txt file on the desktop", 5f);
-        yield return new WaitForSeconds(5f);
+        helperManager.showDialogue("You can see which apps are blacklisted on the  BlkLstdApps.txt file on the desktop", 12f);
+        yield return new WaitForSeconds(12f);
     }
 
     public IEnumerator FirstTimeStandinUp()
     {
-        helperManager.showDialogue("You should walk around and see if any of your coworkers need help while waiting to receive more emails.", 5f);
-        yield return new WaitForSeconds(5f);
+        helperManager.showDialogue("You should walk around and see if any of your coworkers need help while waiting to receive more emails.", 12f);
+        yield return new WaitForSeconds(12f);
     }
 }

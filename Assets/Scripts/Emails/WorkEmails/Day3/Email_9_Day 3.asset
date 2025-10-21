@@ -20,13 +20,13 @@ MonoBehaviour:
   hasAttachment: 0
   isMalicious: 0
   isBlacklistedApp: 1
-  isCorrectDomain: 1
+  isCorrectDomain: 0
   isFriendlyEmail: 0
   isFirstEmail: 0
   hasBeenScanned: 0
   dayAppears: 3
-  mistakeExplanation: The app requested was not blacklisted
-  correctActionHint: this email should have received a reply
-  consequenceText: Sofia spends extra hours manually cross-checking contracts, delaying
-    sign-offs.
+  mistakeExplanation: The app requested is blacklisted
+  correctActionHint: this email should have ben ignored
+  consequenceText: Sofia instaleld DocVerifier but it contained spyware that stole
+    important company data
   mistakeExplanationUnscanned: 

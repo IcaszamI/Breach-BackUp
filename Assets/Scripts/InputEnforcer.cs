@@ -17,9 +17,45 @@ public class InputEnforcer : MonoBehaviour
         {
             Debug.LogError("No FirstPersonController Found");
             enabled = false;
+            return;
+        }
+
+        ForceLock();
+    }
+
+    private void ForceLock()
+    {
+        if (Time.timeScale == 0f || interacting == null || playerController == null)
+        {
+            return;
+        }
+
+        if (interacting.currentlyInteracting)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            if (playerController != null && !playerController.enabled)
+            {
+                playerController.enabled = false;
+            }
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+            if (!playerController.enabled)
+            {
+                playerController.enabled = true;
+            }
         }
     }
 
+    private void Start()
+    {
+        StartCoroutine(EnsureLockedAfterFocus());
+    }
 
     private void LateUpdate()
     {
@@ -27,20 +63,11 @@ public class InputEnforcer : MonoBehaviour
         {
             return;
         }
-        if (Cursor.lockState != CursorLockMode.Locked && !interacting.currentlyInteracting)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-
-        if (playerController != null && !playerController.enabled && !interacting.currentlyInteracting)
-        {
-            playerController.enabled = true;
-        }
+        ForceLock();
     }
     private void OnApplicationFocus(bool hasFocus)
     {
-        if (hasFocus && Time.timeScale > 0f)
+        if (hasFocus)
         {
             StartCoroutine(EnsureLockedAfterFocus());
         }
@@ -48,14 +75,7 @@ public class InputEnforcer : MonoBehaviour
 
     private IEnumerator EnsureLockedAfterFocus()
     {
-        yield return null; 
-        
-        if (Time.timeScale > 0f)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            if (playerController != null)
-                playerController.enabled = true;
-        }
+        yield return null;
+        ForceLock();
     }
 }

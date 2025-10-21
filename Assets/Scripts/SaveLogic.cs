@@ -6,12 +6,11 @@ using UnityEngine.SceneManagement;
 public class SaveLogic : MonoBehaviour
 {
     string loadMenu = "MainMenu";
-    string loadOffice = "Office";
 
 
     public void SaveAndExit()
     {
-        GameManager.Instance.LoadSceneWithTransition("MainMenu");
+        GameManager.Instance.LoadSceneWithTransition(loadMenu);
     }
 
     public void OnClickGoHome()

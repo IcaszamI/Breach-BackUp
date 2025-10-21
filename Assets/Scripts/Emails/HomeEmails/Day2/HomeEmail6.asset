@@ -25,9 +25,8 @@ MonoBehaviour:
   isFirstEmail: 0
   hasBeenScanned: 0
   dayAppears: 2
-  mistakeExplanation: This email was safe it was not asking for any personal information
-    nor was it was it asking you ti click / claim something
-  correctActionHint: This email should have been ignorted
+  mistakeExplanation: This email was malicious
+  correctActionHint: This email should have been ignored
   consequenceText: The link leads to credential harvesting and possible remote access
     compromise.
   mistakeExplanationUnscanned: 

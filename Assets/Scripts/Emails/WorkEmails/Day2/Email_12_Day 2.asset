@@ -23,6 +23,7 @@ MonoBehaviour:
   isCorrectDomain: 1
   isFriendlyEmail: 1
   isFirstEmail: 0
+  hasBeenScanned: 0
   dayAppears: 2
   mistakeExplanation: The file sent to you was safe
   correctActionHint: this email should have received a reply
